@@ -142,8 +142,13 @@ header, .home {
   justify-content: center;
   align-items: center;
 }
+
 .home h2 {
   color: var(--grey-color);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 img {
@@ -183,6 +188,17 @@ img {
   transform: translateY(0px);
 }
 
+.intro{
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #161616;
+  transition: 1s;
+}
+
 .logo {
     width: 20%;
   }
@@ -201,8 +217,27 @@ progress {
 }
 
 .progresss{
-  display: flex;
-  justify-content:space-between;
+  width: 100%;
+  height: 18px;
+  background-color: #EFEFEF;
+  border-radius: 10px;
+}
+
+.progresss-bar{
+  width: 50%;
+  height: 100%;
+  background-color: var(--first-color);
+  border-radius: 10px;
+  position: relative;
+  transition: all 0.5s;
+}
+
+.progresss span{
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: var(--white-color);
+  margin-bottom:12px;
 }
 
 .project-item {
@@ -230,6 +265,18 @@ progress {
   margin-bottom: 0.2rem;
 }
 
+.reveal{
+  position: relative;
+  transform: translateY(150px);
+  opacity: 0;
+  transition: all 0.8s ease;
+}
+
+.reveal.active{
+   transform: translateY(0px);
+  opacity: 1;
+}
+
 section, footer {
   padding: 2rem 2rem;
 }
@@ -242,7 +289,7 @@ section, footer {
 }
 
 .skill-item span {
-  font-size: 1rem;
+  font-size: 0.8rem;
 }
 
 .social-logo {
