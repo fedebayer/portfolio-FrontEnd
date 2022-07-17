@@ -80,3 +80,16 @@ function hideProgress() {
     progressBar.style.width = 0;
   });
 }
+
+let login_btn = document.querySelector('.btn-log');
+let login = document.getElementById('login');
+let nm = 1;
+login_btn.addEventListener('click', () => {
+  if (nm == 1) {
+    login.style.display = 'block';
+    nm--;
+  } else {
+    login.style.display = 'none';
+    nm++;
+  }
+})

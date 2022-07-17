@@ -40,6 +40,16 @@ a:hover:after{
   background-color: var(--black-color) !important;
 }
 
+.btn-log{
+  color:#c1d0e0;
+  background-color: var(--black-color);
+}
+
+.btn-log:hover{
+  color: var(--white-color);
+  transition: 2s;
+}
+
 #contact {
   color: var(--white-color);
   background-color: var(--grey-dark-color);
@@ -70,6 +80,14 @@ a:hover:after{
   align-items: center;
   justify-content: center;
   padding-right: 1rem;
+}
+
+.form-box{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background:rgba(0, 0, 0, 0.3);
 }
 
 footer {
@@ -188,6 +206,20 @@ img {
   transform: translateY(0px);
 }
 
+.input-field {
+  color: var(--white-color);
+  width: 100%;
+  padding: 10px 0;
+  margin: 5px 0;
+  border-left: 0;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 0;
+  background: transparent;
+  border: 1px solid var(--first-color);
+  border-radius: 14px;
+}
+
 .intro{
   position: fixed;
   z-index: 2;
@@ -197,6 +229,15 @@ img {
   height: 100vh;
   background-color: #161616;
   transition: 1s;
+}
+
+#login {
+  display: none;
+  background-color: rgb(22, 22, 22);
+}
+
+#login-form{
+  transition: .5s;
 }
 
 .logo {
@@ -302,6 +343,17 @@ section, footer {
 
 span.fades {
   color: var(--first-color);
+}
+
+.submit-btn{
+  padding: 10px 30px;
+  cursor: pointer;
+  display: block;
+  margin: auto;
+  background:var(--first-color);
+  border: 0;
+  outline: none;
+  border-radius: 30px;
 }
 
 .years-date {
