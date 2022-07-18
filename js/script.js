@@ -47,8 +47,6 @@ window.addEventListener('scroll', () => {
 
     if (revealtop < windowheight - revealpoint) {
       reveals[i].classList.add('active');
-    } else {
-      reveals[i].classList.remove('active');
     }
   }
 
@@ -57,8 +55,6 @@ window.addEventListener('scroll', () => {
 
   if (sectionPos < screenPos) {
     showProgress();
-  } else {
-    hideProgress();
   }
 });
 
@@ -74,12 +70,6 @@ function showProgress() {
   });
 }
 
-function hideProgress() {
-  progressBars.forEach(progressBar => {
-    progressBar.style.opacity = 0;
-    progressBar.style.width = 0;
-  });
-}
 
 let login_btn = document.querySelector('.btn-log');
 let login = document.getElementById('login');
