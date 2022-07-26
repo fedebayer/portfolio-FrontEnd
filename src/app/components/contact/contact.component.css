@@ -1,0 +1,108 @@
+/*
+====================
+*CONTACT
+====================
+*/
+#contact {
+  color: var(--white-color);
+  background-color: var(--grey-dark-color);
+}
+
+.contact input[type="text"], input[type="email"], textarea {
+  background-color: #1e242c;
+  color: var(--white-color);
+}
+
+.contact h2 {
+  color: var(--white-color);
+}
+
+.contact .title-bar {
+  background-color: var(--white-color);
+}
+
+.contact p, .footer p {
+  display: flex;
+  justify-content: center;
+}
+
+.input-field {
+  color: var(--white-color);
+  width: 100%;
+  padding: 10px 0;
+  margin: 5px 0;
+  border-left: 0;
+  border-top: 0;
+  border-right: 0;
+  border-bottom: 0;
+  background: transparent;
+  border: 1px solid var(--grey-color);
+  border-radius: 14px;
+}
+
+.social-network div {
+  margin-top: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+.contact a {
+  color: var(--white-color);
+}
+
+.contact .edit-icon .iconify {
+  float: right;
+  height: 2%;
+  width: 2%;
+}
+
+
+
+.contact-form>* {
+  padding: 0.5rem;
+  margin: 1rem auto;
+  display: block;
+  width: 100%;
+}
+
+#contact-form-loader {
+  display: none;
+}
+
+.contact .iconify {
+  height: 100px;
+  width: 100%;
+}
+
+.submit-btn {
+  padding: 10px 30px;
+  cursor: pointer;
+  display: block;
+  margin: auto;
+  background: var(--first-color);
+  border: 0;
+  outline: none;
+  border-radius: 30px;
+  transition: 0.4s;
+}
+
+.submit-btn:hover {
+  color: var(--white-color);
+}
+
+@media only screen and (min-width: 700px) {
+  .contact-form {
+    margin: 0 auto;
+    padding: 1rem;
+    max-width: 70%;
+  }
+
+  .social-network div {
+    margin-right: 10rem;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .social-network {
+    margin-top: 1.5rem;
+  }
+}

@@ -1,0 +1,25 @@
+/*
+====================
+*FOOTER
+====================
+*/
+footer {
+  color: var(--white-color);
+  background-color: var(--black-color)
+}
+
+.footer span {
+  padding-left: 0.4rem;
+  font-family: "Open Sans";
+  color: var(--first-color);
+}
+
+.footer p {
+  margin-bottom: 3.8rem;
+}
+
+@media only screen and (min-width: 700px) {
+  .footer p {
+    margin-bottom: 0;
+  }
+}

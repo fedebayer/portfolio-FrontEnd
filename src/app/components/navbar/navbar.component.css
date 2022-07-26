@@ -1,0 +1,65 @@
+/*
+====================
+*HEADER & NAV BAR
+====================
+*/
+
+.bg-dark {
+  background-color: var(--black-color) !important;
+}
+
+header a {
+  color: #c1d0e0 !important;
+}
+
+header a:hover {
+  color: var(--white-color) !important;
+}
+
+.header a:after {
+  content: "";
+  position: absolute;
+  background-color: var(--first-color);
+  height: 3px;
+  width: 0%;
+  left: 0;
+  bottom: -1px;
+  transition: 0.3s;
+}
+
+.header a:hover:after {
+  width: 100%;
+}
+
+header .iconify {
+  height: 50px;
+  width: 40%;
+  margin-right: 1rem;
+}
+
+@media only screen and (min-width: 700px) {
+  header {
+    position: sticky;
+    top: 0;
+  }
+
+  header .iconify {
+    height: 100px;
+    width: 30%;
+    margin-right: 2rem;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .collapse {
+    padding-left: 30%;
+  }
+
+  .collapse li {
+    padding-left: 30px;
+  }
+
+  header .iconify {
+    width: 30%;
+  }
+}

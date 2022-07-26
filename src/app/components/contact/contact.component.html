@@ -1,0 +1,36 @@
+<section id="contact" class="contact">
+  <div class="reveal">
+    <h2>CONTACT</h2>
+    <div class="title-bar"></div>
+    <span class="edit-icon" data-bs-toggle="modal" data-bs-target="#editContactModal"><span class="iconify"
+        data-icon="mdi:pencil"></span></span>
+    <p>Now that you know about me, let me know if you are
+      interested
+      to
+      work with me.
+    </p>
+    <p>Email: federicobayerque@gmail.com</p>
+    <div class="social-network d-flex align-items-center row justify-content-between">
+      <div class="d-flex justify-content-evenly align-items-center">
+        <a href="http://www.linkedin.com/in/federicobayerque" target="_blank"><span class="iconify"
+            data-icon="mdi:linkedin"></span></a>
+        <a href="mailto:federicobayerque@gmail.com" target="_blank"><span class="iconify"
+            data-icon="mdi:email"></span></a>
+        <a href="https://github.com/FedeBayer" target="_blank"><span class="iconify" data-icon="mdi:github"></span></a>
+      </div>
+    </div>
+    <br>
+    <p>Have a message?</p>
+    <form class="contact-form box-shadow-1 animated pop-in">
+      <input type="text" name="name" placeholder="Name" title="Only accepts letters and blank spaces"
+        pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" required>
+      <input type="email" name="email" placeholder="Enter email" title="Incorrect email"
+        pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$" required>
+      <textarea name="message" col="50" rows="10" placeholder="Your message" required></textarea>
+      <div class="contact-form-loader text-center" id="contact-form-loader">
+        <img src="assets/images/icons/loader.svg" alt="Sending...">
+      </div>
+      <input class="submit-btn" type="submit">
+    </form>
+  </div>
+</section>
