@@ -1,0 +1,169 @@
+{
+  "home": {
+    "name": "Federico Bayerque",
+    "subtitle": "Full Stack Developer Jr.",
+    "heroImg": "assets/images/img/hero-image.jpg"
+  },
+  "about": {
+    "text": "I'm a developer from Tandil, Buenos Aires, Argentina. Passionate for programming and creating new and innovative software. Well-versed in promoting objective-oriented approaches to real-time software development. Analytical, empathic and detail-oriented. With interest in learning new technologies and meeting new people.",
+    "profileImg": "assets/images/img/profilePhoto.png"
+  },
+  "experience": [
+    {
+      "title": "Freelance Work",
+      "date": "2022 - At present",
+      "img": "assets/images/icons/freelance-logo.png",
+      "description": "Development of projects (Java and Full stack webs) to improve the performance of my abilities."
+    }
+  ],
+  "education": [
+    {
+      "title": "UNICEN (Universidad Nacional del Centro de la Provincia de Buenos Aires)",
+      "date": "Mar 2021 - At present",
+      "img": "assets/images/icons/unicen-logo.png",
+      "description": "University student in the faculty of Exactas in the Career TUDAI (University Technician in Development of Computer Applications)."
+    },
+    {
+      "title": "Argentina Programa - 1st Phase - Fundamentals of programming",
+      "date": "Oct 2021 - Dec 2021",
+      "img": "assets/images/icons/mumuki-logo.png",
+      "description": "Course about basic notions of JavaScript, Ruby, and OOP."
+    },
+    {
+      "title": "Argentina Programa - 2nd Phase - Full stack web developer jr",
+      "date": "Feb 2022 - Aug 2022",
+      "img": "assets/images/icons/arg-programa-logo.png",
+      "description": "Course about JavaScript, TypeScript, Java, MySQL, Angular, Spring Boot, Bootstrap. And other concepts like DevOps, Testing, Web Security, Effective Communication, OOP, Figma, SCRUM."
+    },
+    {
+      "title": "ONE - Oracle Next Education",
+      "date": "Jul 2022 - At present",
+      "img": "assets/images/icons/one-logo.png",
+      "description": "Course about programming, Front-end, Java, Entrepreneurship and fundamentals of the business world."
+    }
+  ],
+  "skills": [
+    {
+      "name": "Java",
+      "lvl": "75"
+    },
+    {
+      "name": "PHP",
+      "lvl": "70"
+    },
+    {
+      "name": "MySQL",
+      "lvl": "70"
+    },
+    {
+      "name": "HTML",
+      "lvl": "80"
+    },
+    {
+      "name": "CSS",
+      "lvl": "75"
+    },
+    {
+      "name": "JavaScript",
+      "lvl": "65"
+    },
+    {
+      "name": "TypeScript",
+      "lvl": "60"
+    },
+    {
+      "name": "Angular",
+      "lvl": "55"
+    },
+    {
+      "name": "SpringBoot",
+      "lvl": "55"
+    }
+  ],
+  "languages": [
+    {
+      "name": "English",
+      "lvl": "70"
+    },
+    {
+      "name": "Spanish",
+      "lvl": "100"
+    }
+  ],
+  "extraSkills": [
+    {
+      "name": "Scrum"
+    },
+    {
+      "name": "GoogleSearch"
+    },
+    {
+      "name": "Bootstrap"
+    },
+    {
+      "name": "Git"
+    }
+  ],
+  "projects": [
+    {
+      "title": "Portfolio - Argentina Programa #YoProgramo",
+      "img": "assets/images/img/project1.png",
+      "year": "2022",
+      "description": "Designed in the course Full stack web development Argentina Programa.",
+      "live": "https://fedebayer.github.io/portfolio-FrontEnd/index.html",
+      "repo": "https://github.com/FedeBayer/tpeWeb2",
+      "languages": "PHP-MySQL-JS"
+    },
+    {
+      "title": "Algorithms/Data structures Java project",
+      "img": "assets/images/img/project2.png",
+      "year": "2022",
+      "description": "Java project includes OOP, data structures, recursion, sort, trees, graphs, backtracking and greedy.",
+      "live": "",
+      "repo": "https://github.com/FedeBayer/tpeProg3",
+      "languages": "Java"
+    },
+    {
+      "title": "Web page with DataBase and Api Rest",
+      "img": "assets/images/img/project3.png",
+      "year": "2021",
+      "description": "Page back-end oriented, includes MVC, database, users administration and Api Rest.",
+      "live": "",
+      "repo": "https://github.com/FedeBayer/tpeWeb2",
+      "languages": "PHP-MySQL-JS"
+    },
+    {
+      "title": "Web Page of medical Turns",
+      "img": "assets/images/img/project4.png",
+      "year": "2022",
+      "description": "Page front/back-end, includes MVC, database, Api Rest, UML, practice of SCRUM with classmates in University.",
+      "live": "",
+      "repo": "https://github.com/FedeBayer/tpeMetodologias",
+      "languages": "PHP-MySQL-JS"
+    },
+    {
+      "title": "Single Page Application Simpson",
+      "img": "assets/images/img/project5.png",
+      "year": "2021",
+      "description": "Front-end page, includes Responsive design, extracting elements from API and SPA.",
+      "live": "",
+      "repo": "https://github.com/FedeBayer/tpeWeb1",
+      "languages": "JS-HTML-CSS"
+    },
+    {
+      "title": "Object oriented Java project",
+      "img": "assets/images/img/project6.png",
+      "year": "2021",
+      "description": "Java project includes object oriented paradigm, Composite and Strategy pattern design.",
+      "live": "",
+      "repo": "https://github.com/FedeBayer/tpeProg2",
+      "languages": "Java"
+    }
+  ],
+  "contact": {
+    "text": "Now that you know about me, let me know if you are interested to work with me.",
+    "email": "federicobayerque@gmail.com",
+    "linkedIn": "https://www.linkedin.com/in/federicobayerque",
+    "github": "https://github.com/FedeBayer"
+  }
+}

@@ -10,40 +10,46 @@ window.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => {
     intro.style.left = '-200vh';
   }, 50)
+
   /*
-====================
-*Title color change
-====================
-*/
-  const text = document.querySelector(".fancy");
-  const strText = text.textContent;
-  const splitText = strText.split("");
-  text.textContent = "";
+  ====================
+  *Title color change
+  ====================
+  */
 
-  for (let i = 0; i < splitText.length; i++) {
-    text.innerHTML += "<span>" + splitText[i] + "</span>";
-    if (i == 8) {
-      text.innerHTML += "<p style='min-width:2%'></p>"
+  setTimeout(() => {
+    const text = document.querySelector(".fancy");
+    const strText = text.textContent;
+    const splitText = strText.split("");
+    text.textContent = "";
+
+    for (let i = 0; i < splitText.length; i++) {
+      text.innerHTML += "<span>" + splitText[i] + "</span>";
+      if (i == 8) {
+        text.innerHTML += "<p style='min-width:2%'></p>"
+      }
     }
-  }
 
-  let char = 0;
-  let timer = setInterval(onTick, 70);
+    let char = 0;
+    let timer = setInterval(onTick, 70);
 
-  function onTick() {
-    let span = text.querySelectorAll('span')[char];
-    span.classList.add('fades');
-    char++;
-    if (char === splitText.length) {
-      complete();
-      return;
+    function onTick() {
+      let span = text.querySelectorAll('span')[char];
+      span.classList.add('fades');
+      char++;
+      if (char === splitText.length) {
+        complete();
+        return;
+      }
     }
-  }
 
-  function complete() {
-    clearInterval(timer);
-    timer = null;
-  }
+    function complete() {
+      clearInterval(timer);
+      timer = null;
+    }
+
+  }, 150)
+
 
 
   /*
@@ -80,11 +86,12 @@ window.addEventListener('DOMContentLoaded', () => {
 */
 
   const skillsSection = document.getElementById('skillset');
-  const progressBars = document.querySelectorAll('.progresss-bar');
+
 
   function showProgress() {
+    const progressBars = document.querySelectorAll('.progresss-bar');
     progressBars.forEach(progressBar => {
-      const value = progressBar.dataset.progress;
+      const value = progressBar.firstChild.className;
       progressBar.style.opacity = 1;
       progressBar.style.width = `${value}%`;
     });

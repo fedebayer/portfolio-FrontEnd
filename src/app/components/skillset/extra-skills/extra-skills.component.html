@@ -3,33 +3,9 @@
   <span class="edit-icon" data-bs-toggle="modal" data-bs-target="#extraSkillPlus"><span class="iconify"
       data-icon="mdi:plus"></span></span>
   <div class="row d-flex column">
-    <div class="extraSkill-item col-6 col-lg-3"><img src="assets/images/icons/extraSkill-icon.png" height="30"
-        width="25" alt="blue square">
-      <p>Scrum</p>
-      <span class="edit-icon" data-bs-toggle="modal" data-bs-target="#extraSkillEdit"><span class="iconify"
-          data-icon="mdi:pencil"></span></span>
-      <span class="delete-icon" data-bs-toggle="modal" data-bs-target="#deleteModal"><span class="iconify"
-          data-icon="mdi:trash"></span></span>
-    </div>
-    <div class="extraSkill-item col-6 col-lg-3"><img src="assets/images/icons/extraSkill-icon.png" height="30"
-        width="25" alt="blue square">
-      <p>GoogleSearch</p>
-      <span class="edit-icon" data-bs-toggle="modal" data-bs-target="#extraSkillEdit"><span class="iconify"
-          data-icon="mdi:pencil"></span></span>
-      <span class="delete-icon" data-bs-toggle="modal" data-bs-target="#deleteModal"><span class="iconify"
-          data-icon="mdi:trash"></span></span>
-    </div>
-    <div class="extraSkill-item col-6 col-lg-3">
+    <div *ngFor="let extraSkillItem of extraSkillsData" class="extraSkill-item col-6 col-lg-3">
       <img src="assets/images/icons/extraSkill-icon.png" height="30" width="25" alt="blue square">
-      <p>Bootstrap</p>
-      <span class="edit-icon" data-bs-toggle="modal" data-bs-target="#extraSkillEdit"><span class="iconify"
-          data-icon="mdi:pencil"></span></span>
-      <span class="delete-icon" data-bs-toggle="modal" data-bs-target="#deleteModal"><span class="iconify"
-          data-icon="mdi:trash"></span></span>
-    </div>
-    <div class="extraSkill-item col-6 col-lg-3">
-      <img src="assets/images/icons/extraSkill-icon.png" height="30" width="25" alt="blue square">
-      <p>Git</p>
+      <p>{{extraSkillItem.name}}</p>
       <span class="edit-icon" data-bs-toggle="modal" data-bs-target="#extraSkillEdit"><span class="iconify"
           data-icon="mdi:pencil"></span></span>
       <span class="delete-icon" data-bs-toggle="modal" data-bs-target="#deleteModal"><span class="iconify"

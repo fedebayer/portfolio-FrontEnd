@@ -8,17 +8,10 @@
     </div>
     <article class=" d-flex justify-content-evenly flex-wrap flex-sm-nowrap">
       <div class="about-me-text d-flex flex-column align-items-center align-items-sm-start">
-
-        <p>I'm a developer from Tandil, Buenos Aires, Argentina.
-          Passionate for programming and creating
-          new and innovative software. Well-versed in
-          promoting objective-oriented approaches to
-          real-time software development. Analytical,
-          empathic and detail-oriented. With interest in learning new technologies and meeting new
-          people.</p>
+        <p>{{aboutData.text}}</p>
       </div>
       <article class="profilePhoto d-flex flex-column align-items-center align-items-sm-start">
-        <img src="assets/images/img/profilePhoto.png" alt="profile photo" class="profilePhoto" width="50%">
+        <img [src]="aboutData.profileImg" alt="profile photo" class="profilePhoto" width="50%">
       </article>
     </article>
   </div>

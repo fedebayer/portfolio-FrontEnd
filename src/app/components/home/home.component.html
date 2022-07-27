@@ -1,12 +1,11 @@
 <section id="home" class="home">
   <div class="intro">
   </div>
-  <article class="hero-img">
+  <article class="hero-img" [ngStyle]="{'background-image':'url(' + homeData.heroImg + ')'}">
     <aside class="hero-img-opacity">
       <div class="hero-img-content">
-        <h1 class="fancy">Federico Bayerque</h1>
-        <h2>Full Stack Developer
-          Jr.</h2>
+        <h1 class="fancy">{{homeData.name}}</h1>
+        <h2>{{homeData.subtitle}}</h2>
       </div>
     </aside>
   </article>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PortfolioDataService } from 'src/app/services/portfolio-data.service';
 
 @Component({
   selector: 'app-extra-skills',
@@ -6,10 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./extra-skills.component.css']
 })
 export class ExtraSkillsComponent implements OnInit {
-
-  constructor() { }
+  extraSkillsData: any;
+  constructor(private portfolioData: PortfolioDataService) { }
 
   ngOnInit(): void {
+    this.portfolioData.getData().subscribe(data => {
+      this.extraSkillsData = data.extraSkills;
+    });
   }
 
 }

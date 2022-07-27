@@ -4,19 +4,13 @@
     <div class="title-bar"></div>
     <span class="edit-icon" data-bs-toggle="modal" data-bs-target="#editContactModal"><span class="iconify"
         data-icon="mdi:pencil"></span></span>
-    <p>Now that you know about me, let me know if you are
-      interested
-      to
-      work with me.
-    </p>
-    <p>Email: federicobayerque@gmail.com</p>
+    <p>{{contactData.text}}</p>
+    <p>Email: {{contactData.email}}</p>
     <div class="social-network d-flex align-items-center row justify-content-between">
       <div class="d-flex justify-content-evenly align-items-center">
-        <a href="http://www.linkedin.com/in/federicobayerque" target="_blank"><span class="iconify"
-            data-icon="mdi:linkedin"></span></a>
-        <a href="mailto:federicobayerque@gmail.com" target="_blank"><span class="iconify"
-            data-icon="mdi:email"></span></a>
-        <a href="https://github.com/FedeBayer" target="_blank"><span class="iconify" data-icon="mdi:github"></span></a>
+        <a [href]="contactData.linkedIn" target="_blank"><span class="iconify" data-icon="mdi:linkedin"></span></a>
+        <a [href]="'mailto:'+contactData.email" target="_blank"><span class="iconify" data-icon="mdi:email"></span></a>
+        <a [href]="contactData.github" target="_blank"><span class="iconify" data-icon="mdi:github"></span></a>
       </div>
     </div>
     <br>
