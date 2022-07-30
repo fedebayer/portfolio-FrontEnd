@@ -2,7 +2,7 @@
   <div class="reveal">
     <h2>EXPERIENCE</h2>
     <div class="title-bar"></div>
-    <span class="edit-icon" data-bs-toggle="modal" data-bs-target="#itemPlus"><span class="iconify"
+    <span class="edit-icon" data-bs-toggle="modal" data-bs-target="#expPlus"><span class="iconify"
         data-icon="mdi:plus"></span></span>
     <div class="row professional-log-container">
       <div *ngFor="let expItem of expData" class="professional-log-item col-12 col-sm-6">
@@ -11,14 +11,15 @@
         </div>
         <div class="professional-log-text">
           <h4>{{expItem.title}}</h4>
+          <h5>{{expItem.company}}</h5>
           <p>{{expItem.description}}</p>
           <div class="d-flex align-items-center">
             <div class="years-date">
               <p>{{expItem.date}}</p>
             </div>
-            <span class="edit-icon" data-bs-toggle="modal" data-bs-target="#itemModal"><span class="iconify"
+            <span class="edit-icon" data-bs-toggle="modal" data-bs-target="#expModal"><span class="iconify"
                 data-icon="mdi:pencil"></span></span>
-            <span class="delete-icon" data-bs-toggle="modal" data-bs-target="#deleteModal"><span class="iconify"
+            <span class="delete-icon" data-bs-toggle="modal" data-bs-target="#deleteExpModal"><span class="iconify"
                 data-icon="mdi:trash"></span></span>
           </div>
         </div>
@@ -26,3 +27,88 @@
     </div>
   </div>
 </section>
+
+<!--Add Experience Item Modal-->
+<article class="modal fade" id="expPlus" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content section-info">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Experience</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+      </div>
+      <form action="" method="GET" class="form">
+        <div class="modal-body">
+          <div class="m-3">
+            <label for="expTitle" class="form-label">Title/Position and Org/Institution:</label>
+            <input id="expTitle" type="text" class="form-control">
+          </div>
+          <div class="m-3">
+            <label for="expText">Info:</label>
+            <textarea id="expText" name="sectionText" cols="30" rows="3" class="form-control mt-3"
+              style="resize:none;"></textarea>
+          </div>
+          <div class="m-3">
+            <label for="expDate" class="form-label">Period (Year/Month):</label>
+            <input id="expDate" type="number" class="form-control">
+          </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button type="submit" class="btn btn-outline-success">Accept</button>
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</article>
+<!--Education/Experience Item Modal-->
+<article class="modal fade" id="expModal" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content section-info">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Experience</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+      </div>
+      <form action="" method="GET" class="form">
+        <div class="modal-body">
+          <div class="m-3">
+            <label for="editExpTitle" class="form-label">Title/Position and Org/Institution:</label>
+            <input id="editExpTitle" type="text" class="form-control">
+          </div>
+          <div class="m-3">
+            <label for="editExpText">Info:</label>
+            <textarea id="editExpText" name="sectionText" cols="30" rows="3" class="form-control mt-3"
+              style="resize:none;"></textarea>
+          </div>
+          <div class="m-3">
+            <label for="editExpDate" class="form-label">Period (Year/Month):</label>
+            <input id="editExpDate" type="text" class="form-control">
+          </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button type="submit" class="btn btn-outline-success">Accept</button>
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</article>
+<!--Delete Item Modal-->
+<div class="modal fade" id="deleteExpModal" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content section-info">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Experience</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+      </div>
+      <form action="" method="GET" class="form">
+        <div class="modal-footer justify-content-center">
+          <strong class="delete-item-text">Are you sure about deleting this item?</strong>
+          <div class="mt-3">
+            <button type="submit" class="btn btn-outline-success">Accept</button>
+            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

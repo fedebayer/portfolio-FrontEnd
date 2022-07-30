@@ -13,7 +13,6 @@ export class ContactComponent implements OnInit {
 
   ngOnInit(): void {
     this.contactData = {
-      text: '-',
       linkedIn: '-',
       email: '-',
       github: '-'

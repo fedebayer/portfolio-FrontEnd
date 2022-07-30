@@ -6,6 +6,12 @@ This project is about a **full-stack web**, in this case a web portfolio.
 
 More info about the project in the [Wiki](https://github.com/FedeBayer/portfolio-FrontEnd/wiki)
 
+## Technologies
+
+- Angular CLI
+- TypeScript
+- Html & Css & Js & Bootstrap
+
 ## Development
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.1.0.

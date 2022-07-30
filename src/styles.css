@@ -158,6 +158,12 @@ header {
   font-weight: bold;
 }
 
+.professional-log h5 {
+  font-size: 0.9rem;
+  font-weight: bold;
+  font-style: italic;
+}
+
 .professional-log- img {
   width: 50%;
 }
@@ -190,8 +196,8 @@ header {
   color: var(--white-color);
 }
 
-.modal-header {
-  padding-left: 42.5%;
+.modal-title {
+  padding-left: 35%;
 }
 
 .range-bar-value {

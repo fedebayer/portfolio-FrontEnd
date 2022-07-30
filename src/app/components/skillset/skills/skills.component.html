@@ -10,7 +10,7 @@
         <div *ngFor="let skillItem of skillsData">
           <div>
             <b>{{skillItem.name}}</b>
-            <span class="delete-icon" data-bs-toggle="modal" data-bs-target="#deleteModal"><span class="iconify"
+            <span class="delete-icon" data-bs-toggle="modal" data-bs-target="#deleteSkillModal"><span class="iconify"
                 data-icon="mdi:trash"></span></span>
             <span class="edit-icon" data-bs-toggle="modal" data-bs-target="#skillEdit"><span class="iconify"
                 data-icon="mdi:pencil"></span></span>
@@ -30,13 +30,13 @@
           <div *ngFor="let langItem of languagesData">
             <div>
               <b>{{langItem.name}}</b>
-              <span class="delete-icon" data-bs-toggle="modal" data-bs-target="#deleteModal"><span class="iconify"
+              <span class="delete-icon" data-bs-toggle="modal" data-bs-target="#deleteSkillModal"><span class="iconify"
                   data-icon="mdi:trash"></span></span>
               <span class="edit-icon" data-bs-toggle="modal" data-bs-target="#skillEdit"><span class="iconify"
                   data-icon="mdi:pencil"></span></span>
             </div>
             <div class="progresss">
-              <div class="progresss-bar" data-progress="70">
+              <div class="progresss-bar">
                 <span class="{{langItem.lvl}}">{{langItem.lvl}}%</span>
               </div>
             </div>
@@ -47,3 +47,149 @@
     </div>
   </div>
 </section>
+
+<!--Add Skill Modal-->
+<article class="modal fade" id="skillPlus" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content section-info">
+      <div class="modal-header">
+        <h5 class="modal-title">Add skill</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+      </div>
+      <form action="" method="GET" class="form">
+        <div class="modal-body">
+          <div class="m-3">
+            <label for="skillItemTitle" class="form-label">Ability/Technology:</label>
+            <input id="skillItemTitle" type="text" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="progress">Level:</label>
+            <input type="text" id="range-bar-value" class="range-bar-value" value="" readonly>
+            <input class="form-range" name="progress" id="progress" type="range" min="1" max="100" value="50"
+              onchange="updateTextInput(this.value);" />
+          </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button type="submit" class="btn btn-outline-success">Accept</button>
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</article>
+<!--Skill Item Modal-->
+<article class="modal fade" id="skillEdit" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content section-info">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Skill</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+      </div>
+      <form action="" method="GET" class="form">
+        <div class="modal-body">
+          <div class="m-3">
+            <label for="editSkillItemTitle" class="form-label">Ability/Technology:</label>
+            <input id="editSkillItemTitle" type="text" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="progress">Level:</label>
+            <input type="text" id="range-bar-value-edit" class="range-bar-value" value="" readonly>
+            <input class="form-range" name="progress" id="editProgress" type="range" min="1" max="100" value="50"
+              onchange="updateTextInputEdit(this.value);" />
+          </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button type="submit" class="btn btn-outline-success">Accept</button>
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</article>
+<!--Delete Item Modal-->
+<article class="modal fade" id="deleteSkillModal" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content section-info">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Skill</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+      </div>
+      <form action="" method="GET" class="form">
+        <div class="modal-footer justify-content-center">
+          <strong class="delete-item-text">Are you sure about deleting this item?</strong>
+          <div class="mt-3">
+            <button type="submit" class="btn btn-outline-success">Accept</button>
+            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</article>
+
+<!--Add ExtraSkill Modal-->
+<article class="modal fade" id="extraSkillPlus" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content section-info">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Extra Skill</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+      </div>
+      <form action="" method="GET" class="form">
+        <div class="modal-body">
+          <div class="m-3">
+            <label for="extraSkillItemTitle" class="form-label">Ability/Technology:</label>
+            <input id="extraSkillItemTitle" type="text" class="form-control">
+          </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button type="submit" class="btn btn-outline-success">Accept</button>
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</article>
+<!--ExtraSkill Item Modal-->
+<div class="modal fade" id="extraSkillEdit" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content section-info">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Extra Skill</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+      </div>
+      <form action="" method="GET" class="form">
+        <div class="modal-body">
+          <div class="m-3">
+            <label for="editExtrakillItemTitle" class="form-label">Ability/Technology:</label>
+            <input id="editExtraSkillItemTitle" type="text" class="form-control">
+          </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button type="submit" class="btn btn-outline-success">Accept</button>
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--delete ExtraSkill Item Modal-->
+<article class="modal fade" id="deleteExtraSkillModal" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content section-info">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Skill</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+      </div>
+      <form action="" method="GET" class="form">
+        <div class="modal-footer justify-content-center">
+          <strong class="delete-item-text">Are you sure about deleting this item?</strong>
+          <div class="mt-3">
+            <button type="submit" class="btn btn-outline-success">Accept</button>
+            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</article>

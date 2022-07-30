@@ -57,6 +57,7 @@ window.addEventListener('DOMContentLoaded', () => {
   *Scroll animations
   ====================
   */
+  let showedProgress = false;
 
   window.addEventListener('scroll', () => {
     const reveals = document.querySelectorAll('.reveal');
@@ -74,8 +75,9 @@ window.addEventListener('DOMContentLoaded', () => {
     let sectionPos = skillsSection.getBoundingClientRect().top;
     let screenPos = window.innerHeight / 2;
 
-    if (sectionPos < screenPos) {
+    if (sectionPos < screenPos && !showedProgress) {
       showProgress();
+      showed = true;
     }
   });
 

@@ -11,6 +11,7 @@
   "experience": [
     {
       "title": "Freelance Work",
+      "company": "",
       "date": "2022 - At present",
       "img": "assets/images/icons/freelance-logo.png",
       "description": "Development of projects (Java and Full stack webs) to improve the performance of my abilities."
@@ -18,25 +19,29 @@
   ],
   "education": [
     {
-      "title": "UNICEN (Universidad Nacional del Centro de la Provincia de Buenos Aires)",
+      "title": "University Technician in Development of Computer Applications",
+      "institution": "UNICEN (Universidad Nacional del Centro de la Provincia de Buenos Aires)",
       "date": "Mar 2021 - At present",
       "img": "assets/images/icons/unicen-logo.png",
       "description": "University student in the faculty of Exactas in the Career TUDAI (University Technician in Development of Computer Applications)."
     },
     {
-      "title": "Argentina Programa - 1st Phase - Fundamentals of programming",
+      "title": "Fundamentals of programming",
+      "institution": "Argentina Programa",
       "date": "Oct 2021 - Dec 2021",
       "img": "assets/images/icons/mumuki-logo.png",
       "description": "Course about basic notions of JavaScript, Ruby, and OOP."
     },
     {
-      "title": "Argentina Programa - 2nd Phase - Full stack web developer jr",
+      "title": "Full stack web developer jr",
       "date": "Feb 2022 - Aug 2022",
+      "institution": "Argentina Programa",
       "img": "assets/images/icons/arg-programa-logo.png",
       "description": "Course about JavaScript, TypeScript, Java, MySQL, Angular, Spring Boot, Bootstrap. And other concepts like DevOps, Testing, Web Security, Effective Communication, OOP, Figma, SCRUM."
     },
     {
       "title": "ONE - Oracle Next Education",
+      "institution": "Oracle",
       "date": "Jul 2022 - At present",
       "img": "assets/images/icons/one-logo.png",
       "description": "Course about programming, Front-end, Java, Entrepreneurship and fundamentals of the business world."
@@ -109,10 +114,10 @@
       "title": "Portfolio - Argentina Programa #YoProgramo",
       "img": "assets/images/img/project1.png",
       "year": "2022",
-      "description": "Designed in the course Full stack web development Argentina Programa.",
+      "description": "Designed in the course Full stack web development of Argentina Programa.",
       "live": "https://fedebayer.github.io/portfolio-FrontEnd/index.html",
       "repo": "https://github.com/FedeBayer/tpeWeb2",
-      "languages": "PHP-MySQL-JS"
+      "languages": "Angular-SpringBoot-TS-Java"
     },
     {
       "title": "Algorithms/Data structures Java project",
@@ -127,7 +132,7 @@
       "title": "Web page with DataBase and Api Rest",
       "img": "assets/images/img/project3.png",
       "year": "2021",
-      "description": "Page back-end oriented, includes MVC, database, users administration and Api Rest.",
+      "description": "Page back-end oriented, includes MVC, database, routing, users administration and Api Rest.",
       "live": "",
       "repo": "https://github.com/FedeBayer/tpeWeb2",
       "languages": "PHP-MySQL-JS"
@@ -161,7 +166,6 @@
     }
   ],
   "contact": {
-    "text": "Now that you know about me, let me know if you are interested to work with me.",
     "email": "federicobayerque@gmail.com",
     "linkedIn": "https://www.linkedin.com/in/federicobayerque",
     "github": "https://github.com/FedeBayer"

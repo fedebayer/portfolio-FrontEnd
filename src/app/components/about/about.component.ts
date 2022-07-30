@@ -1,5 +1,7 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { PortfolioDataService } from 'src/app/services/portfolio-data.service';
+import { Person } from 'src/app/model/person';
+import { PersonService } from 'src/app/services/person.service';
 
 @Component({
   selector: 'app-about',
@@ -7,18 +9,22 @@ import { PortfolioDataService } from 'src/app/services/portfolio-data.service';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent implements OnInit {
-  aboutData: any;
+  person: Person | undefined;
 
-  constructor(private portfolioData: PortfolioDataService) { }
+  constructor(private personService: PersonService) { }
 
   ngOnInit(): void {
-    this.aboutData = {
-      text: '-',
-      profileImg: 'assets/images/img/profilePhoto.png'
-    };
-    this.portfolioData.getData().subscribe(data => {
-      this.aboutData = data.about;
-    });
+    this.getPerson();
   }
 
+  public getPerson(): void {
+    this.personService.getPerson().subscribe({
+      next: (response: Person) => {
+        this.person = response;
+      },
+      error: (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    });
+  }
 }

@@ -35,3 +35,31 @@
     </div>
   </nav>
 </header>
+
+<!--Login Modal-->
+<article class="modal fade" id="loginModal" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content section-info">
+      <div class="modal-header">
+        <h5 class="modal-title align-items-center">Log in</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+      </div>
+      <form action="" method="GET" class="form">
+        <div class="modal-body">
+          <div class="m-3">
+            <label for="user" class="form-label">User:</label>
+            <input id="user" type="text" class="form-control" required>
+          </div>
+          <div class="m-3">
+            <label for="password" class="form-label">password:</label>
+            <input id="password" type="password" class="form-control" required>
+          </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button type="submit" class="btn btn-outline-success">Login</button>
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</article>

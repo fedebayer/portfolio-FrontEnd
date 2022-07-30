@@ -4,7 +4,7 @@
     <div class="title-bar"></div>
     <span class="edit-icon" data-bs-toggle="modal" data-bs-target="#editContactModal"><span class="iconify"
         data-icon="mdi:pencil"></span></span>
-    <p>{{contactData.text}}</p>
+    <p>Now that you know about me, let me know if you are interested to work with me.</p>
     <p>Email: {{contactData.email}}</p>
     <div class="social-network d-flex align-items-center row justify-content-between">
       <div class="d-flex justify-content-evenly align-items-center">
@@ -28,3 +28,43 @@
     </form>
   </div>
 </section>
+
+<!--Contact Modal-->
+<article class="modal fade" id="editContactModal" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content section-info">
+      <div class="modal-header">
+        <h5 class="modal-title">Contact Info</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+      </div>
+      <form action="" method="GET" class="form">
+        <div class="modal-body">
+          <div class="m-3">
+            <label for="newLinkedIn" class="form-label">Link to LinkedIn:</label>
+            <input id="newLinkedIn" type="text" class="form-control">
+          </div>
+          <div class="m-3">
+            <label for="newMail" class="form-label">Link to Mail:</label>
+            <input id="newMail" type="text" class="form-control">
+          </div>
+          <div class="m-3">
+            <label for="newGitHub" class="form-label">Link to GitHub:</label>
+            <input id="newGitHub" type="text" class="form-control">
+          </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button type="submit" class="btn btn-outline-success">Accept</button>
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</article>
+<!--Comment send in form Modal -->
+<article id="thanks" class="modal">
+  <div class="modal-content">
+    <article class="contact-form-response">
+      <h3>Thanks for the comment!<img src="assets/images/icons/thumbs-up.svg" alt="thumbs up" class="px-2"></h3>
+    </article>
+  </div>
+</article>

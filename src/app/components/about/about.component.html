@@ -1,5 +1,5 @@
 <section id="about" class="about">
-  <div class="reveal">
+  <div class="reveal" *ngIf="person">
     <div>
       <h2>ABOUT</h2>
       <div class="title-bar"></div>
@@ -8,11 +8,51 @@
     </div>
     <article class=" d-flex justify-content-evenly flex-wrap flex-sm-nowrap">
       <div class="about-me-text d-flex flex-column align-items-center align-items-sm-start">
-        <p>{{aboutData.text}}</p>
+        <p>{{person.about}}</p>
       </div>
       <article class="profilePhoto d-flex flex-column align-items-center align-items-sm-start">
-        <img [src]="aboutData.profileImg" alt="profile photo" class="profilePhoto" width="50%">
+        <img [src]="person.img_url" alt="profile photo" class="profilePhoto" width="50%">
       </article>
     </article>
   </div>
 </section>
+
+<!--About Modal-->
+<article class="modal fade" id="editAboutModal" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content section-info">
+      <div class="modal-header">
+        <h5 class="modal-title">Personal Info</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+      </div>
+      <form action="" method="GET" class="form">
+        <div class="modal-body">
+          <div class="m-3">
+            <label for="userName" class="form-label">Edit Name:</label>
+            <input id="userName" type="text" class="form-control">
+          </div>
+          <div class="m-3">
+            <label for="jobTitle" class="form-label">Edit Job Title:</label>
+            <input id="jobTitle" type="text" class="form-control">
+          </div>
+          <div class="m-3">
+            <label for="about" class="form-label">Edit About:</label>
+            <input id="about" type="text" class="form-control">
+          </div>
+          <div class="m-3">
+            <label for="userProfilePic" class="form-label">Change profile picture:</label>
+            <input id="userProfilePic" type="file" class="form-control">
+          </div>
+          <div class="m-3">
+            <label for="homePicture" class="form-label">Change home picture:</label>
+            <input id="homePicture" type="file" class="form-control">
+          </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button type="submit" class="btn btn-outline-success">Accept</button>
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</article>

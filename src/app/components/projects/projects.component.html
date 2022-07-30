@@ -23,7 +23,7 @@
             </div>
             <b class="project-languages">{{projectItem.languages}}</b>
           </div>
-          <span class="delete-icon" data-bs-toggle="modal" data-bs-target="#deleteModal"><span class="iconify"
+          <span class="delete-icon" data-bs-toggle="modal" data-bs-target="#deleteProjectModal"><span class="iconify"
               data-icon="mdi:trash"></span></span>
           <span class="edit-icon" data-bs-toggle="modal" data-bs-target="#projectEdit"><span class="iconify"
               data-icon="mdi:pencil"></span></span>
@@ -36,3 +36,112 @@
     </div>
   </div>
 </section>
+
+<!--Add Project Modal.-->
+<div class="modal fade" id="projectPlus" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content section-info">
+      <div class="modal-header">
+        <h5 class="modal-title">Add project</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+      </div>
+      <form action="" method="GET" class="form">
+        <div class="modal-body">
+          <div class="m-3">
+            <label for="projectTitle" class="form-label">Title:</label>
+            <input id="projectTitle" type="text" class="form-control">
+          </div>
+          <div class="m-3">
+            <label for="projectImage" class="form-label">Add image:</label>
+            <input id="projectImage" type="file" class="form-control">
+          </div>
+          <div class="m-3">
+            <label for="projectDescription">Description:</label>
+            <textarea id="projectDescription" name="sectionText" cols="30" rows="3" class="form-control mt-3"
+              style="resize:none;"></textarea>
+          </div>
+          <div class="m-3">
+            <label for="projectLivePage" class="form-label">Live page link (optional):</label>
+            <input id="projectLivePage" type="text" class="form-control">
+          </div>
+          <div class="m-3">
+            <label for="projectRepo" class="form-label">Repository link:</label>
+            <input id="projectRepo" type="text" class="form-control">
+          </div>
+          <div class="m-3">
+            <label for="projectYear" class="form-label">Year:</label>
+            <input id="projectYear" type="number" class="form-control" min="2022" max="3000" value="2022">
+          </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button type="submit" class="btn btn-outline-success">Accept</button>
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--Project Item Modal-->
+<div class="modal fade" id="projectEdit" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content section-info">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit project</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+      </div>
+      <form action="" method="GET" class="form">
+        <div class="modal-body">
+          <div class="m-3">
+            <label for="projectTitle" class="form-label">Title:</label>
+            <input id="editProjectTitle" type="text" class="form-control">
+          </div>
+          <div class="m-3">
+            <label for="editProjectImage" class="form-label">Image:</label>
+            <input id="editProjectImage" type="file" class="form-control">
+          </div>
+          <div class="m-3">
+            <label for="editProjectDescription">Description:</label>
+            <textarea id="editProjectText" name="sectionText" cols="30" rows="3" class="form-control mt-3"
+              style="resize:none;"></textarea>
+          </div>
+          <div class="m-3">
+            <label for="editProjectLivePage" class="form-label">Live page link (optional):</label>
+            <input id="editProjectLivePage" type="text" class="form-control">
+          </div>
+          <div class="m-3">
+            <label for="editProjectRepo" class="form-label">Repository link:</label>
+            <input id="editProjectRepo" type="text" class="form-control">
+          </div>
+          <div class="m-3">
+            <label for="editProjectYear" class="form-label">Year:</label>
+            <input id="editProjectYear" type="number" class="form-control" min="2022" max="3000" value="2022">
+          </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button type="submit" class="btn btn-outline-success">Accept</button>
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--Delete Item Modal-->
+<div class="modal fade" id="deleteProjectModal" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content section-info">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Project</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+      </div>
+      <form action="" method="GET" class="form">
+        <div class="modal-footer justify-content-center">
+          <strong class="delete-item-text">Are you sure about deleting this item?</strong>
+          <div class="mt-3">
+            <button type="submit" class="btn btn-outline-success">Accept</button>
+            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

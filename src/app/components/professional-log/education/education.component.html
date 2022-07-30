@@ -2,7 +2,7 @@
   <div class="reveal">
     <h2>EDUCATION</h2>
     <div class="title-bar"></div>
-    <span class="edit-icon" data-bs-toggle="modal" data-bs-target="#itemPlus"><span class="iconify"
+    <span class="edit-icon" data-bs-toggle="modal" data-bs-target="#eduPlus"><span class="iconify"
         data-icon="mdi:plus"></span></span>
     <div class="row professional-log-container">
       <div *ngFor="let eduItem of eduData" class="professional-log-item col-12 col-sm-6">
@@ -11,14 +11,15 @@
         </div>
         <div class="professional-log-text">
           <h4>{{eduItem.title}}</h4>
+          <h5>{{eduItem.institution}}</h5>
           <p>{{eduItem.description}}</p>
           <div class="d-flex align-items-center">
             <div class="years-date">
               <p>{{eduItem.date}}</p>
             </div>
-            <span class="edit-icon" data-bs-toggle="modal" data-bs-target="#itemModal"><span class="iconify"
+            <span class="edit-icon" data-bs-toggle="modal" data-bs-target="#eduModal"><span class="iconify"
                 data-icon="mdi:pencil"></span></span>
-            <span class="delete-icon" data-bs-toggle="modal" data-bs-target="#deleteModal"><span class="iconify"
+            <span class="delete-icon" data-bs-toggle="modal" data-bs-target="#deleteEduModal"><span class="iconify"
                 data-icon="mdi:trash"></span></span>
           </div>
         </div>
@@ -26,3 +27,89 @@
     </div>
   </div>
 </section>
+
+
+<!--Add Education Item Modal-->
+<article class="modal fade" id="eduPlus" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content section-info">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Education</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+      </div>
+      <form action="" method="GET" class="form">
+        <div class="modal-body">
+          <div class="m-3">
+            <label for="eduTitle" class="form-label">Title/Position and Org/Institution:</label>
+            <input id="eduTitle" type="text" class="form-control">
+          </div>
+          <div class="m-3">
+            <label for="eduText">Info:</label>
+            <textarea id="eduText" name="sectionText" cols="30" rows="3" class="form-control mt-3"
+              style="resize:none;"></textarea>
+          </div>
+          <div class="m-3">
+            <label for="eduDate" class="form-label">Period (Year/Month):</label>
+            <input id="eduDate" type="number" class="form-control">
+          </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button type="submit" class="btn btn-outline-success">Accept</button>
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</article>
+<!--Education/Experience Item Modal-->
+<article class="modal fade" id="eduModal" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content section-info">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Education</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+      </div>
+      <form action="" method="GET" class="form">
+        <div class="modal-body">
+          <div class="m-3">
+            <label for="editEduTitle" class="form-label">Title/Position and Org/Institution:</label>
+            <input id="editEduTitle" type="text" class="form-control">
+          </div>
+          <div class="m-3">
+            <label for="editEduText">Info:</label>
+            <textarea id="editEduText" name="sectionText" cols="30" rows="3" class="form-control mt-3"
+              style="resize:none;"></textarea>
+          </div>
+          <div class="m-3">
+            <label for="editEduDate" class="form-label">Period (Year/Month):</label>
+            <input id="editEduDate" type="text" class="form-control">
+          </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button type="submit" class="btn btn-outline-success">Accept</button>
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</article>
+<!--Delete Item Modal-->
+<div class="modal fade" id="deleteEduModal" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content section-info">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Education</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+      </div>
+      <form action="" method="GET" class="form">
+        <div class="modal-footer justify-content-center">
+          <strong class="delete-item-text">Are you sure about deleting this item?</strong>
+          <div class="mt-3">
+            <button type="submit" class="btn btn-outline-success">Accept</button>
+            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
