@@ -20,15 +20,11 @@ export class PersonService {
     return this.http.post<Person>(this.apiServerUrl + `/persons/add`, person);
   }
 
-  public getPerson(): Observable<Person> {
-    return this.http.get<Person>(this.apiServerUrl + `/persons/get/5`);
-  }
-
   public deletePersonById(id: number): Observable<Person> {
-    return this.http.get<Person>(this.apiServerUrl + `/persons/delete/${id}`);
+    return this.http.delete<Person>(this.apiServerUrl + `/persons/delete/${id}`);
   }
 
   public updatePerson(person: Person): Observable<Person> {
-    return this.http.post<Person>(this.apiServerUrl + `/persons/update`, person);
+    return this.http.put<Person>(this.apiServerUrl + `/persons/update`, person);
   }
 }

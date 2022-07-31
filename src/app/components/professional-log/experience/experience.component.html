@@ -2,12 +2,11 @@
   <div class="reveal">
     <h2>EXPERIENCE</h2>
     <div class="title-bar"></div>
-    <span class="edit-icon" data-bs-toggle="modal" data-bs-target="#expPlus"><span class="iconify"
-        data-icon="mdi:plus"></span></span>
+    <span class="edit-icon" (click)="onOpenModal(null!,'add')"><span class="iconify" data-icon="mdi:plus"></span></span>
     <div class="row professional-log-container">
-      <div *ngFor="let expItem of expData" class="professional-log-item col-12 col-sm-6">
+      <div *ngFor="let expItem of experiences" class="professional-log-item col-12 col-sm-6">
         <div class="professional-log-img">
-          <img [src]="expItem.img" alt="experience logo">
+          <img [src]="expItem.img_url ? expItem.img_url : defaultImg" alt="experience logo">
         </div>
         <div class="professional-log-text">
           <h4>{{expItem.title}}</h4>
@@ -17,9 +16,9 @@
             <div class="years-date">
               <p>{{expItem.date}}</p>
             </div>
-            <span class="edit-icon" data-bs-toggle="modal" data-bs-target="#expModal"><span class="iconify"
+            <span class="edit-icon" (click)="onOpenModal(expItem,'edit')"><span class="iconify"
                 data-icon="mdi:pencil"></span></span>
-            <span class="delete-icon" data-bs-toggle="modal" data-bs-target="#deleteExpModal"><span class="iconify"
+            <span class="delete-icon" (click)="onOpenModal(expItem,'delete')"><span class="iconify"
                 data-icon="mdi:trash"></span></span>
           </div>
         </div>
@@ -36,24 +35,33 @@
         <h5 class="modal-title">Add Experience</h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
       </div>
-      <form action="" method="GET" class="form">
+      <form #addForm="ngForm" (ngSubmit)="onAddExperience(addForm)" class="form">
         <div class="modal-body">
           <div class="m-3">
-            <label for="expTitle" class="form-label">Title/Position and Org/Institution:</label>
-            <input id="expTitle" type="text" class="form-control">
+            <label for="title" class="form-label">Position:</label>
+            <input type="text" ngModel name="title" class="form-control" required>
           </div>
           <div class="m-3">
-            <label for="expText">Info:</label>
-            <textarea id="expText" name="sectionText" cols="30" rows="3" class="form-control mt-3"
-              style="resize:none;"></textarea>
+            <label for="company" class="form-label">Company (optional):</label>
+            <input type="text" ngModel name="company" class="form-control">
           </div>
           <div class="m-3">
-            <label for="expDate" class="form-label">Period (Year/Month):</label>
-            <input id="expDate" type="number" class="form-control">
+            <label for="img_url" class="form-label">Image url(optional):</label>
+            <input type="text" ngModel name="img_url" class="form-control">
+          </div>
+          <div class="m-3">
+            <label for="description">Description:</label>
+            <textarea ngModel name="description" cols="30" rows="3" class="form-control mt-3" style="resize:none;"
+              required></textarea>
+          </div>
+          <div class="m-3">
+            <label for="date" class="form-label">Period (<i>year month - year month/at present</i>):</label>
+            <input type="text" ngModel name="date" class="form-control" required>
           </div>
         </div>
         <div class="modal-footer justify-content-center">
-          <button type="submit" class="btn btn-outline-success">Accept</button>
+          <button [disabled]="addForm.invalid" type="submit" class="btn btn-outline-success"
+            data-bs-dismiss="modal">Accept</button>
           <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
         </div>
       </form>
@@ -65,27 +73,38 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content section-info">
       <div class="modal-header">
-        <h5 class="modal-title">Edit Experience</h5>
+        <h5 class="modal-title">Edit Experience {{editExperience?.company}}</h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
       </div>
-      <form action="" method="GET" class="form">
+      <form #editForm="ngForm" class="form">
         <div class="modal-body">
           <div class="m-3">
-            <label for="editExpTitle" class="form-label">Title/Position and Org/Institution:</label>
-            <input id="editExpTitle" type="text" class="form-control">
+            <label for="title" class="form-label">Position:</label>
+            <input type="text" ngModel="{{editExperience?.title}}" name="title" class="form-control" required>
+            <input type="hidden" ngModel="{{ editExperience?.id_experience }}" name="id_experience"
+              class="form-control" />
           </div>
           <div class="m-3">
-            <label for="editExpText">Info:</label>
-            <textarea id="editExpText" name="sectionText" cols="30" rows="3" class="form-control mt-3"
-              style="resize:none;"></textarea>
+            <label for="company" class="form-label">Company (optional):</label>
+            <input type="text" ngModel="{{editExperience?.company}}" name="company" class="form-control">
           </div>
           <div class="m-3">
-            <label for="editExpDate" class="form-label">Period (Year/Month):</label>
-            <input id="editExpDate" type="text" class="form-control">
+            <label for="img_url" class="form-label">Image url (optional):</label>
+            <input type="text" ngModel="{{editExperience?.img_url}}" name="img_url" class="form-control">
+          </div>
+          <div class="m-3">
+            <label for="description">Description:</label>
+            <textarea ngModel="{{editExperience?.description}}" name="description" cols="30" rows="3"
+              class="form-control mt-3" style="resize:none;" required></textarea>
+          </div>
+          <div class="m-3">
+            <label for="date" class="form-label">Period (<i>year month - year month/at present</i>):</label>
+            <input type="text" ngModel="{{editExperience?.date}}" name="date" class="form-control" required>
           </div>
         </div>
         <div class="modal-footer justify-content-center">
-          <button type="submit" class="btn btn-outline-success">Accept</button>
+          <button (click)="onUpdateExperience(editForm.value)" data-bs-dismiss="modal" type="submit"
+            class="btn btn-outline-success">Accept</button>
           <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
         </div>
       </form>
@@ -102,9 +121,10 @@
       </div>
       <form action="" method="GET" class="form">
         <div class="modal-footer justify-content-center">
-          <strong class="delete-item-text">Are you sure about deleting this item?</strong>
+          <strong class="delete-item-text">Are you sure about deleting {{deleteExperience?.company}}?</strong>
           <div class="mt-3">
-            <button type="submit" class="btn btn-outline-success">Accept</button>
+            <button (click)="onDeleteExperience(deleteExperience?.id_experience!)" type="submit"
+              class="btn btn-outline-success" data-bs-dismiss="modal">Accept</button>
             <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
           </div>
         </div>

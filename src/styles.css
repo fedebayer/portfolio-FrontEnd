@@ -13,6 +13,18 @@
   --grey-light-color: #F5F5F5;
 }
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+section, footer {
+  overflow: hidden;
+  white-space: wrap;
+  word-break: break-word;
+}
+
+
 a {
   color: var(--first-color);
   text-decoration: none;
@@ -149,10 +161,6 @@ header {
   background-color: var(--grey-light-color);
 }
 
-.professional-log {
-  font-size: .9rem;
-}
-
 .professional-log h4 {
   font-size: 1.1rem;
   font-weight: bold;
@@ -257,7 +265,8 @@ header {
 
   .professional-log-img {
     display: flex;
-    min-width: 35%;
+    min-width: 40%;
+    max-width: 40%;
     height: 80%;
   }
 

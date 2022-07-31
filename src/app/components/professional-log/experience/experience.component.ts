@@ -1,6 +1,8 @@
-import { compileNgModule } from '@angular/compiler';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { PortfolioDataService } from 'src/app/services/portfolio-data.service';
+import { NgForm } from '@angular/forms';
+import { Experience } from 'src/app/model/experience';
+import { ExperienceService } from 'src/app/services/experience.service';
 
 @Component({
   selector: 'app-experience',
@@ -8,14 +10,85 @@ import { PortfolioDataService } from 'src/app/services/portfolio-data.service';
   styleUrls: ['./experience.component.css']
 })
 export class ExperienceComponent implements OnInit {
-  expData: any;
+  experiences: Experience[] | undefined;
+  defaultImg: String = 'assets/images/icons/freelance-logo.png';
+  editExperience: Experience | undefined;
+  deleteExperience: Experience | undefined;
 
-  constructor(private portfolioData: PortfolioDataService) { }
+  constructor(private experienceService: ExperienceService) { }
 
   ngOnInit(): void {
-    this.portfolioData.getData().subscribe(data => {
-      this.expData = data.experience;
+    this.getAllExperiences();
+  }
+
+  public getAllExperiences(): void {
+    this.experienceService.getAllExperiences().subscribe({
+      next: (response: Experience[]) => {
+        this.experiences = response;
+      },
+      error: (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
     });
+  }
+
+  public onAddExperience(addForm: NgForm): void {
+    this.experienceService.addExperience(addForm.value).subscribe(
+      (response: Experience) => {
+        console.log(response);
+        this.getAllExperiences();
+        addForm.reset();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+        addForm.reset();
+      }
+    );
+  }
+
+  public onUpdateExperience(experience: Experience): void {
+    this.experienceService.updateExperience(experience).subscribe(
+      (response: Experience) => {
+        console.log(response);
+        this.getAllExperiences();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  public onDeleteExperience(id: number): void {
+    this.experienceService.deleteExperienceById(id).subscribe(
+      (response: Experience) => {
+        console.log(response);
+        this.getAllExperiences();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  public onOpenModal(exp: Experience, mode: String): void {
+    const container = document.getElementById('experience');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-bs-toggle', 'modal');
+    if (mode === 'add') {
+      button.setAttribute('data-bs-target', '#expPlus');
+    }
+    if (mode === 'edit') {
+      this.editExperience = exp;
+      button.setAttribute('data-bs-target', '#expModal');
+    }
+    if (mode === 'delete') {
+      this.deleteExperience = exp;
+      button.setAttribute('data-bs-target', '#deleteExpModal');
+    }
+    container?.appendChild(button);
+    button.click();
   }
 
 }

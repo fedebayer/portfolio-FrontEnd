@@ -9,17 +9,17 @@ import { PersonService } from 'src/app/services/person.service';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent implements OnInit {
-  person: Person | undefined;
+  person: Person[] | undefined;
 
   constructor(private personService: PersonService) { }
 
   ngOnInit(): void {
-    this.getPerson();
+    this.getAllPersons();
   }
 
-  public getPerson(): void {
-    this.personService.getPerson().subscribe({
-      next: (response: Person) => {
+  public getAllPersons(): void {
+    this.personService.getAllPersons().subscribe({
+      next: (response: Person[]) => {
         this.person = response;
       },
       error: (error: HttpErrorResponse) => {
