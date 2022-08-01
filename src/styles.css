@@ -4,7 +4,7 @@
 ====================
 */
 :root {
-  --first-color: #0077B5;
+  --first-color: #4985a5;
   --white-color: #fff;
   --black-color: #000;
   --black-grey-color: #444649;
@@ -132,7 +132,7 @@ header, .home {
 }
 
 span.fades {
-  color: var(--first-color);
+  color: #4985a5;
 }
 
 header {
