@@ -1,0 +1,280 @@
+/*
+====================
+*GLOBAL VARIABLES
+====================
+*/
+:root {
+  --first-color: #4985a5;
+  --white-color: #fff;
+  --black-color: #000;
+  --black-grey-color: #444649;
+  --grey-color: #8491A0;
+  --grey-dark-color: #252934;
+  --grey-light-color: #F5F5F5;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+section, footer {
+  overflow: hidden;
+  white-space: wrap;
+  word-break: break-word;
+}
+
+
+a {
+  color: var(--first-color);
+  text-decoration: none;
+  position: relative;
+  cursor: pointer;
+}
+
+body {
+  font-family: "Raleway", sans-serif;
+  margin: 0;
+  background-color: var(--white-color);
+}
+
+.edit-icon, .delete-icon {
+  margin-bottom: 1.5rem;
+  padding-right: 5px;
+  min-width: 1.5rem;
+  min-height: 1.5rem;
+}
+
+.edit-icon .iconify, .delete-icon .iconify {
+  min-width: 1.5rem;
+  min-height: 1.5rem;
+}
+
+.edit-icon:hover, .delete-icon:hover {
+  cursor: pointer;
+}
+
+h1 {
+  font-size: 5 rem;
+}
+
+h2 {
+  color: var(--black-grey-color);
+  font-size: 4 rem;
+}
+
+h1, h2, h3 {
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+}
+
+h3 {
+  font-size: 2 rem;
+}
+
+h4 {
+  font-size: 1.5 rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.iconify {
+  float: right;
+  height: 2%;
+  width: 2%;
+}
+
+.iconify:hover {
+  color: var(--first-color) !important;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.reveal {
+  position: relative;
+  transform: translateY(150px);
+  opacity: 0;
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+section, footer {
+  padding: 2rem 2rem;
+}
+
+.title-bar {
+  display: flex;
+  background-color: var(--black-grey-color);
+  height: 4px;
+  width: 7%;
+  margin-left: 46.5%;
+  margin-bottom: 1rem;
+  justify-content: center;
+}
+
+header, .home {
+  padding: 0px 0px;
+  color: var(--white-color);
+}
+
+.logo {
+  width: 20%;
+}
+
+span.fades {
+  color: #4985a5;
+}
+
+header {
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+  width: 100%;
+}
+
+
+.professional-log .edit-icon .iconify {
+  margin-left: 2rem;
+}
+
+.professional-log-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.professional-log-text {
+  flex-direction: column;
+}
+
+#experience, #skillset {
+  background-color: var(--grey-light-color);
+}
+
+.professional-log h4 {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.professional-log h5 {
+  font-size: 0.9rem;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.professional-log- img {
+  width: 50%;
+}
+
+.years-date {
+  color: var(--white-color);
+  background-color: var(--black-color);
+  text-align: center;
+  padding: 0.2rem;
+  border-radius: 1rem;
+}
+
+.years-date p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+
+/*
+====================
+*MODALS
+====================
+*/
+.modal button[type=submit] {
+  margin-right: .5rem;
+}
+
+.modal-content {
+  background-color: rgb(22, 22, 22);
+  color: var(--white-color);
+}
+
+.modal-title {
+  padding-left: 35%;
+}
+
+.range-bar-value {
+  color: var(--white-color);
+  background-color: var(--black-color);
+  margin-left: 2rem;
+  width: 10%;
+}
+
+.delete-item-text {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.modal#thanks .modal-content {
+  color: var(--black-color);
+  background-color: var(--white-color);
+}
+
+.modal#thanks:target {
+  opacity: 1;
+  pointer-events: auto;
+  display: block;
+}
+
+
+
+@media only screen and (min-width: 360px) {
+  .professional-log-item {
+    margin-top: 3rem;
+  }
+}
+
+@media only screen and (min-width: 700px) {
+  .professional-log img {
+    max-width: 40%;
+  }
+
+  .professional-log-logo {
+    margin-bottom: 1rem;
+  }
+
+  .logo {
+    width: 14%;
+  }
+
+  section, footer {
+    padding: 2rem 10rem;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .professional-log-item {
+    display: flex;
+  }
+
+  .professional-log-img {
+    display: flex;
+    min-width: 40%;
+    max-width: 40%;
+    height: 80%;
+  }
+
+  .logo {
+    width: 7%;
+  }
+
+  section, footer {
+    padding: 2rem 20rem;
+  }
+}

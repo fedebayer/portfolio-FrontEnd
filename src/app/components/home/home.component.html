@@ -1,0 +1,13 @@
+<section id="home" class="home">
+  <div class="intro">
+  </div>
+  <article class="hero-img" *ngIf="person?.banner_url"
+    [ngStyle]="{'background-image':'url(' + person?.banner_url + ')'}">
+    <aside class="hero-img-opacity">
+      <div class="hero-img-content">
+        <h1 class="fancy">{{person?.name!}}</h1>
+        <h2>{{person?.job_title!}}</h2>
+      </div>
+    </aside>
+  </article>
+</section>
