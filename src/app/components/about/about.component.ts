@@ -10,6 +10,7 @@ import { PersonService } from 'src/app/services/person.service';
 })
 export class AboutComponent implements OnInit {
   person: Person[] | undefined;
+  editPerson: Person | undefined;
 
   constructor(private personService: PersonService) { }
 
@@ -26,5 +27,29 @@ export class AboutComponent implements OnInit {
         alert(error.message);
       }
     });
+  }
+
+  public onUpdatePerson(Person: Person): void {
+    this.personService.updatePerson(Person).subscribe(
+      (response: Person) => {
+        console.log(response);
+        this.getAllPersons();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  public onOpenModal(per: Person): void {
+    const container = document.getElementById('about');
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.style.display = 'none';
+    button.setAttribute('data-bs-toggle', 'modal');
+    this.editPerson = per;
+    button.setAttribute('data-bs-target', '#aboutModal');
+    container?.appendChild(button);
+    button.click();
   }
 }

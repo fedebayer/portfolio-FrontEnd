@@ -8,9 +8,8 @@ import { HomeComponent } from './components/home/home.component';
 import { AboutComponent } from './components/about/about.component';
 import { EducationComponent } from './components/professional-log/education/education.component';
 import { ExperienceComponent } from './components/professional-log/experience/experience.component';
-import { SkillsComponent } from './components/skillset/skills/skills.component';
-import { ExtraSkillsComponent } from './components/skillset/extra-skills/extra-skills.component';
-import { ProjectsComponent } from './components/projects/projects.component';
+import { SkillComponent } from './components/skillset/skill/skill.component';
+import { ProjectComponent } from './components/project/project.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -27,9 +26,8 @@ import { PortfolioComponent } from './components/portfolio/portfolio.component';
     AboutComponent,
     EducationComponent,
     ExperienceComponent,
-    SkillsComponent,
-    ExtraSkillsComponent,
-    ProjectsComponent,
+    SkillComponent,
+    ProjectComponent,
     ContactComponent,
     FooterComponent,
     LoginComponent,

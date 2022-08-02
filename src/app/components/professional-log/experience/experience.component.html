@@ -39,24 +39,24 @@
         <div class="modal-body">
           <div class="m-3">
             <label for="title" class="form-label">Position:</label>
-            <input type="text" ngModel name="title" class="form-control" required>
+            <input type="text" ngModel name="title" class="form-control" maxlength="45" required>
           </div>
           <div class="m-3">
             <label for="company" class="form-label">Company (optional):</label>
-            <input type="text" ngModel name="company" class="form-control">
+            <input type="text" ngModel name="company" class="form-control" maxlength="45">
           </div>
           <div class="m-3">
-            <label for="img_url" class="form-label">Image url(optional):</label>
-            <input type="text" ngModel name="img_url" class="form-control">
+            <label for="img_url" class="form-label">Image url (optional):</label>
+            <input type="text" ngModel name="img_url" class="form-control" maxlength="100">
           </div>
           <div class="m-3">
             <label for="description">Description:</label>
             <textarea ngModel name="description" cols="30" rows="3" class="form-control mt-3" style="resize:none;"
-              required></textarea>
+              maxlength="240" required></textarea>
           </div>
           <div class="m-3">
             <label for="date" class="form-label">Period (<i>year month - year month/at present</i>):</label>
-            <input type="text" ngModel name="date" class="form-control" required>
+            <input type="text" ngModel name="date" class="form-control" maxlength="45" required>
           </div>
         </div>
         <div class="modal-footer justify-content-center">
@@ -80,26 +80,29 @@
         <div class="modal-body">
           <div class="m-3">
             <label for="title" class="form-label">Position:</label>
-            <input type="text" ngModel="{{editExperience?.title}}" name="title" class="form-control" required>
-            <input type="hidden" ngModel="{{ editExperience?.id_experience }}" name="id_experience"
+            <input type="text" ngModel="{{editExperience?.title}}" name="title" class="form-control" maxlength="45"
+              required>
+            <input type="hidden" ngModel="{{editExperience?.id_experience}}" name="id_experience"
               class="form-control" />
           </div>
           <div class="m-3">
             <label for="company" class="form-label">Company (optional):</label>
-            <input type="text" ngModel="{{editExperience?.company}}" name="company" class="form-control">
+            <input type="text" ngModel="{{editExperience?.company}}" name="company" class="form-control" maxlength="45">
           </div>
           <div class="m-3">
             <label for="img_url" class="form-label">Image url (optional):</label>
-            <input type="text" ngModel="{{editExperience?.img_url}}" name="img_url" class="form-control">
+            <input type="text" ngModel="{{editExperience?.img_url}}" name="img_url" class="form-control"
+              maxlength="100">
           </div>
           <div class="m-3">
             <label for="description">Description:</label>
             <textarea ngModel="{{editExperience?.description}}" name="description" cols="30" rows="3"
-              class="form-control mt-3" style="resize:none;" required></textarea>
+              class="form-control mt-3" style="resize:none;" maxlength="240" required></textarea>
           </div>
           <div class="m-3">
             <label for="date" class="form-label">Period (<i>year month - year month/at present</i>):</label>
-            <input type="text" ngModel="{{editExperience?.date}}" name="date" class="form-control" required>
+            <input type="text" ngModel="{{editExperience?.date}}" name="date" class="form-control" maxlength="45"
+              required>
           </div>
         </div>
         <div class="modal-footer justify-content-center">
@@ -119,7 +122,7 @@
         <h5 class="modal-title">Delete Experience</h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
       </div>
-      <form action="" method="GET" class="form">
+      <form class="form">
         <div class="modal-footer justify-content-center">
           <strong class="delete-item-text">Are you sure about deleting {{deleteExperience?.company}}?</strong>
           <div class="mt-3">
