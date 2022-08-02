@@ -18,6 +18,7 @@ import { LoginComponent } from './components/login/login.component';
 import { PortfolioComponent } from './components/portfolio/portfolio.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
