@@ -1,0 +1,134 @@
+<section id="education" class="education professional-log">
+  <div class="reveal">
+    <h2>EDUCATION</h2>
+    <div class="title-bar"></div>
+    <span class="edit-icon" (click)="onOpenModal(null!,'add')"><span class="iconify" data-icon="mdi:plus"></span></span>
+    <div class="row professional-log-container">
+      <div *ngFor="let eduItem of educations" class="professional-log-item col-12 col-sm-6">
+        <div class="professional-log-img">
+          <img [src]="eduItem.img_url ? eduItem.img_url : defaultImg" alt="education logo"
+            class="professional-log-logo">
+        </div>
+        <div class="professional-log-text">
+          <h4>{{eduItem.title}}</h4>
+          <h5>{{eduItem.institution}}</h5>
+          <p>{{eduItem.description}}</p>
+          <div class="d-flex align-items-center">
+            <div class="years-date">
+              <p>{{eduItem.date}}</p>
+            </div>
+            <span class="edit-icon" (click)="onOpenModal(eduItem,'edit')"><span class="iconify"
+                data-icon="mdi:pencil"></span></span>
+            <span class="delete-icon" (click)="onOpenModal(eduItem,'delete')"><span class="iconify"
+                data-icon="mdi:trash"></span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!--Add Education Item Modal-->
+<article class="modal fade" id="eduPlus" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content section-info">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Education</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+      </div>
+      <form #addForm="ngForm" (ngSubmit)="onAddEducation(addForm)" class="form">
+        <div class="modal-body">
+          <div class="m-3">
+            <label for="title" class="form-label">Title:</label>
+            <input type="text" ngModel name="title" class="form-control" maxlength="45" required>
+          </div>
+          <div class="m-3">
+            <label for="institution" class="form-label">Institution:</label>
+            <input type="text" ngModel name="institution" class="form-control" maxlength="45" required>
+          </div>
+          <div class="m-3">
+            <label for="img_url" class="form-label">Image url (optional):</label>
+            <input type="text" ngModel name="img_url" class="form-control" maxlength="100">
+          </div>
+          <div class="m-3">
+            <label for="description">Description</label>
+            <textarea ngModel name="description" cols="30" rows="3" class="form-control mt-3" style="resize:none;"
+              maxlength="240" required></textarea>
+          </div>
+          <div class="m-3">
+            <label for="date" class="form-label">Period (<i>year month - year month/at present</i>):</label>
+            <input type="text" ngModel name="date" class="form-control" maxlength="45" required>
+          </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button [disabled]="addForm.invalid" type="submit" class="btn btn-outline-success"
+            data-bs-dismiss="modal">Accept</button>
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</article>
+<!--Education/Experience Item Modal-->
+<article class="modal fade" id="eduModal" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content section-info">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Education {{editEducation?.institution}}</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+      </div>
+      <form #editForm="ngForm" class="form">
+        <div class="modal-body">
+          <div class="m-3">
+            <label for="title" class="form-label">Title:</label>
+            <input type="text" ngModel="{{editEducation?.title}}" name="title" class="form-control" maxlength="45"
+              required>
+            <input type="hidden" ngModel="{{ editEducation?.id_education }}" name="id_education" class="form-control" />
+          </div>
+          <div class="m-3">
+            <label for="institution" class="form-label">Institution:</label>
+            <input type="text" ngModel="{{editEducation?.institution}}" name="institution" class="form-control"
+              maxlength="45" required>
+          </div>
+          <div class="m-3">
+            <label for="description">Description:</label>
+            <textarea ngModel="{{editEducation?.description}}" name="description" cols="30" rows="3"
+              class="form-control mt-3" style="resize:none;" maxlength="240" required></textarea>
+          </div>
+          <div class="m-3">
+            <label for="date" class="form-label">Period (<i>year month - year month/at present</i>):</label>
+            <input type="text" ngModel="{{editEducation?.date}}" name="date" class="form-control" maxlength="45"
+              required>
+          </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button (click)="onUpdateEducation(editForm.value)" data-bs-dismiss="modal" type="submit"
+            class="btn btn-outline-success">Accept</button>
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</article>
+<!--Delete Item Modal-->
+<div class="modal fade" id="deleteEduModal" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content section-info">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Education</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+      </div>
+      <form class="form">
+        <div class="modal-footer justify-content-center">
+          <strong class="delete-item-text">Are you sure about deleting {{deleteEducation?.institution}}?</strong>
+          <div class="mt-3">
+            <button (click)="onDeleteEducation(deleteEducation?.id_education!)" type="submit"
+              class="btn btn-outline-success" data-bs-dismiss="modal">Accept</button>
+            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
