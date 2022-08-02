@@ -1,0 +1,66 @@
+<section id="about" class="about" *ngFor="let person of person">
+  <div class="reveal">
+    <div>
+      <h2>ABOUT</h2>
+      <div class="title-bar"></div>
+      <span class="edit-icon" (click)="onOpenModal(person)"><span class="iconify" data-icon="mdi:pencil"></span></span>
+    </div>
+    <article class=" d-flex justify-content-evenly flex-wrap flex-sm-nowrap">
+      <div class="about-me-text d-flex flex-column align-items-center align-items-sm-start">
+        <p>{{person.about}}</p>
+      </div>
+      <article class="profilePhoto d-flex flex-column align-items-center align-items-sm-start">
+        <img *ngIf="person.img_url" [src]="person.img_url" alt="profile photo" class="profilePhoto" width="50%">
+      </article>
+    </article>
+  </div>
+</section>
+
+<!--About Modal-->
+<article class="modal fade" id="aboutModal" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content section-info">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Personal Info</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+      </div>
+      <form #editForm="ngForm" class="form">
+        <div class="modal-body">
+          <div class="m-3">
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" ngModel="{{editPerson?.name}}" name="name" class="form-control" maxlength="45" required>
+            <input type="hidden" ngModel="{{editPerson?.id_person}}" name="id_person" class="form-control" />
+          </div>
+          <div class="m-3">
+            <label for="job_title" class="form-label">Job Title:</label>
+            <input type="text" ngModel="{{editPerson?.job_title}}" name="job_title" class="form-control" maxlength="45"
+              required>
+          </div>
+          <div class="m-3">
+            <label for="about" class="form-label">About:</label>
+            <textarea ngModel="{{editPerson?.about}}" name="about" class="form-control" maxlength="470"
+              required></textarea>
+          </div>
+          <div class="m-3">
+            <label for="img_url" class="form-label">Profile image url:</label>
+            <input type="text" ngModel="{{editPerson?.img_url}}" name="img_url" class="form-control" maxlength="100"
+              required>
+          </div>
+          <div class="m-3">
+            <label for="banner_url" class="form-label">Home image url:</label>
+            <input type="text" ngModel="{{editPerson?.banner_url}}" name="banner_url" class="form-control"
+              maxlength="100" required>
+            <input type="hidden" ngModel="{{editPerson?.email}}" name="email" class="form-control" />
+            <input type="hidden" ngModel="{{editPerson?.linkedin_url}}" name="linkedin_url" class="form-control" />
+            <input type="hidden" ngModel="{{editPerson?.github_url}}" name="github_url" class="form-control" />
+          </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button (click)="onUpdatePerson(editForm.value)" type="submit" class="btn btn-outline-success"
+            data-bs-dismiss="modal">Accept</button>
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,304 @@
+<section id="skillset" class="skillset">
+  <div class="reveal">
+    <h2>SKILLSET</h2>
+    <div class="title-bar"></div>
+    <div class="row">
+      <div class="skill-item skill-item1 col-12 col-sm-6">
+        <h3>Skills</h3>
+        <span class="edit-icon skill-btn" (click)="onOpenModal(null!,'add')"><span class="iconify"
+            data-icon="mdi:plus"></span></span>
+        <div *ngFor="let skillItem of skills">
+          <div>
+            <b>{{skillItem.name}}</b>
+            <span class="delete-icon skill-btn" (click)="onOpenModal(skillItem,'delete')"><span class="iconify"
+                data-icon="mdi:trash"></span></span>
+            <span class="edit-icon skill-btn" (click)="onOpenModal(skillItem,'edit')"><span class="iconify"
+                data-icon="mdi:pencil"></span></span>
+          </div>
+          <div class="progresss">
+            <div class="progresss-bar" data-progress="75">
+              <input type="hidden" value="{{skillItem.lvl}}">
+              <span>{{skillItem.lvl}}%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="skill-item col-12 col-sm-6">
+        <div>
+          <h3>Languages</h3>
+          <span class="edit-icon skill-btn" (click)="onOpenModalLanguage(null!,'add')"><span class="iconify"
+              data-icon="mdi:plus"></span></span>
+          <div *ngFor="let langItem of languages">
+            <div>
+              <b>{{langItem.name}}</b>
+              <span class="delete-icon skill-btn" (click)="onOpenModalLanguage(langItem,'delete')"><span class="iconify"
+                  data-icon="mdi:trash"></span></span>
+              <span class="edit-icon skill-btn" (click)="onOpenModalLanguage(langItem,'edit')"><span class="iconify"
+                  data-icon="mdi:pencil"></span></span>
+            </div>
+            <div class="progresss">
+              <div class="progresss-bar">
+                <input type="hidden" value="{{langItem.lvl}}">
+                <span>{{langItem.lvl}}%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="softSkills" id="softSkills">
+          <h3>Soft Skills</h3>
+          <span class="edit-icon" (click)="onOpenModalSoft(null!,'add')"><span class="iconify"
+              data-icon="mdi:plus"></span></span>
+          <div class="row d-flex column">
+            <div *ngFor="let softItem of softSkills" class="softSkill-item col-6 col-lg-3">
+              <img src="assets/images/icons/softSkill-icon.png" height="30" width="25" alt="blue square">
+              <b>{{softItem.name}}</b>
+              <span class="edit-icon" (click)="onOpenModalSoft(softItem,'edit')"><span class="iconify"
+                  data-icon="mdi:pencil"></span></span>
+              <span class="delete-icon" (click)="onOpenModalSoft(softItem,'delete')"><span class="iconify"
+                  data-icon="mdi:trash"></span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--Add Skill Modal-->
+<article class="modal fade" id="skillPlus" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content section-info">
+      <div class="modal-header">
+        <h5 class="modal-title">Add skill</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+      </div>
+      <form #addForm="ngForm" (ngSubmit)="onAddSkill(addForm)" class="form">
+        <div class="modal-body">
+          <div class="m-3">
+            <label for="name" class="form-label">Technology:</label>
+            <input type="text" ngModel name="name" class="form-control" maxlength="45" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="lvl">Level:</label>
+            <input type="text" id="range-bar-value" class="range-bar-value" value="50" readonly>
+            <input class="form-range" ngModel name="lvl" type="range" min="1" max="100" value="50" required />
+          </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button [disabled]="addForm.invalid" type="submit" class="btn btn-outline-success changeSkillBtn"
+            data-bs-dismiss="modal">Accept</button>
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</article>
+<!--Skill Modal-->
+<article class="modal fade" id="skillModal" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content section-info">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Skill {{editSkill?.name}}</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+      </div>
+      <form #editForm="ngForm" class="form">
+        <div class="modal-body">
+          <div class="m-3">
+            <label for="name" class="form-label">Technology:</label>
+            <input type="text" ngModel="{{editSkill?.name}}" name="name" class="form-control" maxlength="45" required>
+            <input type="hidden" ngModel="{{editSkill?.id_skill}}" name="id_skill" class="form-control" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="lvl">Level:</label>
+            <input type="text" id="range-bar-value-edit" class="range-bar-value" value="{{editSkill?.lvl}}" readonly>
+            <input class="form-range form-range-edit" ngModel="{{editSkill?.lvl}}" name="lvl" id="editProgress"
+              type="range" min="1" max="100" value="{{editSkill?.lvl}}" required />
+          </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button (click)="onUpdateSkill(editForm.value)" data-bs-dismiss="modal" type="submit"
+            class="btn btn-outline-success changeSkillBtn">Accept</button>
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</article>
+<!--Delete Skill Modal-->
+<article class="modal fade" id="deleteSkillModal" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content section-info">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Skill</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+      </div>
+      <form class="form">
+        <div class="modal-footer justify-content-center">
+          <strong class="delete-item-text">Are you sure about deleting {{deleteSkill?.name}}?</strong>
+          <div class="mt-3">
+            <button (click)="onDeleteSkill(deleteSkill?.id_skill!)" type="submit"
+              class="btn btn-outline-success changeSkillBtn" data-bs-dismiss="modal">Accept</button>
+            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</article>
+
+<!--Add Language Modal-->
+<article class="modal fade" id="languagePlus" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content section-info">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Language</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+      </div>
+      <form #addFormL="ngForm" (ngSubmit)="onAddLanguage(addFormL)" class="form">
+        <div class="modal-body">
+          <div class="m-3">
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" ngModel name="name" class="form-control" maxlength="45" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="lvl">Level:</label>
+            <input type="text" id="range-language-bar-value" class="range-bar-value" value="50" readonly>
+            <input class="form-range language-range" ngModel name="lvl" type="range" min="1" max="100" value="50"
+              required />
+          </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button [disabled]="addFormL.invalid" type="submit" class="btn btn-outline-success changeSkillBtn"
+            data-bs-dismiss="modal">Accept</button>
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</article>
+<!--Language Modal-->
+<article class="modal fade" id="languageModal" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content section-info">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Language {{editLanguage?.name}}</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+      </div>
+      <form #editFormL="ngForm" class="form">
+        <div class="modal-body">
+          <div class="m-3">
+            <label for="name" class="form-label">Technology:</label>
+            <input type="text" ngModel="{{editLanguage?.name}}" name="name" class="form-control" maxlength="45"
+              required>
+            <input type="hidden" ngModel="{{editLanguage?.id_language}}" name="id_language" class="form-control" />
+          </div>
+          <div class="mb-3">
+            <label class="form-label" for="lvl">Level:</label>
+            <input type="text" id="range-bar-value-language-edit" class="range-bar-value" value="{{editLanguage?.lvl}}"
+              readonly>
+            <input class="form-range form-range-language-edit" ngModel="{{editLanguage?.lvl}}" name="lvl"
+              id="editProgress" type="range" min="1" max="100" value="{{editLanguage?.lvl}}" required />
+          </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button (click)="onUpdateLanguage(editFormL.value)" data-bs-dismiss="modal" type="submit"
+            class="btn btn-outline-success changeSkillBtn">Accept</button>
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</article>
+<!--Delete Language Modal-->
+<article class="modal fade" id="deleteLanguageModal" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content section-info">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Language</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+      </div>
+      <form class="form">
+        <div class="modal-footer justify-content-center">
+          <strong class="delete-item-text">Are you sure about deleting {{deleteLanguage?.name}}?</strong>
+          <div class="mt-3">
+            <button (click)="onDeleteLanguage(deleteLanguage?.id_language!)" type="submit"
+              class="btn btn-outline-success changeSkillBtn" data-bs-dismiss="modal">Accept</button>
+            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</article>
+
+<!--Add SoftSkill Modal-->
+<article class="modal fade" id="softSkillPlus" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content section-info">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Soft Skill</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+      </div>
+      <form #addFormS="ngForm" (ngSubmit)="onAddSoftSkill(addFormS)" class="form">
+        <div class="modal-body">
+          <div class="m-3">
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" ngModel name="name" class="form-control" maxlength="45" required>
+          </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button [disabled]="addFormS.invalid" type="submit" class="btn btn-outline-success"
+            data-bs-dismiss="modal">Accept</button>
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</article>
+<!--SoftSkill Modal-->
+<div class="modal fade" id="softSkillModal" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content section-info">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Soft Skill {{editSoftSkill?.name}}</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+      </div>
+      <form #editFormS="ngForm" class="form">
+        <div class="modal-body">
+          <div class="m-3">
+            <label for="name" class="form-label">Ability/Technology:</label>
+            <input type="text" ngModel="{{editSoftSkill?.name}}" name="name" class="form-control" maxlength="45"
+              required>
+            <input type="hidden" ngModel="{{editSoftSkill?.id_soft_skill}}" name="id_soft_skill" class="form-control" />
+          </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button (click)="onUpdateSoftSkill(editFormS.value)" data-bs-dismiss="modal" type="submit"
+            class="btn btn-outline-success">Accept</button>
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--delete SoftSkill Modal-->
+<article class="modal fade" id="deleteSoftSkillModal" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content section-info">
+      <div class="modal-header">
+        <h5 class="modal-title">Delete Soft Skill</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+      </div>
+      <form class="form">
+        <div class="modal-footer justify-content-center">
+          <strong class="delete-item-text">Are you sure about deleting {{deleteSoftSkill?.name}}?</strong>
+          <div class="mt-3">
+            <button (click)="onDeleteSoftSkill(deleteSoftSkill?.id_soft_skill!)" type="submit"
+              class="btn btn-outline-success" data-bs-dismiss="modal">Accept</button>
+            <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</article>
