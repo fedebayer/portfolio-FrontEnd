@@ -7,7 +7,7 @@ import { ExperienceService } from 'src/app/services/experience.service';
 @Component({
   selector: 'app-experience',
   templateUrl: './experience.component.html',
-  styleUrls: ['./experience.component.css']
+  styleUrls: ['./experience.component.css'],
 })
 export class ExperienceComponent implements OnInit {
   experiences: Experience[] | undefined;
@@ -15,7 +15,7 @@ export class ExperienceComponent implements OnInit {
   editExperience: Experience | undefined;
   deleteExperience: Experience | undefined;
 
-  constructor(private experienceService: ExperienceService) { }
+  constructor(private experienceService: ExperienceService) {}
 
   ngOnInit(): void {
     this.getAllExperiences();
@@ -28,7 +28,7 @@ export class ExperienceComponent implements OnInit {
       },
       error: (error: HttpErrorResponse) => {
         alert(error.message);
-      }
+      },
     });
   }
 
@@ -90,5 +90,4 @@ export class ExperienceComponent implements OnInit {
     container?.appendChild(button);
     button.click();
   }
-
 }

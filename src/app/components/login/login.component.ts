@@ -1,27 +1,69 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { LoginUser } from 'src/app/model/login-user';
+import { AuthService } from 'src/app/services/auth.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
   form: FormGroup;
-  constructor(private formBuilder: FormBuilder, /*private authenticationService: AuthenticationService, private route: Router*/) {
+  isLogged = false;
+  isLoginFail = false;
+  loginUser!: LoginUser;
+  email!: string;
+  password!: string;
+  roles: string[] = [];
+  errMsj!: string;
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private tokenService: TokenService,
+    private authService: AuthService,
+    private route: Router
+  ) {
     this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
-      //possible that I need to change this to something similar/or change the values
-      deviceInfo: this.formBuilder.group({
-        deviceId: ["17867868768"],
-        deviceType: ["DEVICE_TYPE_ANDROID"],
-        notificationToken: ["6765757Seececc34"]
-      })
-    })
+      password: ['', [Validators.required, Validators.minLength(3)]],
+    });
   }
 
   ngOnInit(): void {
+    if (this.tokenService.getToken()) {
+      this.isLogged = true;
+      this.isLoginFail = false;
+      this.roles = this.tokenService.getAuthorities();
+    }
+  }
+
+  onLogin(): void {
+    this.loginUser = new LoginUser(
+      this.getEmail().value,
+      this.getPassword().value
+    );
+    this.authService.login(this.loginUser).subscribe({
+      next: (data) => {
+        this.isLogged = true;
+        this.isLoginFail = false;
+
+        this.tokenService.setToken(data.token);
+        this.tokenService.setUsername(data.email);
+        this.tokenService.setAuthorities(data.authorities);
+        this.roles = data.authorities;
+        this.route.navigate(['']);
+        setTimeout(this.reloadPage, 10);
+      },
+      error: (err) => {
+        this.isLogged = false;
+        this.isLoginFail = true;
+        this.errMsj = err.error.message;
+        console.log(this.errMsj);
+      },
+    });
   }
 
   get Email() {
@@ -30,13 +72,15 @@ export class LoginComponent implements OnInit {
   get Password() {
     return this.form.get('password');
   }
-  /*
-    onSend(event: Event) {
-      event.preventDefault();
-      this.authenticationService.startSession(this.form.value).subscribe(data => {
-        console.log("DATA:" + JSON.stringify(data));
 
-      })
-    }*/
+  getEmail(): string | any {
+    return this.form.get('email');
+  }
+  getPassword(): string | any {
+    return this.form.get('password');
+  }
 
+  reloadPage(): void {
+    window.location.reload();
+  }
 }

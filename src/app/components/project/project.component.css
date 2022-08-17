@@ -73,7 +73,7 @@
 }
 
 .project-languages {
-  color: var(--second-color)
+  color: var(--second-color);
 }
 
 .project-item {

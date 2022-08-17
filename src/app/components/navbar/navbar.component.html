@@ -24,7 +24,9 @@
         </ul>
       </div>
       <div>
-        <a href="/login"><span class="iconify" data-icon="akar-icons:person"></span></a>
+        <a href="/login" *ngIf="!isLogged"><span class="iconify" data-icon="akar-icons:person"></span></a>
+        <a href="/" *ngIf="isLogged" (click)="onLogOut()"><span class="iconify"
+            data-icon="icon-park-outline:logout"></span></a>
       </div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

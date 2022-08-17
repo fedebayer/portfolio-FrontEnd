@@ -60,6 +60,10 @@
               maxlength="170" required></textarea>
           </div>
           <div class="m-3">
+            <label for="technologies" class="form-label">Technologies (t1 - t2 ...):</label>
+            <input type="text" ngModel name="technologies" class="form-control" maxlength="45" required>
+          </div>
+          <div class="m-3">
             <label for="live_url" class="form-label">Live page url (optional):</label>
             <input type="text" ngModel name="live_url" class="form-control" maxlength="100">
           </div>
@@ -105,6 +109,11 @@
             <label for="description">Description:</label>
             <textarea ngModel="{{editProject?.description}}" name="description" cols="30" rows="3"
               class="form-control mt-3" style="resize:none;" maxlength="170" required></textarea>
+          </div>
+          <div class="m-3">
+            <label for="technologies" class="form-label">Technologies (t1 - t2 ...):</label>
+            <input type="text" ngModel="{{editProject?.technologies}}" name="technologies" class="form-control"
+              maxlength="45" required>
           </div>
           <div class="m-3">
             <label for="live_url" class="form-label">Live url (optional):</label>
