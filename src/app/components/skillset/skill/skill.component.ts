@@ -1,20 +1,19 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Skill } from 'src/app/model/skill';
-import { SkillService } from 'src/app/services/skill.service';
-import { SoftSkill } from 'src/app/model/softSkill';
-import { SoftSkillService } from 'src/app/services/soft-skill.service';
 import { Language } from 'src/app/model/language';
+import { Skill } from 'src/app/model/skill';
+import { SoftSkill } from 'src/app/model/softSkill';
 import { LanguageService } from 'src/app/services/language.service';
-
+import { SkillService } from 'src/app/services/skill.service';
+import { SoftSkillService } from 'src/app/services/soft-skill.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-skill',
   templateUrl: './skill.component.html',
-  styleUrls: ['./skill.component.css']
+  styleUrls: ['./skill.component.css'],
 })
-
 export class SkillComponent implements OnInit {
   skills: Skill[] | undefined;
   editSkill: Skill | undefined;
@@ -25,13 +24,27 @@ export class SkillComponent implements OnInit {
   languages: Language[] | undefined;
   editLanguage: Language | undefined;
   deleteLanguage: Language | undefined;
+  roles: string[] = [];
+  isAdmin: boolean = false;
 
-  constructor(private skillService: SkillService, private softSkillService: SoftSkillService, private languageService: LanguageService) { }
+  constructor(
+    private skillService: SkillService,
+    private softSkillService: SoftSkillService,
+    private languageService: LanguageService,
+    private tokenService: TokenService
+  ) {}
 
   ngOnInit(): void {
     this.getAllSkills();
     this.getAllSoftSkills();
     this.getAllLanguages();
+
+    this.roles = this.tokenService.getAuthorities();
+    this.roles.forEach((role) => {
+      if (role === 'ROLE_ADMIN') {
+        this.isAdmin = true;
+      }
+    });
   }
 
   public getAllSkills(): void {
@@ -41,7 +54,7 @@ export class SkillComponent implements OnInit {
       },
       error: (error: HttpErrorResponse) => {
         alert(error.message);
-      }
+      },
     });
   }
 
@@ -58,7 +71,6 @@ export class SkillComponent implements OnInit {
       }
     );
   }
-
 
   public onUpdateSkill(Skill: Skill): void {
     this.skillService.updateSkill(Skill).subscribe(
@@ -112,7 +124,7 @@ export class SkillComponent implements OnInit {
       },
       error: (error: HttpErrorResponse) => {
         alert(error.message);
-      }
+      },
     });
   }
 
@@ -175,7 +187,6 @@ export class SkillComponent implements OnInit {
     button.click();
   }
 
-
   public getAllSoftSkills(): void {
     this.softSkillService.getAllSoftSkills().subscribe({
       next: (response: SoftSkill[]) => {
@@ -183,7 +194,7 @@ export class SkillComponent implements OnInit {
       },
       error: (error: HttpErrorResponse) => {
         alert(error.message);
-      }
+      },
     });
   }
 
@@ -245,7 +256,4 @@ export class SkillComponent implements OnInit {
     container?.appendChild(button);
     button.click();
   }
-
-
-
 }

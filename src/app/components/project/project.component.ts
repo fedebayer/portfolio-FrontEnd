@@ -5,11 +5,12 @@ import { Person } from 'src/app/model/person';
 import { Project } from 'src/app/model/project';
 import { PersonService } from 'src/app/services/person.service';
 import { ProjectService } from 'src/app/services/project.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-project',
   templateUrl: './project.component.html',
-  styleUrls: ['./project.component.css']
+  styleUrls: ['./project.component.css'],
 })
 export class ProjectComponent implements OnInit {
   projects: Project[] | undefined;
@@ -17,11 +18,24 @@ export class ProjectComponent implements OnInit {
   editProject: Project | undefined;
   deleteProject: Project | undefined;
   person: Person | undefined;
+  roles: string[] = [];
+  isAdmin: boolean = false;
 
-  constructor(private projectService: ProjectService, private personService: PersonService) { }
+  constructor(
+    private projectService: ProjectService,
+    private personService: PersonService,
+    private tokenService: TokenService
+  ) {}
 
   ngOnInit(): void {
     this.getAllProjects();
+
+    this.roles = this.tokenService.getAuthorities();
+    this.roles.forEach((role) => {
+      if (role === 'ROLE_ADMIN') {
+        this.isAdmin = true;
+      }
+    });
   }
 
   public getAllProjects(): void {
@@ -31,7 +45,7 @@ export class ProjectComponent implements OnInit {
       },
       error: (error: HttpErrorResponse) => {
         alert(error.message);
-      }
+      },
     });
     this.projectService.getAllProjects().subscribe({
       next: (response: Project[]) => {
@@ -39,7 +53,7 @@ export class ProjectComponent implements OnInit {
       },
       error: (error: HttpErrorResponse) => {
         alert(error.message);
-      }
+      },
     });
   }
 
@@ -101,5 +115,4 @@ export class ProjectComponent implements OnInit {
     container?.appendChild(button);
     button.click();
   }
-
 }

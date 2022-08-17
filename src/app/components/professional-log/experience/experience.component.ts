@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Experience } from 'src/app/model/experience';
 import { ExperienceService } from 'src/app/services/experience.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-experience',
@@ -14,11 +15,23 @@ export class ExperienceComponent implements OnInit {
   defaultImg: String = 'assets/images/icons/freelance-logo.png';
   editExperience: Experience | undefined;
   deleteExperience: Experience | undefined;
+  roles: string[] = [];
+  isAdmin: boolean = false;
 
-  constructor(private experienceService: ExperienceService) {}
+  constructor(
+    private experienceService: ExperienceService,
+    private tokenService: TokenService
+  ) {}
 
   ngOnInit(): void {
     this.getAllExperiences();
+
+    this.roles = this.tokenService.getAuthorities();
+    this.roles.forEach((role) => {
+      if (role === 'ROLE_ADMIN') {
+        this.isAdmin = true;
+      }
+    });
   }
 
   public getAllExperiences(): void {

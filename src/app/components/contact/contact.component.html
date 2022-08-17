@@ -2,7 +2,8 @@
   <div class="reveal">
     <h2>CONTACT</h2>
     <div class="title-bar"></div>
-    <span class="edit-icon" (click)="onOpenModal(person)"><span class="iconify" data-icon="mdi:pencil"></span></span>
+    <span class="edit-icon" (click)="onOpenModal(person)" *ngIf="isAdmin"><span class="iconify"
+        data-icon="mdi:pencil"></span></span>
     <p>Now that you know about me, let me know if you are interested to work with me.</p>
     <p *ngIf="person.email">Email: {{person.email}}</p>
     <div class="social-network d-flex align-items-center row justify-content-between">
