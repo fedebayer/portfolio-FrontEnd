@@ -12,7 +12,6 @@ import { TokenService } from 'src/app/services/token.service';
 export class AboutComponent implements OnInit {
   person: Person[] | undefined;
   editPerson: Person | undefined;
-  roles: string[] = [];
   isAdmin: boolean = false;
 
   constructor(
@@ -22,13 +21,7 @@ export class AboutComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllPersons();
-
-    this.roles = this.tokenService.getAuthorities();
-    this.roles.forEach((role) => {
-      if (role === 'ROLE_ADMIN') {
-        this.isAdmin = true;
-      }
-    });
+    this.isAdmin = this.tokenService.isAdmin();
   }
 
   public getAllPersons(): void {

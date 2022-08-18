@@ -1,6 +1,6 @@
-export interface JwtDto {
+export class JwtDto {
   token: string;
-  type: string;
-  nameUser: string;
-  authorities: string[];
+  constructor(token: string) {
+    this.token = token;
+  }
 }

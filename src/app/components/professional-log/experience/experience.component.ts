@@ -15,7 +15,6 @@ export class ExperienceComponent implements OnInit {
   defaultImg: String = 'assets/images/icons/freelance-logo.png';
   editExperience: Experience | undefined;
   deleteExperience: Experience | undefined;
-  roles: string[] = [];
   isAdmin: boolean = false;
 
   constructor(
@@ -26,12 +25,7 @@ export class ExperienceComponent implements OnInit {
   ngOnInit(): void {
     this.getAllExperiences();
 
-    this.roles = this.tokenService.getAuthorities();
-    this.roles.forEach((role) => {
-      if (role === 'ROLE_ADMIN') {
-        this.isAdmin = true;
-      }
-    });
+    this.isAdmin = this.tokenService.isAdmin();
   }
 
   public getAllExperiences(): void {

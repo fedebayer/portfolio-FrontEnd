@@ -18,7 +18,6 @@ export class ProjectComponent implements OnInit {
   editProject: Project | undefined;
   deleteProject: Project | undefined;
   person: Person | undefined;
-  roles: string[] = [];
   isAdmin: boolean = false;
 
   constructor(
@@ -30,12 +29,7 @@ export class ProjectComponent implements OnInit {
   ngOnInit(): void {
     this.getAllProjects();
 
-    this.roles = this.tokenService.getAuthorities();
-    this.roles.forEach((role) => {
-      if (role === 'ROLE_ADMIN') {
-        this.isAdmin = true;
-      }
-    });
+    this.isAdmin = this.tokenService.isAdmin();
   }
 
   public getAllProjects(): void {

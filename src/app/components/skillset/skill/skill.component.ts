@@ -24,7 +24,6 @@ export class SkillComponent implements OnInit {
   languages: Language[] | undefined;
   editLanguage: Language | undefined;
   deleteLanguage: Language | undefined;
-  roles: string[] = [];
   isAdmin: boolean = false;
 
   constructor(
@@ -39,12 +38,7 @@ export class SkillComponent implements OnInit {
     this.getAllSoftSkills();
     this.getAllLanguages();
 
-    this.roles = this.tokenService.getAuthorities();
-    this.roles.forEach((role) => {
-      if (role === 'ROLE_ADMIN') {
-        this.isAdmin = true;
-      }
-    });
+    this.isAdmin = this.tokenService.isAdmin();
   }
 
   public getAllSkills(): void {

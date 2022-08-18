@@ -15,7 +15,6 @@ export class EducationComponent implements OnInit {
   defaultImg: String = 'assets/images/icons/education-logo.jpg';
   editEducation: Education | undefined;
   deleteEducation: Education | undefined;
-  roles: string[] = [];
   isAdmin: boolean = false;
 
   constructor(
@@ -26,12 +25,7 @@ export class EducationComponent implements OnInit {
   ngOnInit(): void {
     this.getAllEducations();
 
-    this.roles = this.tokenService.getAuthorities();
-    this.roles.forEach((role) => {
-      if (role === 'ROLE_ADMIN') {
-        this.isAdmin = true;
-      }
-    });
+    this.isAdmin = this.tokenService.isAdmin();
   }
 
   public getAllEducations(): void {

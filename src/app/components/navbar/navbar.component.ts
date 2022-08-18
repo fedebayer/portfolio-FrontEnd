@@ -12,11 +12,7 @@ export class NavbarComponent implements OnInit {
   constructor(private tokenService: TokenService) {}
 
   ngOnInit(): void {
-    if (this.tokenService.getToken()) {
-      this.isLogged = true;
-    } else {
-      this.isLogged = false;
-    }
+    this.isLogged = this.tokenService.isLogged();
   }
 
   onLogOut(): void {
