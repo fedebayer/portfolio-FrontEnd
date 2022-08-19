@@ -1,0 +1,30 @@
+.text-center {
+  background-image: url('https://mdbootstrap.com/img/new/textures/full/171.jpg');
+  opacity: 1.5;
+  height: 100%;
+  width: 100%;
+}
+
+
+.card {
+  margin-top: 60%;
+  margin-bottom: 90%;
+  background: hsla(0, 0%, 100%, 0.8);
+  backdrop-filter: blur(30px);
+}
+
+.btn-sub-log {
+  background-color: var(--first-color);
+  border-color: var(--first-color);
+}
+
+.form-label {
+  margin-top: 1rem;
+}
+
+@media only screen and (min-width: 1440px) {
+  .card {
+    margin-top: 20%;
+    margin-bottom: 22%;
+  }
+}

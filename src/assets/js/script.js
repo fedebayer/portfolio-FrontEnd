@@ -1,18 +1,22 @@
 "use strict";
 
+
+
 window.addEventListener('DOMContentLoaded', () => {
 
-  //this if is for cancel the javascript when the page is not on the portfolio like on login (not having the intro)
-  if (document.querySelector('.intro') != null) {
-    /*
+  /*
 ====================
 *Intro
 ====================
 */
-    const intro = document.querySelector('.intro');
-    setTimeout(() => {
-      intro.style.left = '-200vh';
-    }, 50)
+  const intro = document.querySelector('.intro');
+  setTimeout(() => {
+    intro.style.left = '-200vh';
+  }, 50)
+
+  //this if is for cancel the javascript when the page is not on the portfolio like on login (not having the intro)
+  if (document.querySelector('.experience') != null) {
+
 
     /*
     ====================

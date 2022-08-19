@@ -1,24 +1,31 @@
-import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Education } from 'src/app/model/education';
 import { EducationService } from 'src/app/services/education.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-education',
   templateUrl: './education.component.html',
-  styleUrls: ['./education.component.css']
+  styleUrls: ['./education.component.css'],
 })
 export class EducationComponent implements OnInit {
   educations: Education[] | undefined;
   defaultImg: String = 'assets/images/icons/education-logo.jpg';
   editEducation: Education | undefined;
   deleteEducation: Education | undefined;
+  isAdmin: boolean = false;
 
-  constructor(private educationService: EducationService) { }
+  constructor(
+    private educationService: EducationService,
+    private tokenService: TokenService
+  ) {}
 
   ngOnInit(): void {
     this.getAllEducations();
+
+    this.isAdmin = this.tokenService.isAdmin();
   }
 
   public getAllEducations(): void {
@@ -28,7 +35,7 @@ export class EducationComponent implements OnInit {
       },
       error: (error: HttpErrorResponse) => {
         alert(error.message);
-      }
+      },
     });
   }
 
@@ -90,5 +97,4 @@ export class EducationComponent implements OnInit {
     container?.appendChild(button);
     button.click();
   }
-
 }

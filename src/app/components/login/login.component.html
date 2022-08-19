@@ -1,0 +1,47 @@
+<section class="text-center">
+  <div class="intro">
+  </div>
+  <div class="card mx-4 mx-md-5 shadow-5-strong">
+    <div class="card-body py-5 px-md-5">
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-8">
+          <h2 class="fw-bold mb-5">Login</h2>
+          <form [formGroup]="form" (ngSubmit)="onLogin()">
+            <div class="form-outline">
+              <label class="form-label" for="email"><b>Email</b></label>
+              <input type="email" formControlName="email"
+                [ngClass]="{'is-invalid': Email?.errors && Email?.touched, 'is-valid': !Email?.errors && Email?.touched}"
+                name="email" class="form-control" />
+              <div *ngIf="Email?.errors && Email?.touched">
+                <p *ngIf="Email?.hasError('required')" class="text-danger">
+                  The email is required.
+                </p>
+                <p *ngIf="Email?.hasError('email')" class="text-danger">
+                  The email format must be valid.
+                </p>
+              </div>
+            </div>
+            <div class="form-outline mb-4">
+              <label class="form-label" for="password"><b>Password</b></label>
+              <input type="password" formControlName="password"
+                [ngClass]="{'is-invalid': Password?.errors && Password?.touched, 'is-valid': !Password?.errors && Password?.touched}"
+                name="password" class="form-control" />
+              <div *ngIf="Password?.errors && Password?.touched">
+                <p *ngIf="Password?.hasError('required')" class="text-danger">
+                  The password is required.
+                </p>
+                <p *ngIf="Password?.errors?.['minlength']" class="text-danger">
+                  The password must be at least three characters long.
+                </p>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block mb-4 btn-sub-log">
+              Login
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="../assets/js/script.js"></script>

@@ -3,22 +3,29 @@ import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Experience } from 'src/app/model/experience';
 import { ExperienceService } from 'src/app/services/experience.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-experience',
   templateUrl: './experience.component.html',
-  styleUrls: ['./experience.component.css']
+  styleUrls: ['./experience.component.css'],
 })
 export class ExperienceComponent implements OnInit {
   experiences: Experience[] | undefined;
   defaultImg: String = 'assets/images/icons/freelance-logo.png';
   editExperience: Experience | undefined;
   deleteExperience: Experience | undefined;
+  isAdmin: boolean = false;
 
-  constructor(private experienceService: ExperienceService) { }
+  constructor(
+    private experienceService: ExperienceService,
+    private tokenService: TokenService
+  ) {}
 
   ngOnInit(): void {
     this.getAllExperiences();
+
+    this.isAdmin = this.tokenService.isAdmin();
   }
 
   public getAllExperiences(): void {
@@ -28,7 +35,7 @@ export class ExperienceComponent implements OnInit {
       },
       error: (error: HttpErrorResponse) => {
         alert(error.message);
-      }
+      },
     });
   }
 
@@ -90,5 +97,4 @@ export class ExperienceComponent implements OnInit {
     container?.appendChild(button);
     button.click();
   }
-
 }

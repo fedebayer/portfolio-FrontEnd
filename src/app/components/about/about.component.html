@@ -3,7 +3,8 @@
     <div>
       <h2>ABOUT</h2>
       <div class="title-bar"></div>
-      <span class="edit-icon" (click)="onOpenModal(person)"><span class="iconify" data-icon="mdi:pencil"></span></span>
+      <span class="edit-icon" (click)="onOpenModal(person)" *ngIf="isAdmin"><span class="iconify"
+          data-icon="mdi:pencil"></span></span>
     </div>
     <article class=" d-flex justify-content-evenly flex-wrap flex-sm-nowrap">
       <div class="about-me-text d-flex flex-column align-items-center align-items-sm-start">

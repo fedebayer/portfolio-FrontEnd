@@ -2,20 +2,27 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Person } from 'src/app/model/person';
 import { PersonService } from 'src/app/services/person.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css']
+  styleUrls: ['./contact.component.css'],
 })
 export class ContactComponent implements OnInit {
   person: Person[] | undefined;
   editPerson: Person | undefined;
+  isAdmin: boolean = false;
 
-  constructor(private personService: PersonService) { }
+  constructor(
+    private personService: PersonService,
+    private tokenService: TokenService
+  ) {}
 
   ngOnInit(): void {
     this.getAllPersons();
+
+    this.isAdmin = this.tokenService.isAdmin();
   }
 
   public getAllPersons(): void {
@@ -25,7 +32,7 @@ export class ContactComponent implements OnInit {
       },
       error: (error: HttpErrorResponse) => {
         alert(error.message);
-      }
+      },
     });
   }
 
@@ -52,5 +59,4 @@ export class ContactComponent implements OnInit {
     container?.appendChild(button);
     button.click();
   }
-
 }
