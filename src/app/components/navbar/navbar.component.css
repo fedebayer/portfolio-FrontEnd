@@ -16,6 +16,7 @@ header a:hover {
   color: var(--white-color) !important;
 }
 
+
 .header a:after {
   content: "";
   position: absolute;
@@ -31,10 +32,21 @@ header a:hover {
   width: 100%;
 }
 
-header .iconify {
-  height: 50px;
-  width: 40%;
+header i {
   margin-right: 1rem;
+}
+
+.header .user a:after {
+  content: "";
+  height: 0px;
+  width: 0%;
+  left: 0;
+  bottom: 0px;
+  transition: 0s;
+}
+
+.fs-5 {
+  font-size: 2.5rem !important;
 }
 
 @media only screen and (min-width: 700px) {
@@ -43,10 +55,8 @@ header .iconify {
     top: 0;
   }
 
-  header .iconify {
-    height: 100px;
-    width: 30%;
-    margin-right: 2rem;
+  header i {
+    margin-right: 10rem;
   }
 }
 
@@ -57,9 +67,5 @@ header .iconify {
 
   .collapse li {
     padding-left: 30px;
-  }
-
-  header .iconify {
-    width: 30%;
   }
 }

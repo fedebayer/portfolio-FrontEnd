@@ -2,13 +2,14 @@
   <div class="reveal">
     <h2>PROJECTS</h2>
     <div class="title-bar"></div>
-    <span class="edit-icon" (click)="onOpenModal(null!,'add')" *ngIf="isAdmin"><span class="iconify"
-        data-icon="mdi:plus"></span></span>
+    <span class="edit-icon" (click)="onOpenModal(null!,'add')" *ngIf="isAdmin"><i
+        class="bi bi-plus-square fs-5"></i></span>
     <div class="container">
       <div class="row d-flex align-items-stretch justify-content-center align-text">
         <article *ngFor="let projectItem of projects" class="project-item col-12 col-md-6 col-lg-3">
           <div class="project-content">
-            <img [src]="projectItem.img_url ? projectItem.img_url : defaultImg" alt="project image" class="project-img">
+            <img [src]="projectItem.img_url ? projectItem.img_url : defaultImg" alt="project item image"
+              class="project-img">
             <div class="img-overlay img-overlay--blur">
               <b>{{projectItem.year}}</b>
             </div>
@@ -16,17 +17,18 @@
           <div class="project-text">
             <h4>{{projectItem.title}}</h4>
             <p>{{projectItem.description}}</p>
-            <div class="project-links"><a *ngIf="projectItem.live_url" [href]="projectItem.live_url"
-                target="_blank"><span class="iconify live-page" data-icon="mdi:eye"></span><b>Live</b></a>
-              <a *ngIf="projectItem.repo_url" [href]="projectItem.repo_url" target="_blank"><span class="iconify"
-                  data-icon="mdi:github"></span><b>GitHub</b></a>
+            <div class="project-links"><a *ngIf="projectItem.live_url" [href]="projectItem.live_url" target="_blank"><i
+                  class="bi bi-eye-fill fs-5"></i><b>Live</b></a>
+              <a *ngIf="projectItem.repo_url" [href]="projectItem.repo_url" target="_blank">
+                <i class="bi bi-github fs-5"></i><b>GitHub</b>
+              </a>
             </div>
             <b class="project-languages">{{projectItem.technologies}}</b>
           </div>
-          <span class="delete-icon" (click)="onOpenModal(projectItem,'delete')" *ngIf="isAdmin"><span class="iconify"
-              data-icon="mdi:trash"></span></span>
-          <span class="edit-icon" (click)="onOpenModal(projectItem,'edit')" *ngIf="isAdmin"><span class="iconify"
-              data-icon="mdi:pencil"></span></span>
+          <span class="edit-icon" (click)="onOpenModal(projectItem,'edit')" *ngIf="isAdmin"><i
+              class="bi bi-pencil-square fs-5"></i></span>
+          <span class="delete-icon" (click)="onOpenModal(projectItem,'delete')" *ngIf="isAdmin"><i
+              class="bi bi-x-square fs-5"></i></span>
         </article>
         <div class="repositories d-flex align-items-center">
           <p><a [href]="person?.github_url + '?tab=repositories'" target="_blank"><strong>VIEW ALL

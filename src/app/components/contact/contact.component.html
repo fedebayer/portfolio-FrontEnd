@@ -1,23 +1,8 @@
-<section id="contact" class="contact" *ngFor="let person of person">
+<section id="contact" class="contact">
   <div class="reveal">
     <h2>CONTACT</h2>
     <div class="title-bar"></div>
-    <span class="edit-icon" (click)="onOpenModal(person)" *ngIf="isAdmin"><span class="iconify"
-        data-icon="mdi:pencil"></span></span>
-    <p>Now that you know about me, let me know if you are interested to work with me.</p>
-    <p *ngIf="person.email">Email: {{person.email}}</p>
-    <div class="social-network d-flex align-items-center row justify-content-between">
-      <div class="d-flex justify-content-evenly align-items-center">
-        <a *ngIf="person.linkedin_url" [href]="person.linkedin_url" target="_blank"><span class="iconify"
-            data-icon="mdi:linkedin"></span></a>
-        <a *ngIf="person.email" [href]="'mailto:'+person.email" target="_blank"><span class="iconify"
-            data-icon="mdi:email"></span></a>
-        <a *ngIf="person.github_url" [href]="person.github_url" target="_blank"><span class="iconify"
-            data-icon="mdi:github"></span></a>
-      </div>
-    </div>
     <br>
-    <p>Have a message?</p>
     <form class="contact-form box-shadow-1 animated pop-in">
       <input type="text" name="name" placeholder="Name" title="Only accepts letters and blank spaces"
         pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" required>
@@ -31,49 +16,6 @@
     </form>
   </div>
 </section>
-
-<!--Contact Modal-->
-<article class="modal fade" id="contactModal" data-bs-backdrop="static">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content section-info">
-      <div class="modal-header">
-        <h5 class="modal-title">Edit Contact Info</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
-      </div>
-      <form #editForm="ngForm" class="form">
-        <div class="modal-body">
-          <div class="m-3">
-            <label for="linkedin_url" class="form-label">LinkedIn url:</label>
-            <input type="text" ngModel="{{editPerson?.linkedin_url}}" name="linkedin_url" class="form-control"
-              maxlength="100">
-            <input type="hidden" ngModel="{{editPerson?.id_person}}" name="id_person" class="form-control" />
-            <input type="hidden" ngModel="{{editPerson?.name}}" name="name" class="form-control" />
-            <input type="hidden" ngModel="{{editPerson?.job_title}}" name="job_title" class="form-control" />
-            <input type="hidden" ngModel="{{editPerson?.about}}" name="about" class="form-control" />
-            <input type="hidden" ngModel="{{editPerson?.img_url}}" name="img_url" class="form-control" />
-            <input type="hidden" ngModel="{{editPerson?.banner_url}}" name="banner_url" class="form-control" />
-          </div>
-          <div class="m-3">
-            <label for="email" class="form-label">Email (<i>must be a valid email address</i>):</label>
-            <input type="email" ngModel="{{editPerson?.email}}" name="email" title="Incorrect email"
-              pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$" class="form-control"
-              maxlength="45" required>
-          </div>
-          <div class="m-3">
-            <label for="github_url" class="form-label">Link to GitHub:</label>
-            <input type="text" ngModel="{{editPerson?.github_url}}" name="github_url" class="form-control"
-              maxlength="100">
-          </div>
-        </div>
-        <div class="modal-footer justify-content-center">
-          <button [disabled]="editForm.invalid" (click)="onUpdatePerson(editForm.value)" type="submit"
-            class="btn btn-outline-success" data-bs-dismiss="modal">Accept</button>
-          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</article>
 <!--Comment send in form Modal -->
 <article id="thanks" class="modal">
   <div class="modal-content">

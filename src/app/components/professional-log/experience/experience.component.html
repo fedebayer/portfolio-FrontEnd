@@ -2,12 +2,12 @@
   <div class="reveal">
     <h2>EXPERIENCE</h2>
     <div class="title-bar"></div>
-    <span class="edit-icon" (click)="onOpenModal(null!,'add')" *ngIf="isAdmin"><span class="iconify"
-        data-icon="mdi:plus"></span></span>
+    <span class="edit-icon" (click)="onOpenModal(null!,'add')" *ngIf="isAdmin"><i
+        class="bi bi-plus-square fs-5"></i></span>
     <div class="row professional-log-container">
       <div *ngFor="let expItem of experiences" class="professional-log-item col-12 col-sm-6">
         <div class="professional-log-img">
-          <img [src]="expItem.img_url ? expItem.img_url : defaultImg" alt="experience logo">
+          <img [src]="expItem.img_url ? expItem.img_url : defaultImg" alt="experience item image">
         </div>
         <div class="professional-log-text">
           <h4>{{expItem.title}}</h4>
@@ -17,10 +17,10 @@
             <div class="years-date">
               <p>{{expItem.date}}</p>
             </div>
-            <span class="edit-icon" (click)="onOpenModal(expItem,'edit')" *ngIf="isAdmin"><span class="iconify"
-                data-icon="mdi:pencil"></span></span>
-            <span class="delete-icon" (click)="onOpenModal(expItem,'delete')" *ngIf="isAdmin"><span class="iconify"
-                data-icon="mdi:trash"></span></span>
+            <span class="edit-icon" (click)="onOpenModal(expItem,'edit')" *ngIf="isAdmin"><i
+                class="bi bi-pencil-square fs-5"></i></span>
+            <span class="delete-icon" (click)="onOpenModal(expItem,'delete')" *ngIf="isAdmin"><i
+                class="bi bi-x-square fs-5"></i></span>
           </div>
         </div>
       </div>
@@ -40,11 +40,11 @@
         <div class="modal-body">
           <div class="m-3">
             <label for="title" class="form-label">Position:</label>
-            <input type="text" ngModel name="title" class="form-control" maxlength="45" required>
+            <input type="text" ngModel name="title" class="form-control" maxlength="70" required>
           </div>
           <div class="m-3">
             <label for="company" class="form-label">Company (optional):</label>
-            <input type="text" ngModel name="company" class="form-control" maxlength="45">
+            <input type="text" ngModel name="company" class="form-control" maxlength="70">
           </div>
           <div class="m-3">
             <label for="img_url" class="form-label">Image url (optional):</label>
@@ -81,14 +81,14 @@
         <div class="modal-body">
           <div class="m-3">
             <label for="title" class="form-label">Position:</label>
-            <input type="text" ngModel="{{editExperience?.title}}" name="title" class="form-control" maxlength="45"
+            <input type="text" ngModel="{{editExperience?.title}}" name="title" class="form-control" maxlength="70"
               required>
             <input type="hidden" ngModel="{{editExperience?.id_experience}}" name="id_experience"
               class="form-control" />
           </div>
           <div class="m-3">
             <label for="company" class="form-label">Company (optional):</label>
-            <input type="text" ngModel="{{editExperience?.company}}" name="company" class="form-control" maxlength="45">
+            <input type="text" ngModel="{{editExperience?.company}}" name="company" class="form-control" maxlength="70">
           </div>
           <div class="m-3">
             <label for="img_url" class="form-label">Image url (optional):</label>

@@ -10,6 +10,9 @@
             <a class="nav-link" href="#about">About</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="#experience">Experience</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="#education">Education</a>
           </li>
           <li class="nav-item">
@@ -23,10 +26,10 @@
           </li>
         </ul>
       </div>
-      <div>
-        <a href="/login" *ngIf="!isLogged"><span class="iconify" data-icon="akar-icons:person"></span></a>
-        <a href="/" *ngIf="isLogged" (click)="onLogOut()"><span class="iconify"
-            data-icon="icon-park-outline:logout"></span></a>
+      <div class="user">
+        <a href="/login" *ngIf="!isLogged"><i class="bi bi-person-circle fs-5" style="font-size: 20rem;"></i></a>
+        <a href="/" *ngIf="isLogged" (click)="onLogOut()"><i class="bi bi-box-arrow-in-right fs-5"
+            style="size: 20rem;"></i></a>
       </div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

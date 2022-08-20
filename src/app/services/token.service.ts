@@ -35,11 +35,12 @@ export class TokenService {
     let payload: any;
     if (token != null) {
       payload = token.split('.')[1];
+      const payloadDecoded = atob(payload);
+      const values = JSON.parse(payloadDecoded);
+      const username = values.sub;
+      return username;
     }
-    const payloadDecoded = atob(payload);
-    const values = JSON.parse(payloadDecoded);
-    const username = values.sub;
-    return username;
+    return null;
   }
 
   public isAdmin(): boolean {
@@ -50,14 +51,15 @@ export class TokenService {
     let payload: any;
     if (token != null) {
       payload = token.split('.')[1];
+      const payloadDecoded = atob(payload);
+      const values = JSON.parse(payloadDecoded);
+      const roles = values.roles;
+      if (roles.indexOf('ROLE_ADMIN') < 0) {
+        return false;
+      }
+      return true;
     }
-    const payloadDecoded = atob(payload);
-    const values = JSON.parse(payloadDecoded);
-    const roles = values.roles;
-    if (roles.indexOf('ROLE_ADMIN') < 0) {
-      return false;
-    }
-    return true;
+    return false;
   }
 
   public logOut(): void {

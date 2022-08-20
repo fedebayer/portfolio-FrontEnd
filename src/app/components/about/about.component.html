@@ -3,8 +3,8 @@
     <div>
       <h2>ABOUT</h2>
       <div class="title-bar"></div>
-      <span class="edit-icon" (click)="onOpenModal(person)" *ngIf="isAdmin"><span class="iconify"
-          data-icon="mdi:pencil"></span></span>
+      <span class="edit-icon" (click)="onOpenModal(person)" *ngIf="isAdmin"><i
+          class="bi bi-pencil-square fs-5"></i></span>
     </div>
     <article class=" d-flex justify-content-evenly flex-wrap flex-sm-nowrap">
       <div class="about-me-text d-flex flex-column align-items-center align-items-sm-start">
@@ -43,6 +43,22 @@
               required></textarea>
           </div>
           <div class="m-3">
+            <label for="linkedin_url" class="form-label">LinkedIn url:</label>
+            <input type="text" ngModel="{{editPerson?.linkedin_url}}" name="linkedin_url" class="form-control"
+              maxlength="100">
+          </div>
+          <div class="m-3">
+            <label for="email" class="form-label">Email (<i>must be a valid email address</i>):</label>
+            <input type="email" ngModel="{{editPerson?.email}}" name="email" title="Incorrect email"
+              pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$" class="form-control"
+              maxlength="45" required>
+          </div>
+          <div class="m-3">
+            <label for="github_url" class="form-label">Link to GitHub:</label>
+            <input type="text" ngModel="{{editPerson?.github_url}}" name="github_url" class="form-control"
+              maxlength="100">
+          </div>
+          <div class="m-3">
             <label for="img_url" class="form-label">Profile image url:</label>
             <input type="text" ngModel="{{editPerson?.img_url}}" name="img_url" class="form-control" maxlength="100"
               required>
@@ -51,9 +67,6 @@
             <label for="banner_url" class="form-label">Home image url:</label>
             <input type="text" ngModel="{{editPerson?.banner_url}}" name="banner_url" class="form-control"
               maxlength="100" required>
-            <input type="hidden" ngModel="{{editPerson?.email}}" name="email" class="form-control" />
-            <input type="hidden" ngModel="{{editPerson?.linkedin_url}}" name="linkedin_url" class="form-control" />
-            <input type="hidden" ngModel="{{editPerson?.github_url}}" name="github_url" class="form-control" />
           </div>
         </div>
         <div class="modal-footer justify-content-center">

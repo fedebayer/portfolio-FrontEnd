@@ -38,19 +38,21 @@ body {
   background-color: var(--white-color);
 }
 
-.edit-icon, .delete-icon {
-  padding-right: 5px;
+.edit-icon i, .delete-icon i {
+  height: 10%;
+  width: 10%;
+  padding-left: 5px;
   min-width: 1.5rem;
   min-height: 1.5rem;
 }
 
-.edit-icon .iconify, .delete-icon .iconify {
-  min-width: 1.5rem;
-  min-height: 1.5rem;
+.bi-plus-square {
+  margin-bottom: 0.4rem;
 }
 
 .edit-icon:hover, .delete-icon:hover {
   cursor: pointer;
+  color: var(--first-color);
 }
 
 h1 {
@@ -80,15 +82,6 @@ html {
   scroll-behavior: smooth;
 }
 
-.iconify {
-  float: right;
-  height: 2%;
-  width: 2%;
-}
-
-.iconify:hover {
-  color: var(--first-color) !important;
-}
 
 .intro {
   position: fixed;
@@ -97,7 +90,7 @@ html {
   top: 0;
   width: 100%;
   height: 100vh;
-  background-color: #1D223A;
+  background-color: #05090F;
   transition: 1s;
 }
 
@@ -154,7 +147,7 @@ header {
 }
 
 
-.professional-log .edit-icon .iconify {
+.professional-log .edit-icon {
   margin-left: 2rem;
 }
 
