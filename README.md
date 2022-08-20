@@ -1,6 +1,5 @@
 ![GitHub top language](https://img.shields.io/github/languages/top/FedeBayer/portfolio-FrontEnd?style=for-the-badge)
 ![GitHub last commit](https://img.shields.io/github/last-commit/FedeBayer/portfolio-FrontEnd?style=for-the-badge)
-![GitHub repo size](https://img.shields.io/github/repo-size/FedeBayer/portfolio-FrontEnd?style=for-the-badge)
 ![GitHub issues](https://img.shields.io/github/issues/FedeBayer/portfolio-FrontEnd?style=for-the-badge)
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/FedeBayer/portfolio-FrontEnd?style=for-the-badge)
 
@@ -34,7 +33,9 @@ This part focus on the frontend of the page (**SPA Angular**).
 
 Here is more info about the [backend](https://github.com/FedeBayer/portfolio-BackEnd)
 
-<img src="https://images.unsplash.com/photo-1544077960-604201fe74bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80" width="50%"></img>
+<div align="center">
+  <img src="https://images.unsplash.com/photo-1544077960-604201fe74bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80" width="50%"></img>
+</div>
 
 
 
@@ -128,7 +129,7 @@ Project Link: [https://github.com/FedeBayer/portfolio-FrontEnd](https://github.c
 [Bootstrap-url]: https://getbootstrap.com
 
 
-                                                        Angular Info
+                                                 Angular Info
 
 ## Development
 
