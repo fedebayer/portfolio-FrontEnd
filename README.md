@@ -37,7 +37,10 @@ Here is more info about the [backend](https://github.com/FedeBayer/portfolio-Bac
   <img src="https://images.unsplash.com/photo-1544077960-604201fe74bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80" width="50%"></img>
 </div>
 
+### Description
 
+The web portfolio shows personal data like education and skills, is made with a distributed architecture, and contains a
+user interface design (front end) that displays the information, a database that stores the previously said data, and an API to provide the information through the internet (back end).
 
 ### Built With
 
@@ -89,6 +92,8 @@ Here is more info about the [backend](https://github.com/FedeBayer/portfolio-Bac
 
 
 ## Login / Authentication
+
+The authentication is via JSON Web Token(JWT) with the access token and the refresh token.
 
 * Anyone can see the lists of data.
 * To transform the data (insert/update/delete) you need to log in as an **admin**.
