@@ -5,26 +5,26 @@ import { environment } from 'src/environments/environment';
 import { Project } from '../model/project';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProjectService {
   private apiServerUrl = environment.apiBaseUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  public getAllProjects(): Observable<Project[]> {
-    return this.http.get<Project[]>(this.apiServerUrl + `/projects/all`);
+  public getProjects(): Observable<Project[]> {
+    return this.http.get<Project[]>(this.apiServerUrl + `/projects`);
   }
 
   public addProject(project: Project): Observable<Project> {
-    return this.http.post<Project>(this.apiServerUrl + `/projects/add`, project);
+    return this.http.post<Project>(this.apiServerUrl + `/projects`, project);
   }
 
   public deleteProjectById(id: number): Observable<Project> {
-    return this.http.delete<Project>(this.apiServerUrl + `/projects/delete/${id}`);
+    return this.http.delete<Project>(this.apiServerUrl + `/projects/${id}`);
   }
 
   public updateProject(project: Project): Observable<Project> {
-    return this.http.put<Project>(this.apiServerUrl + `/projects/update`, project);
+    return this.http.put<Project>(this.apiServerUrl + `/projects`, project);
   }
 }

@@ -23,13 +23,13 @@ export class ExperienceComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getAllExperiences();
+    this.getExperiences();
 
     this.isAdmin = this.tokenService.isAdmin();
   }
 
-  public getAllExperiences(): void {
-    this.experienceService.getAllExperiences().subscribe({
+  public getExperiences(): void {
+    this.experienceService.getExperiences().subscribe({
       next: (response: Experience[]) => {
         this.experiences = response;
       },
@@ -43,7 +43,7 @@ export class ExperienceComponent implements OnInit {
     this.experienceService.addExperience(addForm.value).subscribe(
       (response: Experience) => {
         console.log(response);
-        this.getAllExperiences();
+        this.getExperiences();
         addForm.reset();
       },
       (error: HttpErrorResponse) => {
@@ -57,7 +57,7 @@ export class ExperienceComponent implements OnInit {
     this.experienceService.updateExperience(experience).subscribe(
       (response: Experience) => {
         console.log(response);
-        this.getAllExperiences();
+        this.getExperiences();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -69,7 +69,7 @@ export class ExperienceComponent implements OnInit {
     this.experienceService.deleteExperienceById(id).subscribe(
       (response: Experience) => {
         console.log(response);
-        this.getAllExperiences();
+        this.getExperiences();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

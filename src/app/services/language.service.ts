@@ -5,26 +5,26 @@ import { environment } from 'src/environments/environment';
 import { Language } from '../model/language';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LanguageService {
   private apiServerUrl = environment.apiBaseUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  public getAllLanguages(): Observable<Language[]> {
-    return this.http.get<Language[]>(this.apiServerUrl + `/languages/all`);
+  public getLanguages(): Observable<Language[]> {
+    return this.http.get<Language[]>(this.apiServerUrl + `/languages`);
   }
 
   public addLanguage(language: Language): Observable<Language> {
-    return this.http.post<Language>(this.apiServerUrl + `/languages/add`, language);
+    return this.http.post<Language>(this.apiServerUrl + `/languages`, language);
   }
 
   public deleteLanguageById(id: number): Observable<Language> {
-    return this.http.delete<Language>(this.apiServerUrl + `/languages/delete/${id}`);
+    return this.http.delete<Language>(this.apiServerUrl + `/languages/${id}`);
   }
 
   public updateLanguage(language: Language): Observable<Language> {
-    return this.http.put<Language>(this.apiServerUrl + `/languages/update`, language);
+    return this.http.put<Language>(this.apiServerUrl + `/languages`, language);
   }
 }

@@ -34,15 +34,15 @@ export class SkillComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getAllSkills();
-    this.getAllSoftSkills();
-    this.getAllLanguages();
+    this.getSkills();
+    this.getSoftSkills();
+    this.getLanguages();
 
     this.isAdmin = this.tokenService.isAdmin();
   }
 
-  public getAllSkills(): void {
-    this.skillService.getAllSkills().subscribe({
+  public getSkills(): void {
+    this.skillService.getSkills().subscribe({
       next: (response: Skill[]) => {
         this.skills = response;
       },
@@ -56,7 +56,7 @@ export class SkillComponent implements OnInit {
     this.skillService.addSkill(addForm.value).subscribe(
       (response: Skill) => {
         console.log(response);
-        this.getAllSkills();
+        this.getSkills();
         addForm.reset();
       },
       (error: HttpErrorResponse) => {
@@ -70,7 +70,7 @@ export class SkillComponent implements OnInit {
     this.skillService.updateSkill(Skill).subscribe(
       (response: Skill) => {
         console.log(response);
-        this.getAllSkills();
+        this.getSkills();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -82,7 +82,7 @@ export class SkillComponent implements OnInit {
     this.skillService.deleteSkillById(id).subscribe(
       (response: Skill) => {
         console.log(response);
-        this.getAllSkills();
+        this.getSkills();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -111,8 +111,8 @@ export class SkillComponent implements OnInit {
     button.click();
   }
 
-  public getAllLanguages(): void {
-    this.languageService.getAllLanguages().subscribe({
+  public getLanguages(): void {
+    this.languageService.getLanguages().subscribe({
       next: (response: Language[]) => {
         this.languages = response;
       },
@@ -126,7 +126,7 @@ export class SkillComponent implements OnInit {
     this.languageService.addLanguage(addForm.value).subscribe(
       (response: Language) => {
         console.log(response);
-        this.getAllLanguages();
+        this.getLanguages();
         addForm.reset();
       },
       (error: HttpErrorResponse) => {
@@ -140,7 +140,7 @@ export class SkillComponent implements OnInit {
     this.languageService.updateLanguage(language).subscribe(
       (response: Language) => {
         console.log(response);
-        this.getAllLanguages();
+        this.getLanguages();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -152,7 +152,7 @@ export class SkillComponent implements OnInit {
     this.languageService.deleteLanguageById(id).subscribe(
       (response: Language) => {
         console.log(response);
-        this.getAllLanguages();
+        this.getLanguages();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -181,8 +181,8 @@ export class SkillComponent implements OnInit {
     button.click();
   }
 
-  public getAllSoftSkills(): void {
-    this.softSkillService.getAllSoftSkills().subscribe({
+  public getSoftSkills(): void {
+    this.softSkillService.getSoftSkills().subscribe({
       next: (response: SoftSkill[]) => {
         this.softSkills = response;
       },
@@ -196,7 +196,7 @@ export class SkillComponent implements OnInit {
     this.softSkillService.addSoftSkill(addForm.value).subscribe(
       (response: SoftSkill) => {
         console.log(response);
-        this.getAllSoftSkills();
+        this.getSoftSkills();
         addForm.reset();
       },
       (error: HttpErrorResponse) => {
@@ -210,7 +210,7 @@ export class SkillComponent implements OnInit {
     this.softSkillService.updateSoftSkill(softSkill).subscribe(
       (response: SoftSkill) => {
         console.log(response);
-        this.getAllSoftSkills();
+        this.getSoftSkills();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -222,7 +222,7 @@ export class SkillComponent implements OnInit {
     this.softSkillService.deleteSoftSkillById(id).subscribe(
       (response: SoftSkill) => {
         console.log(response);
-        this.getAllSoftSkills();
+        this.getSoftSkills();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

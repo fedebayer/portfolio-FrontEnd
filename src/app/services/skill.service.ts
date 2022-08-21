@@ -5,26 +5,26 @@ import { environment } from 'src/environments/environment';
 import { Skill } from '../model/skill';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SkillService {
   private apiServerUrl = environment.apiBaseUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  public getAllSkills(): Observable<Skill[]> {
-    return this.http.get<Skill[]>(this.apiServerUrl + `/skills/all`);
+  public getSkills(): Observable<Skill[]> {
+    return this.http.get<Skill[]>(this.apiServerUrl + `/skills`);
   }
 
   public addSkill(skill: Skill): Observable<Skill> {
-    return this.http.post<Skill>(this.apiServerUrl + `/skills/add`, skill);
+    return this.http.post<Skill>(this.apiServerUrl + `/skills`, skill);
   }
 
   public deleteSkillById(id: number): Observable<Skill> {
-    return this.http.delete<Skill>(this.apiServerUrl + `/skills/delete/${id}`);
+    return this.http.delete<Skill>(this.apiServerUrl + `/skills/${id}`);
   }
 
   public updateSkill(skill: Skill): Observable<Skill> {
-    return this.http.put<Skill>(this.apiServerUrl + `/skills/update`, skill);
+    return this.http.put<Skill>(this.apiServerUrl + `/skills`, skill);
   }
 }

@@ -6,26 +6,25 @@ import { PersonService } from 'src/app/services/person.service';
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.css']
+  styleUrls: ['./footer.component.css'],
 })
 export class FooterComponent implements OnInit {
   person: Person | undefined;
 
-  constructor(private personService: PersonService) { }
+  constructor(private personService: PersonService) {}
 
   ngOnInit(): void {
-    this.getAllPersons();
+    this.getPersons();
   }
 
-  public getAllPersons(): void {
-    this.personService.getAllPersons().subscribe({
+  public getPersons(): void {
+    this.personService.getPersons().subscribe({
       next: (response: Person[]) => {
         this.person = response[0];
       },
       error: (error: HttpErrorResponse) => {
         alert(error.message);
-      }
+      },
     });
   }
-
 }

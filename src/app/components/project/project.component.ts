@@ -27,13 +27,13 @@ export class ProjectComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getAllProjects();
+    this.getProjects();
 
     this.isAdmin = this.tokenService.isAdmin();
   }
 
-  public getAllProjects(): void {
-    this.personService.getAllPersons().subscribe({
+  public getProjects(): void {
+    this.personService.getPersons().subscribe({
       next: (response: Person[]) => {
         this.person = response[0];
       },
@@ -41,7 +41,7 @@ export class ProjectComponent implements OnInit {
         alert(error.message);
       },
     });
-    this.projectService.getAllProjects().subscribe({
+    this.projectService.getProjects().subscribe({
       next: (response: Project[]) => {
         this.projects = response;
       },
@@ -55,7 +55,7 @@ export class ProjectComponent implements OnInit {
     this.projectService.addProject(addForm.value).subscribe(
       (response: Project) => {
         console.log(response);
-        this.getAllProjects();
+        this.getProjects();
         addForm.reset();
       },
       (error: HttpErrorResponse) => {
@@ -69,7 +69,7 @@ export class ProjectComponent implements OnInit {
     this.projectService.updateProject(Project).subscribe(
       (response: Project) => {
         console.log(response);
-        this.getAllProjects();
+        this.getProjects();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -81,7 +81,7 @@ export class ProjectComponent implements OnInit {
     this.projectService.deleteProjectById(id).subscribe(
       (response: Project) => {
         console.log(response);
-        this.getAllProjects();
+        this.getProjects();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

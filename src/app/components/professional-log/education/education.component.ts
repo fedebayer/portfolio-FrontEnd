@@ -23,13 +23,13 @@ export class EducationComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getAllEducations();
+    this.getEducations();
 
     this.isAdmin = this.tokenService.isAdmin();
   }
 
-  public getAllEducations(): void {
-    this.educationService.getAllEducations().subscribe({
+  public getEducations(): void {
+    this.educationService.getEducations().subscribe({
       next: (response: Education[]) => {
         this.educations = response;
       },
@@ -43,7 +43,7 @@ export class EducationComponent implements OnInit {
     this.educationService.addEducation(addForm.value).subscribe(
       (response: Education) => {
         console.log(response);
-        this.getAllEducations();
+        this.getEducations();
         addForm.reset();
       },
       (error: HttpErrorResponse) => {
@@ -57,7 +57,7 @@ export class EducationComponent implements OnInit {
     this.educationService.updateEducation(Education).subscribe(
       (response: Education) => {
         console.log(response);
-        this.getAllEducations();
+        this.getEducations();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
@@ -69,7 +69,7 @@ export class EducationComponent implements OnInit {
     this.educationService.deleteEducationById(id).subscribe(
       (response: Education) => {
         console.log(response);
-        this.getAllEducations();
+        this.getEducations();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);

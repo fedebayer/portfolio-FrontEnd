@@ -5,26 +5,26 @@ import { environment } from 'src/environments/environment';
 import { Person } from '../model/person';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PersonService {
   private apiServerUrl = environment.apiBaseUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  public getAllPersons(): Observable<Person[]> {
-    return this.http.get<Person[]>(this.apiServerUrl + `/persons/all`);
+  public getPersons(): Observable<Person[]> {
+    return this.http.get<Person[]>(this.apiServerUrl + `/persons`);
   }
 
   public addPerson(person: Person): Observable<Person> {
-    return this.http.post<Person>(this.apiServerUrl + `/persons/add`, person);
+    return this.http.post<Person>(this.apiServerUrl + `/persons`, person);
   }
 
   public deletePersonById(id: number): Observable<Person> {
-    return this.http.delete<Person>(this.apiServerUrl + `/persons/delete/${id}`);
+    return this.http.delete<Person>(this.apiServerUrl + `/persons/${id}`);
   }
 
   public updatePerson(person: Person): Observable<Person> {
-    return this.http.put<Person>(this.apiServerUrl + `/persons/update`, person);
+    return this.http.put<Person>(this.apiServerUrl + `/persons`, person);
   }
 }

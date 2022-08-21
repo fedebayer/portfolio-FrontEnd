@@ -5,26 +5,34 @@ import { environment } from 'src/environments/environment';
 import { SoftSkill } from '../model/softSkill';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SoftSkillService {
   private apiServerUrl = environment.apiBaseUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  public getAllSoftSkills(): Observable<SoftSkill[]> {
-    return this.http.get<SoftSkill[]>(this.apiServerUrl + `/soft-skills/all`);
+  public getSoftSkills(): Observable<SoftSkill[]> {
+    return this.http.get<SoftSkill[]>(this.apiServerUrl + `/soft-skills`);
   }
 
   public addSoftSkill(softSkill: SoftSkill): Observable<SoftSkill> {
-    return this.http.post<SoftSkill>(this.apiServerUrl + `/soft-skills/add`, softSkill);
+    return this.http.post<SoftSkill>(
+      this.apiServerUrl + `/soft-skills`,
+      softSkill
+    );
   }
 
   public deleteSoftSkillById(id: number): Observable<SoftSkill> {
-    return this.http.delete<SoftSkill>(this.apiServerUrl + `/soft-skills/delete/${id}`);
+    return this.http.delete<SoftSkill>(
+      this.apiServerUrl + `/soft-skills/${id}`
+    );
   }
 
   public updateSoftSkill(softSkill: SoftSkill): Observable<SoftSkill> {
-    return this.http.put<SoftSkill>(this.apiServerUrl + `/soft-skills/update`, softSkill);
+    return this.http.put<SoftSkill>(
+      this.apiServerUrl + `/soft-skills`,
+      softSkill
+    );
   }
 }

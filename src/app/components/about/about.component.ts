@@ -20,12 +20,12 @@ export class AboutComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getAllPersons();
+    this.getPersons();
     this.isAdmin = this.tokenService.isAdmin();
   }
 
-  public getAllPersons(): void {
-    this.personService.getAllPersons().subscribe({
+  public getPersons(): void {
+    this.personService.getPersons().subscribe({
       next: (response: Person[]) => {
         this.person = response;
       },
@@ -39,7 +39,7 @@ export class AboutComponent implements OnInit {
     this.personService.updatePerson(Person).subscribe(
       (response: Person) => {
         console.log(response);
-        this.getAllPersons();
+        this.getPersons();
       },
       (error: HttpErrorResponse) => {
         alert(error.message);
