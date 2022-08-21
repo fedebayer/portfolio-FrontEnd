@@ -151,6 +151,10 @@ header {
   margin-left: 2rem;
 }
 
+.professional-log {
+  margin-bottom: 1rem;
+}
+
 .professional-log-img {
   display: flex;
   justify-content: center;
