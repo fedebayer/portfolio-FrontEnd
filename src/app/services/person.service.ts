@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 import { Person } from '../model/person';
 
 @Injectable({
@@ -13,18 +13,18 @@ export class PersonService {
   constructor(private http: HttpClient) {}
 
   public getPersons(): Observable<Person[]> {
-    return this.http.get<Person[]>(this.apiServerUrl + `/persons`);
+    return this.http.get<Person[]>(this.apiServerUrl + `persons`);
   }
 
   public addPerson(person: Person): Observable<Person> {
-    return this.http.post<Person>(this.apiServerUrl + `/persons`, person);
+    return this.http.post<Person>(this.apiServerUrl + `persons`, person);
   }
 
   public deletePersonById(id: number): Observable<Person> {
-    return this.http.delete<Person>(this.apiServerUrl + `/persons/${id}`);
+    return this.http.delete<Person>(this.apiServerUrl + `persons/${id}`);
   }
 
   public updatePerson(person: Person): Observable<Person> {
-    return this.http.put<Person>(this.apiServerUrl + `/persons`, person);
+    return this.http.put<Person>(this.apiServerUrl + `persons`, person);
   }
 }
