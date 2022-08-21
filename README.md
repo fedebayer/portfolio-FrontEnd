@@ -1,16 +1,144 @@
-# Portfolio
+![GitHub top language](https://img.shields.io/github/languages/top/FedeBayer/portfolio-FrontEnd?style=for-the-badge)
+![GitHub last commit](https://img.shields.io/github/last-commit/FedeBayer/portfolio-FrontEnd?style=for-the-badge)
+![GitHub issues](https://img.shields.io/github/issues/FedeBayer/portfolio-FrontEnd?style=for-the-badge)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/FedeBayer/portfolio-FrontEnd?style=for-the-badge)
 
-## Introduction
+
+<a name="readme-top"></a>
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/FedeBayer/portfolio-FrontEnd">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJikTaUj3vhsIs4XjTid7qQocT8C5AHePntQ&usqp=CAU" alt="Logo" width="100" height="100">
+  </a>
+  <h3 align="center">Portfolio</h3>
+  <p align="center">
+    <br />
+    <a href="https://github.com/FedeBayer/portfolio-FrontEnd/wiki"><strong>Explore the wiki »</strong></a>
+    <br />
+    <br />
+    <a href="https://porfolio-fb.web.app/">View Live Page</a>
+    ·
+    <a href="https://github.com/FedeBayer/portfolio-FrontEnd/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/FedeBayer/portfolio-FrontEnd/issues">Request Feature</a>
+    .
+    <a href="https://fedebayer.github.io/portfolio-FrontEnd/">View Demo</a>
+  </p>
+</div>
+
+# Introduction
 
 This project is about a **full-stack web**, in this case a web portfolio.
 
-More info about the project in the [Wiki](https://github.com/FedeBayer/portfolio-FrontEnd/wiki)
+Here is the deployed web: <a href="https://porfolio-fb.web.app/">https://porfolio-fb.web.app/</a>
 
-## Technologies
+This part focus on the frontend of the page (**SPA Angular**).
 
-- Angular CLI
-- TypeScript
-- Html & Css & Js & Bootstrap
+Here is more info about the [backend](https://github.com/FedeBayer/portfolio-BackEnd)
+
+<div align="center">
+  <img src="https://images.unsplash.com/photo-1544077960-604201fe74bc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80" width="50%"></img>
+</div>
+
+### Description
+
+The web portfolio shows personal data like education and skills, is made with a distributed architecture, and contains a
+user interface design (front end) that displays the information, a database that stores the previously said data, and an API to provide the information through the internet (back end).
+
+### Built With
+
+* HTML/CSS
+* JavaScript/TypeScript
+
+<h4>Frameworks/Libraries</h4>
+
+* [![Angular][Angular.io]][Angular-url]
+* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+### Prerequisites
+
+* npm
+  ```sh
+  npm install npm@latest -g
+  ```
+
+### Installation
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/FedeBayer/portfolio-FrontEnd.git
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+3. Enter your API in `src/enviroments/enviroment.ts` like for example:
+   ```js
+   
+   const apiBaseUrl = 'http://localhost:8080';
+   const apiAuthUrl = 'http://localhost:8080/auth/';
+   ```
+4. Compile with command
+   ```js
+   ng serve
+   ```
+5. Needs to have backend server running to fetch the data (more in [backend-repo](https://github.com/FedeBayer/portfolio-BackEnd))
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+## Login / Authentication
+
+The authentication is via JSON Web Token(JWT) with the access token and the refresh token.
+
+* Anyone can see the lists of data.
+* To transform the data (insert/update/delete) you need to log in as an **admin**.
+* use `/login` to log in.
+
+
+
+
+<!-- CONTACT -->
+## Contact
+
+[https://www.linkedin.com/in/federicobayerque/](https://www.linkedin.com/in/federicobayerque/)  - federicobayerque@gmail.com
+
+Project Link: [https://github.com/FedeBayer/portfolio-FrontEnd](https://github.com/FedeBayer/portfolio-FrontEnd)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- ACKNOWLEDGMENTS -->
+## Acknowledgments
+
+* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
+* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
+* [Malven's Grid Cheatsheet](https://grid.malven.co/)
+* [Img Shields](https://shields.io)
+* [GitHub Pages](https://pages.github.com)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
+[Angular-url]: https://angular.io/
+[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
+[Bootstrap-url]: https://getbootstrap.com
+
+
+                                                 Angular Info
 
 ## Development
 
