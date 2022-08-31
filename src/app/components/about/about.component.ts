@@ -10,7 +10,7 @@ import { TokenService } from 'src/app/services/token.service';
   styleUrls: ['./about.component.css'],
 })
 export class AboutComponent implements OnInit {
-  person: Person[] | undefined;
+  person: Person | undefined;
   editPerson: Person | undefined;
   isAdmin: boolean = false;
 
@@ -27,7 +27,7 @@ export class AboutComponent implements OnInit {
   public getPersons(): void {
     this.personService.getPersons().subscribe({
       next: (response: Person[]) => {
-        this.person = response;
+        this.person = response[0];
       },
       error: (error: HttpErrorResponse) => {
         alert(error.message);

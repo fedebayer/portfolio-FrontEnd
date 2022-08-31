@@ -8,6 +8,7 @@ import { LoginGuard } from './guards/login.guard';
 const routes: Routes = [
   { path: '', component: PortfolioComponent },
   { path: 'login', component: LoginComponent, canActivate: [LoginGuard] },
+  //example of secure route. In this case anyone can see the portfolio. This secure route is the same portfolio but only can acces admin y users.
   {
     path: 'secure',
     component: PortfolioComponent,

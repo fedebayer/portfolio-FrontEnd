@@ -2,39 +2,45 @@
   <div class="reveal">
     <h2>PROJECTS</h2>
     <div class="title-bar"></div>
-    <span class="edit-icon" (click)="onOpenModal(null!,'add')" *ngIf="isAdmin"><i
+    <span class="edit-icon" (click)="onOpenModal(null!,'add')" *ngIf="isAdmin" aria-label="button to add project"><i
         class="bi bi-plus-square fs-5"></i></span>
     <div class="container">
-      <div class="row d-flex align-items-stretch justify-content-center align-text">
+      <div class="row d-flex align-items-stretch justify-content-center align-text" *ngIf="projects; else noProjects">
         <article *ngFor="let projectItem of projects" class="project-item col-12 col-md-6 col-lg-3">
           <div class="project-content">
-            <img [src]="projectItem.img_url ? projectItem.img_url : defaultImg" alt="project item image"
-              class="project-img">
+            <img [src]="projectItem.img_url ? projectItem.img_url : defaultImg" alt="project image" class="project-img">
             <div class="img-overlay img-overlay--blur">
               <b>{{projectItem.year}}</b>
             </div>
           </div>
           <div class="project-text">
-            <h4>{{projectItem.title}}</h4>
+            <h3>{{projectItem.title}}</h3>
+            <b class="project-languages">{{projectItem.technologies}}</b>
             <p>{{projectItem.description}}</p>
             <div class="project-links"><a *ngIf="projectItem.live_url" [href]="projectItem.live_url" target="_blank"><i
-                  class="bi bi-eye-fill fs-5"></i><b>Live</b></a>
+                  class="bi bi-eye-fill fs-5" alt="link to live page of the project"
+                  aria-label="link to github repository of the project"></i><b>Live</b></a>
               <a *ngIf="projectItem.repo_url" [href]="projectItem.repo_url" target="_blank">
-                <i class="bi bi-github fs-5"></i><b>GitHub</b>
+                <i class="bi bi-github fs-5" alt="link to github repository of the project"
+                  aria-label="link to github repository of the project"></i><b>GitHub</b>
               </a>
             </div>
-            <b class="project-languages">{{projectItem.technologies}}</b>
           </div>
-          <span class="edit-icon" (click)="onOpenModal(projectItem,'edit')" *ngIf="isAdmin"><i
-              class="bi bi-pencil-square fs-5"></i></span>
-          <span class="delete-icon" (click)="onOpenModal(projectItem,'delete')" *ngIf="isAdmin"><i
-              class="bi bi-x-square fs-5"></i></span>
+          <span class="edit-icon" (click)="onOpenModal(projectItem,'edit')" *ngIf="isAdmin"
+            aria-label="button to edit project"><i class="bi bi-pencil-square fs-5"></i></span>
+          <span class="delete-icon" (click)="onOpenModal(projectItem,'delete')" *ngIf="isAdmin"
+            aria-label="button to delete project"><i class="bi bi-x-square fs-5"></i></span>
         </article>
         <div class="repositories d-flex align-items-center">
           <p><a [href]="person?.github_url + '?tab=repositories'" target="_blank"><strong>VIEW ALL
                 PROJECTS</strong></a></p>
         </div>
       </div>
+      <ng-template #noProjects>
+        <div class="spinner-container">
+          <mat-spinner alt="loading..." aria-label="loading..."></mat-spinner>
+        </div>
+      </ng-template>
     </div>
   </div>
 </section>
@@ -50,33 +56,35 @@
       <form #addForm="ngForm" (ngSubmit)="onAddProject(addForm)" class="form">
         <div class="modal-body">
           <div class="m-3">
-            <label for="title" class="form-label">Title:</label>
-            <input type="text" ngModel name="title" class="form-control" maxlength="45" required>
+            <label for="projTitle" class="form-label">Title:</label>
+            <input type="text" ngModel name="title" id="projTitle" class="form-control" maxlength="45" required>
           </div>
           <div class="m-3">
-            <label for="img_url" class="form-label">Image url (optional):</label>
-            <input type="text" ngModel name="img_url" class="form-control" maxlength="100">
+            <label for="projImg_url" class="form-label">Image url (optional):</label>
+            <input type="text" ngModel name="img_url" id="projImg_url" class="form-control" maxlength="100">
           </div>
           <div class="m-3">
-            <label for="description">Description:</label>
-            <textarea ngModel name="description" cols="30" rows="3" class="form-control mt-3" style="resize:none;"
-              maxlength="170" required></textarea>
+            <label for="projDescription">Description:</label>
+            <textarea ngModel name="description" id="projDescription" cols="30" rows="3" class="form-control mt-3"
+              style="resize:none;" maxlength="170" required></textarea>
           </div>
           <div class="m-3">
-            <label for="technologies" class="form-label">Technologies (t1 - t2 ...):</label>
-            <input type="text" ngModel name="technologies" class="form-control" maxlength="45" required>
+            <label for="projTechnologies" class="form-label">Technologies (t1 - t2 ...):</label>
+            <input type="text" ngModel name="technologies" id="projTechnologies" class="form-control" maxlength="45"
+              required>
           </div>
           <div class="m-3">
-            <label for="live_url" class="form-label">Live page url (optional):</label>
-            <input type="text" ngModel name="live_url" class="form-control" maxlength="100">
+            <label for="projLive_url" class="form-label">Live page url (optional):</label>
+            <input type="text" ngModel name="live_url" id="projLive_url" class="form-control" maxlength="100">
           </div>
           <div class="m-3">
-            <label for="repo_url" class="form-label">Repository url (optional):</label>
-            <input type="text" ngModel name="repo_url" class="form-control">
+            <label for="projRepo_url" class="form-label">Repository url (optional):</label>
+            <input type="text" ngModel name="repo_url" id="projRepo_url" class="form-control">
           </div>
           <div class="m-3">
-            <label for="year" class="form-label">Year (2021 - 3000):</label>
-            <input type="number" ngModel name="year" class="form-control" min="2021" max="3000" value="2022" required>
+            <label for="projYear" class="form-label">Year (2021 - 3000):</label>
+            <input type="number" ngModel name="year" id="projYear" class="form-control" min="2021" max="3000"
+              value="2022" required>
           </div>
         </div>
         <div class="modal-footer justify-content-center">
@@ -99,37 +107,40 @@
       <form #editForm="ngForm" class="form">
         <div class="modal-body">
           <div class="m-3">
-            <label for="title" class="form-label">Title:</label>
-            <input type="text" ngModel="{{editProject?.title}}" name="title" class="form-control" maxlength="45"
-              required>
+            <label for="editProjTitle" class="form-label">Title:</label>
+            <input type="text" ngModel="{{editProject?.title}}" name="title" id="editProjTitle" class="form-control"
+              maxlength="45" required>
             <input type="hidden" ngModel="{{editProject?.id_project}}" name="id_project" class="form-control" />
           </div>
           <div class="m-3">
-            <label for="img_url" class="form-label">Image:</label>
-            <input type="text" ngModel="{{editProject?.img_url}}" name="img_url" class="form-control" maxlength="100">
+            <label for="editProjImg_url" class="form-label">Image:</label>
+            <input type="text" ngModel="{{editProject?.img_url}}" name="img_url" id="editProjImg_url"
+              class="form-control" maxlength="100">
           </div>
           <div class="m-3">
-            <label for="description">Description:</label>
-            <textarea ngModel="{{editProject?.description}}" name="description" cols="30" rows="3"
-              class="form-control mt-3" style="resize:none;" maxlength="170" required></textarea>
+            <label for="editProjDescription">Description:</label>
+            <textarea ngModel="{{editProject?.description}}" name="description" id="editProjDescription" cols="30"
+              rows="3" class="form-control mt-3" style="resize:none;" maxlength="170" required></textarea>
           </div>
           <div class="m-3">
-            <label for="technologies" class="form-label">Technologies (t1 - t2 ...):</label>
-            <input type="text" ngModel="{{editProject?.technologies}}" name="technologies" class="form-control"
-              maxlength="45" required>
+            <label for="editProjTechnologies" class="form-label">Technologies (t1 - t2 ...):</label>
+            <input type="text" ngModel="{{editProject?.technologies}}" name="technologies" id="editProjTechnologies"
+              class="form-control" maxlength="45" required>
           </div>
           <div class="m-3">
-            <label for="live_url" class="form-label">Live url (optional):</label>
-            <input type="text" ngModel="{{editProject?.live_url}}" name="live_url" class="form-control" maxlength="100">
+            <label for="editProjLive_url" class="form-label">Live url (optional):</label>
+            <input type="text" ngModel="{{editProject?.live_url}}" name="live_url" id="editProjLive_url"
+              class="form-control" maxlength="100">
           </div>
           <div class="m-3">
-            <label for="repo_url" class="form-label">Repository link:</label>
-            <input type="text" ngModel="{{editProject?.repo_url}}" name="repo_url" class="form-control" maxlength="100">
+            <label for="editProjRepo_url" class="form-label">Repository link:</label>
+            <input type="text" ngModel="{{editProject?.repo_url}}" name="repo_url" id="editProjRepo_url"
+              class="form-control" maxlength="100">
           </div>
           <div class="m-3">
-            <label for="year" class="form-label">Year (2021 - 3000):</label>
-            <input type="number" ngModel="{{editProject?.year}}" name="year" class="form-control" min="2021" max="3000"
-              value="2022" required>
+            <label for="editProjYear" class="form-label">Year (2021 - 3000):</label>
+            <input type="number" ngModel="{{editProject?.year}}" name="year" id="editProjYear" class="form-control"
+              min="2021" max="3000" value="2022" required>
           </div>
         </div>
         <div class="modal-footer justify-content-center">

@@ -2,30 +2,36 @@
   <div class="reveal">
     <h2>EDUCATION</h2>
     <div class="title-bar"></div>
-    <span class="edit-icon" (click)="onOpenModal(null!,'add')" *ngIf="isAdmin"><i
+    <span class="edit-icon" (click)="onOpenModal(null!,'add')" *ngIf="isAdmin" aria-label="button to add education"><i
         class="bi bi-plus-square fs-5"></i></span>
-    <div class="row professional-log-container">
+    <div class="row professional-log-container" *ngIf="educations; else noEducations">
       <div *ngFor="let eduItem of educations" class="professional-log-item col-12 col-sm-6">
         <div class="professional-log-img">
-          <img [src]="eduItem.img_url ? eduItem.img_url : defaultImg" alt="education item image"
+          <img [src]="eduItem.img_url ? eduItem.img_url : defaultImg" alt="institution logo"
             class="professional-log-logo">
         </div>
         <div class="professional-log-text">
-          <h4>{{eduItem.title}}</h4>
-          <h5>{{eduItem.institution}}</h5>
+          <h3>{{eduItem.title}}</h3>
+          <h4>{{eduItem.institution}}</h4>
           <p>{{eduItem.description}}</p>
           <div class="d-flex align-items-center">
             <div class="years-date">
               <p>{{eduItem.date}}</p>
             </div>
-            <span class="edit-icon" (click)="onOpenModal(eduItem,'edit')" *ngIf="isAdmin"><i
-                class="bi bi-pencil-square fs-5"></i></span>
-            <span class="delete-icon" (click)="onOpenModal(eduItem,'delete')" *ngIf="isAdmin"><i
-                class="bi bi-x-square fs-5"></i></span>
+            <span class="edit-icon" (click)="onOpenModal(eduItem,'edit')" *ngIf="isAdmin"
+              aria-label="button to edit education"><i class="bi bi-pencil-square fs-5"></i></span>
+            <span class="delete-icon" (click)="onOpenModal(eduItem,'delete')" *ngIf="isAdmin"
+              aria-label="button to delete education"><i class="bi bi-x-square fs-5"></i></span>
           </div>
         </div>
       </div>
     </div>
+    <ng-template #noEducations>
+      <div class="spinner-container">
+        <mat-spinner alt="loading..." aria-label="loading...">
+        </mat-spinner>
+      </div>
+    </ng-template>
   </div>
 </section>
 
@@ -41,25 +47,26 @@
       <form #addForm="ngForm" (ngSubmit)="onAddEducation(addForm)" class="form">
         <div class="modal-body">
           <div class="m-3">
-            <label for="title" class="form-label">Title:</label>
-            <input type="text" ngModel name="title" class="form-control" maxlength="70" required>
+            <label for="eduTitle" class="form-label">Title:</label>
+            <input type="text" ngModel name="title" id="eduTitle" class="form-control" maxlength="70" required>
           </div>
           <div class="m-3">
-            <label for="institution" class="form-label">Institution:</label>
-            <input type="text" ngModel name="institution" class="form-control" maxlength="70" required>
+            <label for="eduInstitution" class="form-label">Institution:</label>
+            <input type="text" ngModel name="institution" id="eduInstitution" class="form-control" maxlength="70"
+              required>
           </div>
           <div class="m-3">
-            <label for="img_url" class="form-label">Image url (optional):</label>
-            <input type="text" ngModel name="img_url" class="form-control" maxlength="100">
+            <label for="eduImg_url" class="form-label">Image url (optional):</label>
+            <input type="text" ngModel name="img_url" id="eduImg_url" class="form-control" maxlength="100">
           </div>
           <div class="m-3">
-            <label for="description">Description</label>
-            <textarea ngModel name="description" cols="30" rows="3" class="form-control mt-3" style="resize:none;"
-              maxlength="240" required></textarea>
+            <label for="eduDescription">Description</label>
+            <textarea ngModel name="description" id="eduDescription" cols="30" rows="3" class="form-control mt-3"
+              style="resize:none;" maxlength="240" required></textarea>
           </div>
           <div class="m-3">
-            <label for="date" class="form-label">Period (<i>year month - year month/at present</i>):</label>
-            <input type="text" ngModel name="date" class="form-control" maxlength="45" required>
+            <label for="eduDate" class="form-label">Period (<i>year month - year month/at present</i>):</label>
+            <input type="text" ngModel name="date" id="eduDate" class="form-control" maxlength="45" required>
           </div>
         </div>
         <div class="modal-footer justify-content-center">
@@ -82,25 +89,25 @@
       <form #editForm="ngForm" class="form">
         <div class="modal-body">
           <div class="m-3">
-            <label for="title" class="form-label">Title:</label>
-            <input type="text" ngModel="{{editEducation?.title}}" name="title" class="form-control" maxlength="70"
-              required>
+            <label for="editEduTitle" class="form-label">Title:</label>
+            <input type="text" ngModel="{{editEducation?.title}}" name="title" id="editEduTitle" class="form-control"
+              maxlength="70" required>
             <input type="hidden" ngModel="{{ editEducation?.id_education }}" name="id_education" class="form-control" />
           </div>
           <div class="m-3">
-            <label for="institution" class="form-label">Institution:</label>
-            <input type="text" ngModel="{{editEducation?.institution}}" name="institution" class="form-control"
-              maxlength="70" required>
+            <label for="editEduInstitution" class="form-label">Institution:</label>
+            <input type="text" ngModel="{{editEducation?.institution}}" name="institution" id="editEduInstitution"
+              class="form-control" maxlength="70" required>
           </div>
           <div class="m-3">
-            <label for="description">Description:</label>
-            <textarea ngModel="{{editEducation?.description}}" name="description" cols="30" rows="3"
-              class="form-control mt-3" style="resize:none;" maxlength="240" required></textarea>
+            <label for="editEduDescription">Description:</label>
+            <textarea ngModel="{{editEducation?.description}}" name="description" id="editEduDescription" cols="30"
+              rows="3" class="form-control mt-3" style="resize:none;" maxlength="240" required></textarea>
           </div>
           <div class="m-3">
-            <label for="date" class="form-label">Period (<i>year month - year month/at present</i>):</label>
-            <input type="text" ngModel="{{editEducation?.date}}" name="date" class="form-control" maxlength="45"
-              required>
+            <label for="editEduDate" class="form-label">Period (<i>year month - year month/at present</i>):</label>
+            <input type="text" ngModel="{{editEducation?.date}}" name="date" id="editEduDate" class="form-control"
+              maxlength="45" required>
           </div>
         </div>
         <div class="modal-footer justify-content-center">

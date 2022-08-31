@@ -2,29 +2,34 @@
   <div class="reveal">
     <h2>EXPERIENCE</h2>
     <div class="title-bar"></div>
-    <span class="edit-icon" (click)="onOpenModal(null!,'add')" *ngIf="isAdmin"><i
+    <span class="edit-icon" (click)="onOpenModal(null!,'add')" *ngIf="isAdmin" aria-label="button to add experience"><i
         class="bi bi-plus-square fs-5"></i></span>
-    <div class="row professional-log-container">
+    <div class="row professional-log-container" *ngIf="experiences; else noExperiences">
       <div *ngFor="let expItem of experiences" class="professional-log-item col-12 col-sm-6">
         <div class="professional-log-img">
-          <img [src]="expItem.img_url ? expItem.img_url : defaultImg" alt="experience item image">
+          <img [src]="expItem.img_url ? expItem.img_url : defaultImg" alt="company logo">
         </div>
         <div class="professional-log-text">
-          <h4>{{expItem.title}}</h4>
-          <h5>{{expItem.company}}</h5>
+          <h3>{{expItem.title}}</h3>
+          <h4>{{expItem.company}}</h4>
           <p>{{expItem.description}}</p>
           <div class="d-flex align-items-center">
             <div class="years-date">
               <p>{{expItem.date}}</p>
             </div>
-            <span class="edit-icon" (click)="onOpenModal(expItem,'edit')" *ngIf="isAdmin"><i
-                class="bi bi-pencil-square fs-5"></i></span>
-            <span class="delete-icon" (click)="onOpenModal(expItem,'delete')" *ngIf="isAdmin"><i
-                class="bi bi-x-square fs-5"></i></span>
+            <span class="edit-icon" (click)="onOpenModal(expItem,'edit')" *ngIf="isAdmin"
+              aria-label="button to edit experience"><i class="bi bi-pencil-square fs-5"></i></span>
+            <span class="delete-icon" (click)="onOpenModal(expItem,'delete')" *ngIf="isAdmin"
+              aria-label="button to delete experience"><i class="bi bi-x-square fs-5"></i></span>
           </div>
         </div>
       </div>
     </div>
+    <ng-template #noExperiences>
+      <div class="spinner-container">
+        <mat-spinner alt="loading..." aria-label="loading..."></mat-spinner>
+      </div>
+    </ng-template>
   </div>
 </section>
 
@@ -39,25 +44,25 @@
       <form #addForm="ngForm" (ngSubmit)="onAddExperience(addForm)" class="form">
         <div class="modal-body">
           <div class="m-3">
-            <label for="title" class="form-label">Position:</label>
-            <input type="text" ngModel name="title" class="form-control" maxlength="70" required>
+            <label for="expTitle" class="form-label">Position:</label>
+            <input type="text" ngModel name="title" id="expTitle" class="form-control" maxlength="70" required>
           </div>
           <div class="m-3">
-            <label for="company" class="form-label">Company (optional):</label>
-            <input type="text" ngModel name="company" class="form-control" maxlength="70">
+            <label for="expCompany" class="form-label">Company (optional):</label>
+            <input type="text" ngModel name="company" id="expCompany" class="form-control" maxlength="70">
           </div>
           <div class="m-3">
-            <label for="img_url" class="form-label">Image url (optional):</label>
-            <input type="text" ngModel name="img_url" class="form-control" maxlength="100">
+            <label for="expImg_url" class="form-label">Image url (optional):</label>
+            <input type="text" ngModel name="img_url" id="expImg_url" class="form-control" maxlength="100">
           </div>
           <div class="m-3">
-            <label for="description">Description:</label>
-            <textarea ngModel name="description" cols="30" rows="3" class="form-control mt-3" style="resize:none;"
-              maxlength="240" required></textarea>
+            <label for="expDescription">Description:</label>
+            <textarea ngModel name="description" id="expDescription" cols="30" rows="3" class="form-control mt-3"
+              style="resize:none;" maxlength="240" required></textarea>
           </div>
           <div class="m-3">
-            <label for="date" class="form-label">Period (<i>year month - year month/at present</i>):</label>
-            <input type="text" ngModel name="date" class="form-control" maxlength="45" required>
+            <label for="expDate" class="form-label">Period (<i>year month - year month/at present</i>):</label>
+            <input type="text" ngModel name="date" id="expDate" class="form-control" maxlength="45" required>
           </div>
         </div>
         <div class="modal-footer justify-content-center">
@@ -80,30 +85,31 @@
       <form #editForm="ngForm" class="form">
         <div class="modal-body">
           <div class="m-3">
-            <label for="title" class="form-label">Position:</label>
-            <input type="text" ngModel="{{editExperience?.title}}" name="title" class="form-control" maxlength="70"
-              required>
+            <label for="editExpTitle" class="form-label">Position:</label>
+            <input type="text" ngModel="{{editExperience?.title}}" name="title" id="editExpTitle" class="form-control"
+              maxlength="70" required>
             <input type="hidden" ngModel="{{editExperience?.id_experience}}" name="id_experience"
               class="form-control" />
           </div>
           <div class="m-3">
-            <label for="company" class="form-label">Company (optional):</label>
-            <input type="text" ngModel="{{editExperience?.company}}" name="company" class="form-control" maxlength="70">
+            <label for="editExpCompany" class="form-label">Company (optional):</label>
+            <input type="text" ngModel="{{editExperience?.company}}" name="company" id="editExpCompany"
+              class="form-control" maxlength="70">
           </div>
           <div class="m-3">
-            <label for="img_url" class="form-label">Image url (optional):</label>
-            <input type="text" ngModel="{{editExperience?.img_url}}" name="img_url" class="form-control"
-              maxlength="100">
+            <label for="editExpImg_url" class="form-label">Image url (optional):</label>
+            <input type="text" ngModel="{{editExperience?.img_url}}" name="img_url" id="editExpImg_url"
+              class="form-control" maxlength="100">
           </div>
           <div class="m-3">
-            <label for="description">Description:</label>
-            <textarea ngModel="{{editExperience?.description}}" name="description" cols="30" rows="3"
-              class="form-control mt-3" style="resize:none;" maxlength="240" required></textarea>
+            <label for="editExpDescription">Description:</label>
+            <textarea ngModel="{{editExperience?.description}}" name="description" id="editExpDescription" cols="30"
+              rows="3" class="form-control mt-3" style="resize:none;" maxlength="240" required></textarea>
           </div>
           <div class="m-3">
-            <label for="date" class="form-label">Period (<i>year month - year month/at present</i>):</label>
-            <input type="text" ngModel="{{editExperience?.date}}" name="date" class="form-control" maxlength="45"
-              required>
+            <label for="editExpDate" class="form-label">Period (<i>year month - year month/at present</i>):</label>
+            <input type="text" ngModel="{{editExperience?.date}}" name="date" id="editExpDate" class="form-control"
+              maxlength="45" required>
           </div>
         </div>
         <div class="modal-footer justify-content-center">

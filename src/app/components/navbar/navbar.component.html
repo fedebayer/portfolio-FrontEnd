@@ -27,9 +27,10 @@
         </ul>
       </div>
       <div class="user">
-        <a href="/login" *ngIf="!isLogged"><i class="bi bi-person-circle fs-5" style="font-size: 20rem;"></i></a>
-        <a href="/" *ngIf="isLogged" (click)="onLogOut()"><i class="bi bi-box-arrow-in-right fs-5"
-            style="size: 20rem;"></i></a>
+        <a href="/login" *ngIf="!isLogged"><i class="bi bi-person-circle fs-5" style="font-size: 20rem;"
+            alt="link to login page" aria-label="link to login page"></i></a>
+        <a href="/" *ngIf="isLogged" (click)="onLogOut()"><i class="bi bi-box-arrow-in-right fs-5" style="size: 20rem;"
+            alt="logout button" aria-label="logout button"></i></a>
       </div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

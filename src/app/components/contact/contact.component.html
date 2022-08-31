@@ -4,15 +4,18 @@
     <div class="title-bar"></div>
     <br>
     <form class="contact-form box-shadow-1 animated pop-in">
-      <input type="text" name="name" placeholder="Name" title="Only accepts letters and blank spaces"
+      <label class="form-label" for="contactName"><b>Name</b></label>
+      <input type="text" name="name" id="contactName" title="Only accepts letters and blank spaces"
         pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" required>
-      <input type="email" name="email" placeholder="Enter email" title="Incorrect email"
+      <label class="form-label" for="contactEmail"><b>Email</b></label>
+      <input type="email" name="email" id="contactEmail" title="Incorrect email"
         pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$" required>
-      <textarea name="message" col="50" rows="10" placeholder="Your message" required></textarea>
+      <label class="form-label" for="contactMessage"><b>Message</b></label>
+      <textarea name="message" id="contactMessage" col="50" rows="10" required></textarea>
       <div class="contact-form-loader text-center" id="contact-form-loader">
         <img src="assets/images/icons/loader.svg" alt="Sending...">
       </div>
-      <input class="submit-btn" type="submit">
+      <button class="submit-btn" type="submit">Send</button>
     </form>
   </div>
 </section>

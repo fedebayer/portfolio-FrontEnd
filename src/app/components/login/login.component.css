@@ -14,8 +14,8 @@
 }
 
 .btn-sub-log {
-  background-color: var(--first-color);
-  border-color: var(--first-color);
+  margin-right: 1rem;
+  margin-left: 3rem;
 }
 
 .form-label {

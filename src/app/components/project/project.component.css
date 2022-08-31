@@ -3,6 +3,7 @@
 *PROJECTS
 ====================
 */
+
 .img-overlay {
   position: absolute;
   top: 0;
@@ -16,15 +17,28 @@
   justify-content: center;
   opacity: 0;
   transition: opacity 0.25s;
+  -webkit-transition: opacity 0.25s;
+  -moz-transition: opacity 0.25s;
+  -ms-transition: opacity 0.25s;
+  -o-transition: opacity 0.25s;
 }
 
 .img-overlay--blur {
   backdrop-filter: blur(5px);
 }
 
+
 .img-overlay>* {
   transform: translateY(20px);
+  -webkit-transform: translateY(20px);
+  -moz-transform: translateY(20px);
+  -ms-transform: translateY(20px);
+  -o-transform: translateY(20px);
   transition: transform 0.25s;
+  -webkit-transition: transform 0.25s;
+  -moz-transition: transform 0.25s;
+  -ms-transition: transform 0.25s;
+  -o-transition: transform 0.25s;
 }
 
 .img-overlay:hover {
@@ -33,6 +47,10 @@
 
 .img-overlay:hover>* {
   transform: translateY(0px);
+  -webkit-transform: translateY(0px);
+  -moz-transform: translateY(0px);
+  -ms-transform: translateY(0px);
+  -o-transform: translateY(0px);
 }
 
 .project-links {
@@ -49,12 +67,6 @@
   min-width: 43%;
 }
 
-.project-links .iconify {
-  float: none;
-  height: 40%;
-  width: 50%;
-  min-width: 50%;
-}
 
 .img-overlay a {
   height: 30%;
@@ -73,7 +85,7 @@
 }
 
 .project-languages {
-  color: var(--second-color);
+  margin-bottom: 1rem;
 }
 
 .project-item {
@@ -83,11 +95,15 @@
 
 .projects b {
   display: flex;
-  justify-content: center;
+  color: var(--first-color);
 }
 
 .project-text {
   padding: 1rem;
+}
+
+.project-text h3 {
+  font-size: 1.5rem;
 }
 
 .repositories {

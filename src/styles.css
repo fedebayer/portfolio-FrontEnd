@@ -1,3 +1,5 @@
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
 /*
 ====================
 *GLOBAL VARIABLES
@@ -71,17 +73,16 @@ h1, h2, h3 {
 }
 
 h3 {
-  font-size: 2 rem;
+  font-size: 1.5 rem;
 }
 
 h4 {
-  font-size: 1.5 rem;
+  font-size: 1.25 rem;
 }
 
 html {
   scroll-behavior: smooth;
 }
-
 
 .intro {
   position: fixed;
@@ -91,9 +92,12 @@ html {
   width: 100%;
   height: 100vh;
   background-color: #05090F;
-  transition: 1s;
+  transition: 1;
+  -webkit-transition: 1;
+  -moz-transition: 1;
+  -ms-transition: 1;
+  -o-transition: 1;
 }
-
 
 img {
   max-width: 100%;
@@ -103,12 +107,24 @@ img {
 .reveal {
   position: relative;
   transform: translateY(150px);
+  -webkit-transform: translateY(150px);
+  -moz-transform: translateY(150px);
+  -ms-transform: translateY(150px);
+  -o-transform: translateY(150px);
   opacity: 0;
   transition: all 0.8s ease;
+  -webkit-transition: all 0.8s ease;
+  -moz-transition: all 0.8s ease;
+  -ms-transition: all 0.8s ease;
+  -o-transition: all 0.8s ease;
 }
 
 .reveal.active {
   transform: translateY(0px);
+  -webkit-transform: translateY(0px);
+  -moz-transform: translateY(0px);
+  -ms-transform: translateY(0px);
+  -o-transform: translateY(0px);
   opacity: 1;
 }
 
@@ -133,10 +149,6 @@ header, .home {
 
 .logo {
   width: 20%;
-}
-
-span.fades {
-  color: #4985a5;
 }
 
 header {
@@ -169,12 +181,13 @@ header {
   background-color: var(--grey-light-color);
 }
 
-.professional-log h4 {
+.professional-log-text h3 {
   font-size: 1.1rem;
   font-weight: bold;
+  justify-content: initial;
 }
 
-.professional-log h5 {
+.professional-log-text h4 {
   font-size: 0.9rem;
   font-weight: bold;
   font-style: italic;
@@ -197,6 +210,15 @@ header {
   margin-bottom: 0;
 }
 
+.mat-progress-spinner circle, .mat-spinner circle {
+  stroke: var(--first-color);
+}
+
+.spinner-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 /*
 ====================

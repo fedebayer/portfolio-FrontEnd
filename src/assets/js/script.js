@@ -8,49 +8,11 @@ window.addEventListener("DOMContentLoaded", () => {
 */
   const intro = document.querySelector(".intro");
   setTimeout(() => {
-    intro.style.left = "-200vh";
+    intro.style.left = "-220vh";
   }, 50);
 
   //this if is for cancel the javascript when the page is not on the portfolio like on login (not having the intro)
   if (document.querySelector(".experience") != null) {
-    /*
-    ====================
-    *Title color change
-    ====================
-    */
-
-    setTimeout(() => {
-      const text = document.querySelector(".fancy");
-      const strText = text.textContent;
-      const splitText = strText.split("");
-      text.textContent = "";
-
-      for (let i = 0; i < splitText.length; i++) {
-        text.innerHTML += "<span>" + splitText[i] + "</span>";
-        if (i == 8) {
-          text.innerHTML += "<p style='min-width:2%'></p>";
-        }
-      }
-
-      let char = 0;
-      let timer = setInterval(onTick, 70);
-
-      function onTick() {
-        let span = text.querySelectorAll("span")[char];
-        span.classList.add("fades");
-        char++;
-        if (char === splitText.length) {
-          complete();
-          return;
-        }
-      }
-
-      function complete() {
-        clearInterval(timer);
-        timer = null;
-      }
-    }, 700);
-
     /*
     ====================
     *Scroll animations
@@ -85,7 +47,6 @@ window.addEventListener("DOMContentLoaded", () => {
   *Progress bar animations
   ====================
   */
-
     const skillsSection = document.getElementById("skillset");
 
     function showProgress() {
@@ -98,39 +59,43 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     //functions to recharge the progress bars after an update
-    setTimeout(() => {
-      const skillBtns = document.querySelectorAll(".skill-btn");
-      for (var i = 0; i < skillBtns.length; i++) {
-        skillBtns[i].addEventListener("click", () => {
-          setTimeout(() => {
-            let formRangeEdit = document.querySelectorAll(".form-range-edit");
-            for (var i = 0; i < formRangeEdit.length; i++) {
-              formRangeEdit[i].addEventListener("change", () => {
-                document.getElementById("range-bar-value-edit").value =
-                  formRangeEdit[0].value;
-              });
-            }
-            let formRangeLanguageEdit = document.querySelectorAll(
-              ".form-range-language-edit"
-            );
-            for (var i = 0; i < formRangeLanguageEdit.length; i++) {
-              formRangeLanguageEdit[i].addEventListener("change", () => {
-                document.getElementById("range-bar-value-language-edit").value =
-                  formRangeLanguageEdit[0].value;
-              });
-            }
-            let changeSkillBtns = document.querySelectorAll(".changeSkillBtn");
-            for (var i = 0; i < changeSkillBtns.length; i++) {
-              changeSkillBtns[i].addEventListener("click", () => {
-                setTimeout(() => {
-                  showProgress();
-                }, 50);
-              });
-            }
-          }, 1000);
-        });
-      }
-    }, 1000);
+    if (document.querySelectorAll(".skill-btn") != null) {
+      setTimeout(() => {
+        const skillBtns = document.querySelectorAll(".skill-btn");
+        for (var i = 0; i < skillBtns.length; i++) {
+          skillBtns[i].addEventListener("click", () => {
+            setTimeout(() => {
+              let formRangeEdit = document.querySelectorAll(".form-range-edit");
+              for (var i = 0; i < formRangeEdit.length; i++) {
+                formRangeEdit[i].addEventListener("change", () => {
+                  document.getElementById("range-bar-value-edit").value =
+                    formRangeEdit[0].value;
+                });
+              }
+              let formRangeLanguageEdit = document.querySelectorAll(
+                ".form-range-language-edit"
+              );
+              for (var i = 0; i < formRangeLanguageEdit.length; i++) {
+                formRangeLanguageEdit[i].addEventListener("change", () => {
+                  document.getElementById(
+                    "range-bar-value-language-edit"
+                  ).value = formRangeLanguageEdit[0].value;
+                });
+              }
+              let changeSkillBtns =
+                document.querySelectorAll(".changeSkillBtn");
+              for (var i = 0; i < changeSkillBtns.length; i++) {
+                changeSkillBtns[i].addEventListener("click", () => {
+                  setTimeout(() => {
+                    showProgress();
+                  }, 50);
+                });
+              }
+            }, 1000);
+          });
+        }
+      }, 1000);
+    }
 
     /*
     ====================

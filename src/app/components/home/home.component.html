@@ -1,24 +1,29 @@
 <section id="home" class="home">
   <div class="intro">
   </div>
-  <article class="hero-img" *ngIf="person?.banner_url"
-    [ngStyle]="{'background-image':'url(' + person?.banner_url + ')'}" alt="background image">
+  <article class="hero-img" *ngIf="person?.banner_url; else noBanner"
+    [ngStyle]="{'background-image':'url(' + person?.banner_url + ')'}" alt="background image of a city">
     <aside class="hero-img-opacity">
       <div class="hero-img-content">
-        <h1 class="fancy">{{person?.name!}}</h1>
+        <h1>{{person?.name!}}</h1>
         <h2>{{person?.job_title!}}</h2>
         <ul class="social">
           <a *ngIf="person?.linkedin_url" [href]="person?.linkedin_url" target="_blank">
-            <li><i class="bi bi-linkedin fs-5"></i></li>
+            <li><i class="bi bi-linkedin fs-5" alt="link to my linkedin" aria-label="link to my linkedin"></i></li>
           </a>
           <a *ngIf="person?.email" [href]="'mailto:'+person?.email" target="_blank">
-            <li><i class="bi bi-envelope fs-5"></i></li>
+            <li><i class="bi bi-envelope fs-5" alt="link to my email" aria-label="link to my email"></i></li>
           </a>
           <a *ngIf="person?.github_url" [href]="person?.github_url" target="_blank">
-            <li><i class="bi bi-github fs-5"></i></li>
+            <li><i class="bi bi-github fs-5" alt="link to my github" aria-label="link to my github"></i></li>
           </a>
         </ul>
       </div>
     </aside>
   </article>
+  <ng-template #noBanner>
+    <div class="spinner-container">
+      <mat-spinner alt="loading..." aria-label="loading..."></mat-spinner>
+    </div>
+  </ng-template>
 </section>

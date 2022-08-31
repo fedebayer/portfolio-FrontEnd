@@ -44,12 +44,6 @@
   color: var(--white-color);
 }
 
-.contact .edit-icon .iconify {
-  float: right;
-  height: 2%;
-  width: 2%;
-}
-
 .contact-form>* {
   padding: 0.5rem;
   margin: 1rem auto;
@@ -71,6 +65,10 @@
   outline: none;
   border-radius: 30px;
   transition: 0.4s;
+  -webkit-transition: 0.4s;
+  -moz-transition: 0.4s;
+  -ms-transition: 0.4s;
+  -o-transition: 0.4s;
 }
 
 .submit-btn:hover {

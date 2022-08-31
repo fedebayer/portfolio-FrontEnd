@@ -5,59 +5,78 @@
     <div class="row">
       <div class="skill-item skill-item1 col-12 col-sm-6">
         <h3>Skills</h3>
-        <span class="edit-icon skill-btn" (click)="onOpenModal(null!,'add')" *ngIf="isAdmin"><i
-            class="bi bi-plus-square fs-5"></i></span>
-        <div *ngFor="let skillItem of skills">
-          <div>
-            <b>{{skillItem.name}}</b>
-            <span class="edit-icon skill-btn" (click)="onOpenModal(skillItem,'edit')" *ngIf="isAdmin"><i
-                class="bi bi-pencil-square fs-5"></i></span>
-            <span class="delete-icon skill-btn" (click)="onOpenModal(skillItem,'delete')" *ngIf="isAdmin"><i
-                class="bi bi-x-square fs-5"></i></span>
-          </div>
-          <div class="progresss">
-            <div class="progresss-bar" data-progress="75">
-              <input type="hidden" value="{{skillItem.lvl}}">
-              <span>{{skillItem.lvl}}%</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="skill-item col-12 col-sm-6">
-        <div>
-          <h3>Languages</h3>
-          <span class="edit-icon skill-btn" (click)="onOpenModalLanguage(null!,'add')" *ngIf="isAdmin"><i
-              class="bi bi-plus-square fs-5"></i></span>
-          <div *ngFor="let langItem of languages">
+        <span class="edit-icon skill-btn" (click)="onOpenModal(null!,'add')" *ngIf="isAdmin"
+          aria-label="button to add skill"><i class="bi bi-plus-square fs-5"></i></span>
+        <div *ngIf="skills; else noSkills">
+          <div *ngFor="let skillItem of skills">
             <div>
-              <b>{{langItem.name}}</b>
-              <span class="edit-icon skill-btn" (click)="onOpenModalLanguage(langItem,'edit')" *ngIf="isAdmin"><i
-                  class="bi bi-pencil-square fs-5"></i></span>
-              <span class="delete-icon skill-btn" (click)="onOpenModalLanguage(langItem,'delete')" *ngIf="isAdmin"><i
-                  class="bi bi-x-square fs-5"></i></span>
+              <b>{{skillItem.name}}</b>
+              <span class="edit-icon skill-btn" (click)="onOpenModal(skillItem,'edit')" *ngIf="isAdmin"
+                aria-label="button to edit skill"><i class="bi bi-pencil-square fs-5"></i></span>
+              <span class="delete-icon skill-btn" (click)="onOpenModal(skillItem,'delete')" *ngIf="isAdmin"
+                aria-label="button to delete skill"><i class="bi bi-x-square fs-5"></i></span>
             </div>
             <div class="progresss">
-              <div class="progresss-bar">
-                <input type="hidden" value="{{langItem.lvl}}">
-                <span>{{langItem.lvl}}%</span>
+              <div class="progresss-bar" data-progress="75">
+                <input type="hidden" value="{{skillItem.lvl}}">
+                <span>{{skillItem.lvl}}%</span>
               </div>
             </div>
           </div>
         </div>
+        <ng-template #noSkills>
+          <div class="spinner-container">
+            <mat-spinner alt="loading..." aria-label="loading..."></mat-spinner>
+          </div>
+        </ng-template>
+      </div>
+      <div class="skill-item col-12 col-sm-6">
+        <div>
+          <h3>Languages</h3>
+          <span class="edit-icon skill-btn" (click)="onOpenModalLanguage(null!,'add')" *ngIf="isAdmin"
+            aria-label="button to add language"><i class="bi bi-plus-square fs-5"></i></span>
+          <div *ngIf="languages; else noLanguages">
+            <div *ngFor="let langItem of languages">
+              <div>
+                <b>{{langItem.name}}</b>
+                <span class="edit-icon skill-btn" (click)="onOpenModalLanguage(langItem,'edit')" *ngIf="isAdmin"
+                  aria-label="button to edit language"><i class="bi bi-pencil-square fs-5"></i></span>
+                <span class="delete-icon skill-btn" (click)="onOpenModalLanguage(langItem,'delete')" *ngIf="isAdmin"
+                  aria-label="button to delete language"><i class="bi bi-x-square fs-5"></i></span>
+              </div>
+              <div class="progresss">
+                <div class="progresss-bar">
+                  <input type="hidden" value="{{langItem.lvl}}">
+                  <span>{{langItem.lvl}}%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ng-template #noLanguages>
+            <div class="spinner-container">
+              <mat-spinner alt="loading..." aria-label="loading..."></mat-spinner>
+            </div>
+          </ng-template>
+        </div>
         <div class="softSkills" id="softSkills">
           <h3>Soft Skills</h3>
-          <span class="edit-icon" (click)="onOpenModalSoft(null!,'add')" *ngIf="isAdmin"><i
-              class="bi bi-plus-square fs-5"></i></span>
-          <div class="row d-flex column">
+          <span class="edit-icon" (click)="onOpenModalSoft(null!,'add')" *ngIf="isAdmin"
+            aria-label="button to add soft skill"><i class="bi bi-plus-square fs-5"></i></span>
+          <div class="row d-flex column" *ngIf="softSkills; else noSoftSkills">
             <div *ngFor="let softItem of softSkills" class="softSkill-item col-6 col-lg-3">
               <img src="assets/images/icons/softSkill-icon.png" height="30" width="25" alt="blue square">
               <b>{{softItem.name}}</b>
-              <span class="edit-icon" (click)="onOpenModalSoft(softItem,'edit')" *ngIf="isAdmin"><i
-                  class="bi bi-pencil-square fs-5"></i></span>
-              <span class="delete-icon" (click)="onOpenModalSoft(softItem,'delete')" *ngIf="isAdmin"><i
-                  class="bi bi-x-square fs-5"></i></span>
+              <span class="edit-icon" (click)="onOpenModalSoft(softItem,'edit')" *ngIf="isAdmin"
+                aria-label="button to edit soft skill"><i class="bi bi-pencil-square fs-5"></i></span>
+              <span class="delete-icon" (click)="onOpenModalSoft(softItem,'delete')" *ngIf="isAdmin"
+                aria-label="button to delete soft skill"><i class="bi bi-x-square fs-5"></i></span>
             </div>
           </div>
+          <ng-template #noSoftSkills>
+            <div class="spinner-container">
+              <mat-spinner alt="loading..." aria-label="loading..."></mat-spinner>
+            </div>
+          </ng-template>
         </div>
       </div>
     </div>
@@ -75,13 +94,14 @@
       <form #addForm="ngForm" (ngSubmit)="onAddSkill(addForm)" class="form">
         <div class="modal-body">
           <div class="m-3">
-            <label for="name" class="form-label">Technology:</label>
-            <input type="text" ngModel name="name" class="form-control" maxlength="45" required>
+            <label for="skillName" class="form-label">Technology:</label>
+            <input type="text" ngModel name="name" id="skillName" class="form-control" maxlength="45" required>
           </div>
           <div class="mb-3">
-            <label class="form-label" for="lvl">Level:</label>
+            <label class="form-label" for="skillLvl">Level:</label>
             <input type="text" id="range-bar-value" class="range-bar-value" value="50" readonly>
-            <input class="form-range" ngModel name="lvl" type="range" min="1" max="100" value="50" required />
+            <input class="form-range" ngModel name="lvl" id="skillLvl" type="range" min="1" max="100" value="50"
+              required />
           </div>
         </div>
         <div class="modal-footer justify-content-center">
@@ -104,14 +124,15 @@
       <form #editForm="ngForm" class="form">
         <div class="modal-body">
           <div class="m-3">
-            <label for="name" class="form-label">Technology:</label>
-            <input type="text" ngModel="{{editSkill?.name}}" name="name" class="form-control" maxlength="45" required>
+            <label for="editSkillName" class="form-label">Technology:</label>
+            <input type="text" ngModel="{{editSkill?.name}}" name="name" id="editSkillName" class="form-control"
+              maxlength="45" required>
             <input type="hidden" ngModel="{{editSkill?.id_skill}}" name="id_skill" class="form-control" />
           </div>
           <div class="mb-3">
-            <label class="form-label" for="lvl">Level:</label>
+            <label class="form-label" for="editSkillProgress">Level:</label>
             <input type="text" id="range-bar-value-edit" class="range-bar-value" value="{{editSkill?.lvl}}" readonly>
-            <input class="form-range form-range-edit" ngModel="{{editSkill?.lvl}}" name="lvl" id="editProgress"
+            <input class="form-range form-range-edit" ngModel="{{editSkill?.lvl}}" name="lvl" id="editSkillProgress"
               type="range" min="1" max="100" value="{{editSkill?.lvl}}" required />
           </div>
         </div>
@@ -157,14 +178,14 @@
       <form #addFormL="ngForm" (ngSubmit)="onAddLanguage(addFormL)" class="form">
         <div class="modal-body">
           <div class="m-3">
-            <label for="name" class="form-label">Name:</label>
-            <input type="text" ngModel name="name" class="form-control" maxlength="45" required>
+            <label for="langName" class="form-label">Name:</label>
+            <input type="text" ngModel name="name" id="langName" class="form-control" maxlength="45" required>
           </div>
           <div class="mb-3">
-            <label class="form-label" for="lvl">Level:</label>
+            <label class="form-label" for="langLvl">Level:</label>
             <input type="text" id="range-language-bar-value" class="range-bar-value" value="50" readonly>
-            <input class="form-range language-range" ngModel name="lvl" type="range" min="1" max="100" value="50"
-              required />
+            <input class="form-range language-range" ngModel name="lvl" id="langLvl" type="range" min="1" max="100"
+              value="50" required />
           </div>
         </div>
         <div class="modal-footer justify-content-center">
@@ -187,17 +208,17 @@
       <form #editFormL="ngForm" class="form">
         <div class="modal-body">
           <div class="m-3">
-            <label for="name" class="form-label">Technology:</label>
-            <input type="text" ngModel="{{editLanguage?.name}}" name="name" class="form-control" maxlength="45"
-              required>
+            <label for="editLangName" class="form-label">Technology:</label>
+            <input type="text" ngModel="{{editLanguage?.name}}" name="name" id="editLangName" class="form-control"
+              maxlength="45" required>
             <input type="hidden" ngModel="{{editLanguage?.id_language}}" name="id_language" class="form-control" />
           </div>
           <div class="mb-3">
-            <label class="form-label" for="lvl">Level:</label>
+            <label class="form-label" for="editLangProgress">Level:</label>
             <input type="text" id="range-bar-value-language-edit" class="range-bar-value" value="{{editLanguage?.lvl}}"
               readonly>
             <input class="form-range form-range-language-edit" ngModel="{{editLanguage?.lvl}}" name="lvl"
-              id="editProgress" type="range" min="1" max="100" value="{{editLanguage?.lvl}}" required />
+              id="editLangProgress" type="range" min="1" max="100" value="{{editLanguage?.lvl}}" required />
           </div>
         </div>
         <div class="modal-footer justify-content-center">
@@ -242,8 +263,8 @@
       <form #addFormS="ngForm" (ngSubmit)="onAddSoftSkill(addFormS)" class="form">
         <div class="modal-body">
           <div class="m-3">
-            <label for="name" class="form-label">Name:</label>
-            <input type="text" ngModel name="name" class="form-control" maxlength="45" required>
+            <label for="softName" class="form-label">Name:</label>
+            <input type="text" ngModel name="name" id="softName" class="form-control" maxlength="45" required>
           </div>
         </div>
         <div class="modal-footer justify-content-center">
@@ -266,9 +287,9 @@
       <form #editFormS="ngForm" class="form">
         <div class="modal-body">
           <div class="m-3">
-            <label for="name" class="form-label">Ability/Technology:</label>
-            <input type="text" ngModel="{{editSoftSkill?.name}}" name="name" class="form-control" maxlength="45"
-              required>
+            <label for="editSoftName" class="form-label">Ability/Technology:</label>
+            <input type="text" ngModel="{{editSoftSkill?.name}}" name="name" id="editSoftName" class="form-control"
+              maxlength="45" required>
             <input type="hidden" ngModel="{{editSoftSkill?.id_soft_skill}}" name="id_soft_skill" class="form-control" />
           </div>
         </div>

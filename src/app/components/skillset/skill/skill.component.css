@@ -24,13 +24,18 @@ progress {
   border-radius: 10px;
   position: relative;
   transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -o-transition: all 0.5s;
 }
 
 .progresss span {
   position: absolute;
   top: 0;
   right: 0;
-  color: var(--white-color);
+  font-weight: bolder;
+  color: var(--black-color);
   margin-bottom: 12px;
 }
 
