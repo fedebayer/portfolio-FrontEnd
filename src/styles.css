@@ -7,8 +7,9 @@
 */
 :root {
   --first-color: #4985a5;
+  --second-color: #ffffffc9;
   --white-color: #fff;
-  --black-color: #000;
+  --black-color: #0f0f0f;
   --black-grey-color: #444649;
   --grey-color: #8491A0;
   --grey-dark-color: #252934;
@@ -198,8 +199,9 @@ header {
 }
 
 .years-date {
-  color: var(--white-color);
+  color: var(--grey-light-color);
   background-color: var(--black-color);
+  font-weight: bold;
   text-align: center;
   padding: 0.2rem;
   border-radius: 1rem;
