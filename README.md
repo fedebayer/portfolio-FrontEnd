@@ -33,7 +33,7 @@ This project is about a **full-stack web**, in this case a web portfolio.
 
 Here is the deployed web: <a href="https://porfolio-fb.web.app/">https://porfolio-fb.web.app/</a>
 
-Here is the deployed backend: https://portfolio-fb-back.herokuapp.com
+Here is the deployed backend: https://portfolio-fedebayer.koyeb.app/
 
 This part focus on the frontend of the page (**SPA Angular**).
 
