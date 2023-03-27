@@ -100,6 +100,10 @@
               class="form-control" maxlength="70" required>
           </div>
           <div class="m-3">
+            <label for="eduImg_url" class="form-label">Image url (optional):</label>
+            <input type="text" ngModel name="img_url" id="eduImg_url" class="form-control" maxlength="100">
+          </div>
+          <div class="m-3">
             <label for="editEduDescription">Description:</label>
             <textarea ngModel="{{editEducation?.description}}" name="description" id="editEduDescription" cols="30"
               rows="3" class="form-control mt-3" style="resize:none;" maxlength="240" required></textarea>
