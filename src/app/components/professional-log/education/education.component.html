@@ -48,25 +48,24 @@
         <div class="modal-body">
           <div class="m-3">
             <label for="eduTitle" class="form-label">Title:</label>
-            <input type="text" ngModel name="title" id="eduTitle" class="form-control" maxlength="70" required>
+            <input type="text" ngModel name="title" id="eduTitle" class="form-control" required>
           </div>
           <div class="m-3">
             <label for="eduInstitution" class="form-label">Institution:</label>
-            <input type="text" ngModel name="institution" id="eduInstitution" class="form-control" maxlength="70"
-              required>
+            <input type="text" ngModel name="institution" id="eduInstitution" class="form-control" required>
           </div>
           <div class="m-3">
             <label for="eduImg_url" class="form-label">Image url (optional):</label>
-            <input type="text" ngModel name="img_url" id="eduImg_url" class="form-control" maxlength="100">
+            <input type="text" ngModel name="img_url" id="eduImg_url" class="form-control">
           </div>
           <div class="m-3">
             <label for="eduDescription">Description</label>
             <textarea ngModel name="description" id="eduDescription" cols="30" rows="3" class="form-control mt-3"
-              style="resize:none;" maxlength="240" required></textarea>
+              style="resize:none;" required></textarea>
           </div>
           <div class="m-3">
             <label for="eduDate" class="form-label">Period (<i>year month - year month/at present</i>):</label>
-            <input type="text" ngModel name="date" id="eduDate" class="form-control" maxlength="45" required>
+            <input type="text" ngModel name="date" id="eduDate" class="form-control" required>
           </div>
         </div>
         <div class="modal-footer justify-content-center">
@@ -91,27 +90,27 @@
           <div class="m-3">
             <label for="editEduTitle" class="form-label">Title:</label>
             <input type="text" ngModel="{{editEducation?.title}}" name="title" id="editEduTitle" class="form-control"
-              maxlength="70" required>
+              required>
             <input type="hidden" ngModel="{{ editEducation?.id_education }}" name="id_education" class="form-control" />
           </div>
           <div class="m-3">
             <label for="editEduInstitution" class="form-label">Institution:</label>
             <input type="text" ngModel="{{editEducation?.institution}}" name="institution" id="editEduInstitution"
-              class="form-control" maxlength="70" required>
-          </div>
-          <div class="m-3">
-            <label for="eduImg_url" class="form-label">Image url (optional):</label>
-            <input type="text" ngModel name="img_url" id="eduImg_url" class="form-control" maxlength="100">
+              class="form-control" required>
           </div>
           <div class="m-3">
             <label for="editEduDescription">Description:</label>
             <textarea ngModel="{{editEducation?.description}}" name="description" id="editEduDescription" cols="30"
-              rows="3" class="form-control mt-3" style="resize:none;" maxlength="240" required></textarea>
+              rows="3" class="form-control mt-3" style="resize:none;" required></textarea>
+          </div>
+          <div class="m-3">
+            <label for="eduImg_url" class="form-label">Image url (optional):</label>
+            <input type="text" ngModel name="img_url" id="eduImg_url" class="form-control">
           </div>
           <div class="m-3">
             <label for="editEduDate" class="form-label">Period (<i>year month - year month/at present</i>):</label>
             <input type="text" ngModel="{{editEducation?.date}}" name="date" id="editEduDate" class="form-control"
-              maxlength="45" required>
+              required>
           </div>
         </div>
         <div class="modal-footer justify-content-center">

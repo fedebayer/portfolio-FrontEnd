@@ -57,25 +57,24 @@
         <div class="modal-body">
           <div class="m-3">
             <label for="projTitle" class="form-label">Title:</label>
-            <input type="text" ngModel name="title" id="projTitle" class="form-control" maxlength="45" required>
+            <input type="text" ngModel name="title" id="projTitle" class="form-control" required>
           </div>
           <div class="m-3">
             <label for="projImg_url" class="form-label">Image url (optional):</label>
-            <input type="text" ngModel name="img_url" id="projImg_url" class="form-control" maxlength="100">
+            <input type="text" ngModel name="img_url" id="projImg_url" class="form-control">
           </div>
           <div class="m-3">
             <label for="projDescription">Description:</label>
             <textarea ngModel name="description" id="projDescription" cols="30" rows="3" class="form-control mt-3"
-              style="resize:none;" maxlength="170" required></textarea>
+              style="resize:none;" required></textarea>
           </div>
           <div class="m-3">
             <label for="projTechnologies" class="form-label">Technologies (t1 - t2 ...):</label>
-            <input type="text" ngModel name="technologies" id="projTechnologies" class="form-control" maxlength="45"
-              required>
+            <input type="text" ngModel name="technologies" id="projTechnologies" class="form-control" required>
           </div>
           <div class="m-3">
             <label for="projLive_url" class="form-label">Live page url (optional):</label>
-            <input type="text" ngModel name="live_url" id="projLive_url" class="form-control" maxlength="100">
+            <input type="text" ngModel name="live_url" id="projLive_url" class="form-control">
           </div>
           <div class="m-3">
             <label for="projRepo_url" class="form-label">Repository url (optional):</label>
@@ -85,6 +84,30 @@
             <label for="projYear" class="form-label">Year (2021 - 3000):</label>
             <input type="number" ngModel name="year" id="projYear" class="form-control" min="2021" max="3000"
               value="2022" required>
+          </div>
+          <div class="m-3">
+            <label for="desc_img1" class="form-label">Description img1 url (optional):</label>
+            <input type="text" ngModel name="desc_img1" id="desc_img1" class="form-control">
+          </div>
+          <div class="m-3">
+            <label for="desc_text1" class="form-label">Description text1 (optional):</label>
+            <input type="text" ngModel name="desc_text1" id="desc_text1" class="form-control">
+          </div>
+          <div class="m-3">
+            <label for="desc_img2" class="form-label">Description img2 url (optional):</label>
+            <input type="text" ngModel name="desc_img2" id="desc_img2" class="form-control">
+          </div>
+          <div class="m-3">
+            <label for="desc_text2" class="form-label">Description text2 (optional):</label>
+            <input type="text" ngModel name="desc_text2" id="desc_text2" class="form-control">
+          </div>
+          <div class="m-3">
+            <label for="desc_img3" class="form-label">Description img3 url (optional):</label>
+            <input type="text" ngModel name="desc_img3" id="desc_img3" class="form-control">
+          </div>
+          <div class="m-3">
+            <label for="desc_text3" class="form-label">Description text3 (optional):</label>
+            <input type="text" ngModel name="desc_text3" id="desc_text3" class="form-control">
           </div>
         </div>
         <div class="modal-footer justify-content-center">
@@ -109,38 +132,68 @@
           <div class="m-3">
             <label for="editProjTitle" class="form-label">Title:</label>
             <input type="text" ngModel="{{editProject?.title}}" name="title" id="editProjTitle" class="form-control"
-              maxlength="45" required>
+              required>
             <input type="hidden" ngModel="{{editProject?.id_project}}" name="id_project" class="form-control" />
           </div>
           <div class="m-3">
             <label for="editProjImg_url" class="form-label">Image:</label>
             <input type="text" ngModel="{{editProject?.img_url}}" name="img_url" id="editProjImg_url"
-              class="form-control" maxlength="100">
+              class="form-control">
           </div>
           <div class="m-3">
             <label for="editProjDescription">Description:</label>
             <textarea ngModel="{{editProject?.description}}" name="description" id="editProjDescription" cols="30"
-              rows="3" class="form-control mt-3" style="resize:none;" maxlength="170" required></textarea>
+              rows="3" class="form-control mt-3" style="resize:none;" required></textarea>
           </div>
           <div class="m-3">
             <label for="editProjTechnologies" class="form-label">Technologies (t1 - t2 ...):</label>
             <input type="text" ngModel="{{editProject?.technologies}}" name="technologies" id="editProjTechnologies"
-              class="form-control" maxlength="45" required>
+              class="form-control" required>
           </div>
           <div class="m-3">
             <label for="editProjLive_url" class="form-label">Live url (optional):</label>
             <input type="text" ngModel="{{editProject?.live_url}}" name="live_url" id="editProjLive_url"
-              class="form-control" maxlength="100">
+              class="form-control">
           </div>
           <div class="m-3">
             <label for="editProjRepo_url" class="form-label">Repository link:</label>
             <input type="text" ngModel="{{editProject?.repo_url}}" name="repo_url" id="editProjRepo_url"
-              class="form-control" maxlength="100">
+              class="form-control">
           </div>
           <div class="m-3">
             <label for="editProjYear" class="form-label">Year (2021 - 3000):</label>
             <input type="number" ngModel="{{editProject?.year}}" name="year" id="editProjYear" class="form-control"
               min="2021" max="3000" value="2022" required>
+          </div>
+          <div class="m-3">
+            <label for="editProjDesc_img1" class="form-label">Description img1 url:</label>
+            <input type="text" ngModel="{{editProject?.desc_img1}}" name="desc_img1" id="editProjDesc_img1"
+              class="form-control">
+          </div>
+          <div class="m-3">
+            <label for="editProjDesc_text1" class="form-label">Description text1:</label>
+            <input type="text" ngModel="{{editProject?.desc_text1}}" name="desc_text1" id="editProjDesc_text1"
+              class="form-control">
+          </div>
+          <div class="m-3">
+            <label for="editProjDesc_img2" class="form-label">Description img2 url:</label>
+            <input type="text" ngModel="{{editProject?.desc_img2}}" name="desc_img2" id="editProjDesc_img2"
+              class="form-control">
+          </div>
+          <div class="m-3">
+            <label for="editProjDesc_text2" class="form-label">Description text2:</label>
+            <input type="text" ngModel="{{editProject?.desc_text2}}" name="desc_text2" id="editProjDesc_text2"
+              class="form-control">
+          </div>
+          <div class="m-3">
+            <label for="editProjDesc_img3" class="form-label">Description img3 url:</label>
+            <input type="text" ngModel="{{editProject?.desc_img3}}" name="desc_img3" id="editProjDesc_img3"
+              class="form-control">
+          </div>
+          <div class="m-3">
+            <label for="editProjDesc_text3" class="form-label">Description text3:</label>
+            <input type="text" ngModel="{{editProject?.desc_text3}}" name="desc_text3" id="editProjDesc_text3"
+              class="form-control">
           </div>
         </div>
         <div class="modal-footer justify-content-center">

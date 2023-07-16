@@ -45,24 +45,24 @@
         <div class="modal-body">
           <div class="m-3">
             <label for="expTitle" class="form-label">Position:</label>
-            <input type="text" ngModel name="title" id="expTitle" class="form-control" maxlength="70" required>
+            <input type="text" ngModel name="title" id="expTitle" class="form-control" required>
           </div>
           <div class="m-3">
             <label for="expCompany" class="form-label">Company (optional):</label>
-            <input type="text" ngModel name="company" id="expCompany" class="form-control" maxlength="70">
+            <input type="text" ngModel name="company" id="expCompany" class="form-control">
           </div>
           <div class="m-3">
             <label for="expImg_url" class="form-label">Image url (optional):</label>
-            <input type="text" ngModel name="img_url" id="expImg_url" class="form-control" maxlength="100">
+            <input type="text" ngModel name="img_url" id="expImg_url" class="form-control">
           </div>
           <div class="m-3">
             <label for="expDescription">Description:</label>
             <textarea ngModel name="description" id="expDescription" cols="30" rows="3" class="form-control mt-3"
-              style="resize:none;" maxlength="240" required></textarea>
+              style="resize:none;" required></textarea>
           </div>
           <div class="m-3">
             <label for="expDate" class="form-label">Period (<i>year month - year month/at present</i>):</label>
-            <input type="text" ngModel name="date" id="expDate" class="form-control" maxlength="45" required>
+            <input type="text" ngModel name="date" id="expDate" class="form-control" required>
           </div>
         </div>
         <div class="modal-footer justify-content-center">
@@ -87,29 +87,29 @@
           <div class="m-3">
             <label for="editExpTitle" class="form-label">Position:</label>
             <input type="text" ngModel="{{editExperience?.title}}" name="title" id="editExpTitle" class="form-control"
-              maxlength="70" required>
+              required>
             <input type="hidden" ngModel="{{editExperience?.id_experience}}" name="id_experience"
               class="form-control" />
           </div>
           <div class="m-3">
             <label for="editExpCompany" class="form-label">Company (optional):</label>
             <input type="text" ngModel="{{editExperience?.company}}" name="company" id="editExpCompany"
-              class="form-control" maxlength="70">
+              class="form-control">
           </div>
           <div class="m-3">
             <label for="editExpImg_url" class="form-label">Image url (optional):</label>
             <input type="text" ngModel="{{editExperience?.img_url}}" name="img_url" id="editExpImg_url"
-              class="form-control" maxlength="100">
+              class="form-control">
           </div>
           <div class="m-3">
             <label for="editExpDescription">Description:</label>
             <textarea ngModel="{{editExperience?.description}}" name="description" id="editExpDescription" cols="30"
-              rows="3" class="form-control mt-3" style="resize:none;" maxlength="240" required></textarea>
+              rows="3" class="form-control mt-3" style="resize:none;" required></textarea>
           </div>
           <div class="m-3">
             <label for="editExpDate" class="form-label">Period (<i>year month - year month/at present</i>):</label>
             <input type="text" ngModel="{{editExperience?.date}}" name="date" id="editExpDate" class="form-control"
-              maxlength="45" required>
+              required>
           </div>
         </div>
         <div class="modal-footer justify-content-center">

@@ -3,10 +3,12 @@
     <div>
       <h2>ABOUT</h2>
       <div class="title-bar"></div>
+      <span class="edit-icon" (click)="onOpenModal(null!,'add')" *ngIf="isAdmin" aria-label="button to add person"><i
+          class="bi bi-plus-square fs-5"></i></span>
     </div>
     <article class=" d-flex justify-content-evenly flex-wrap flex-sm-nowrap" *ngIf="person; else noPerson">
-      <span class="edit-icon" (click)="onOpenModal(person)" *ngIf="isAdmin" aria-label="button to edit content"><i
-          class="bi bi-pencil-square fs-5"></i></span>
+      <span class="edit-icon" (click)="onOpenModal(person, 'edit')" *ngIf="isAdmin"
+        aria-label="button to edit content"><i class="bi bi-pencil-square fs-5"></i></span>
       <div class="about-me-text d-flex flex-column align-items-center align-items-sm-start">
         <p>{{person.about}}</p>
       </div>
@@ -17,10 +19,68 @@
   </div>
 </section>
 <ng-template #noPerson>
+
   <div class="spinner-container">
     <mat-spinner alt="loading..." aria-label="loading..."></mat-spinner>
   </div>
 </ng-template>
+
+<!--Add About Modal-->
+<article class="modal fade" id="aboutPlus" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content section-info">
+      <div class="modal-header">
+        <h5 class="modal-title">Add About</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="close"></button>
+      </div>
+      <form #addForm="ngForm" (ngSubmit)="onAddPerson(addForm)" class="form">
+        <div class="modal-body">
+          <div class="m-3">
+            <label for="aboutName" class="form-label">Name:</label>
+            <input type="text" ngModel name="name" id="aboutName" class="form-control" required>
+          </div>
+          <div class="m-3">
+            <label for="aboutJob_title" class="form-label">Job Title:</label>
+            <input type="text" ngModel name="job_title" id="job_title" class="form-control" required>
+          </div>
+          <div class="m-3">
+            <label for="about" class="form-label">About:</label>
+            <textarea ngModel name="about" id="about" class="form-control" required>
+              </textarea>
+          </div>
+          <div class="m-3">
+            <label for="linkedin_url" class="form-label">LinkedIn url:</label>
+            <input type="text" ngModel name="linkedin_url" id="linkedin_url" class="form-control" required>
+          </div>
+          <div class="m-3">
+            <label for="aboutEmail" class="form-label">Email (<i>must be a valid email address</i>):</label>
+            linkedin_url
+            <input type="email" ngModel name="email" id="email" title="Incorrect email"
+              pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$" class="form-control"
+              required>
+          </div>
+          <div class="m-3">
+            <label for="aboutGithub_url" class="form-label">Link to GitHub:</label>
+            <input type="text" ngModel name="github_url" id="github_url" class="form-control" required>
+          </div>
+          <div class="m-3">
+            <label for="aboutImg_url" class="form-label">Profile image url:</label>
+            <input type="text" ngModel name="img_url" id="img_url" class="form-control" required>
+          </div>
+          <div class="m-3">
+            <label for="aboutBanner_url" class="form-label">Home image url:</label>
+            <input type="text" ngModel name="banner_url" id="banner_url" class="form-control" required>
+          </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button [disabled]="addForm.invalid" type="submit" class="btn btn-outline-success"
+            data-bs-dismiss="modal">Accept</button>
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</article>
 
 <!--About Modal-->
 <article class="modal fade" id="aboutModal" data-bs-backdrop="static">
@@ -34,45 +94,45 @@
         <div class="modal-body">
           <div class="m-3">
             <label for="aboutName" class="form-label">Name:</label>
-            <input type="text" ngModel="{{editPerson?.name}}" name="name" id="aboutName" class="form-control"
-              maxlength="45" required>
+            <input type="text" ngModel="{{editPerson?.name}}" name="name" id="editAboutName" class="form-control"
+              required>
             <input type="hidden" ngModel="{{editPerson?.id_person}}" name="id_person" class="form-control" />
           </div>
           <div class="m-3">
             <label for="aboutJob_title" class="form-label">Job Title:</label>
-            <input type="text" ngModel="{{editPerson?.job_title}}" name="job_title" id="aboutJob_title"
-              class="form-control" maxlength="45" required>
+            <input type="text" ngModel="{{editPerson?.job_title}}" name="job_title" id="editAboutJob_title"
+              class="form-control" required>
           </div>
           <div class="m-3">
-            <label for="about" class="form-label">About:</label>
-            <textarea ngModel="{{editPerson?.about}}" name="about" id="about" class="form-control" maxlength="470"
+            <label for="editAbout" class="form-label">About:</label>
+            <textarea ngModel="{{editPerson?.about}}" name="about" id="editAbout" class="form-control"
               required></textarea>
           </div>
           <div class="m-3">
             <label for="linkedin_url" class="form-label">LinkedIn url:</label>
-            <input type="text" ngModel="{{editPerson?.linkedin_url}}" name="linkedin_url" id="linkedin_url"
-              class="form-control" maxlength="100">
+            <input type="text" ngModel="{{editPerson?.linkedin_url}}" name="linkedin_url" id="editLinkedin_url"
+              class="form-control">
           </div>
           <div class="m-3">
             <label for="aboutEmail" class="form-label">Email (<i>must be a valid email address</i>):</label>
-            <input type="email" ngModel="{{editPerson?.email}}" name="email" id="aboutEmail" title="Incorrect email"
+            <input type="email" ngModel="{{editPerson?.email}}" name="email" id="editAboutEmail" title="Incorrect email"
               pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$" class="form-control"
-              maxlength="45" required>
+              required>
           </div>
           <div class="m-3">
             <label for="aboutGithub_url" class="form-label">Link to GitHub:</label>
-            <input type="text" ngModel="{{editPerson?.github_url}}" name="github_url" id="aboutGithub_url"
-              class="form-control" maxlength="100">
+            <input type="text" ngModel="{{editPerson?.github_url}}" name="github_url" id="editAboutGithub_url"
+              class="form-control">
           </div>
           <div class="m-3">
             <label for="aboutImg_url" class="form-label">Profile image url:</label>
-            <input type="text" ngModel="{{editPerson?.img_url}}" name="img_url" id="aboutImg_url" class="form-control"
-              maxlength="100" required>
+            <input type="text" ngModel="{{editPerson?.img_url}}" name="img_url" id="editAboutImg_url"
+              class="form-control" required>
           </div>
           <div class="m-3">
             <label for="aboutBanner_url" class="form-label">Home image url:</label>
-            <input type="text" ngModel="{{editPerson?.banner_url}}" name="banner_url" id="aboutBanner_url"
-              class="form-control" maxlength="100" required>
+            <input type="text" ngModel="{{editPerson?.banner_url}}" name="banner_url" id="editAboutBanner_url"
+              class="form-control" required>
           </div>
         </div>
         <div class="modal-footer justify-content-center">

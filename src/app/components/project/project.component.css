@@ -16,11 +16,16 @@
   align-items: center;
   justify-content: center;
   opacity: 0;
+  border-radius: 10px;
   transition: opacity 0.25s;
   -webkit-transition: opacity 0.25s;
   -moz-transition: opacity 0.25s;
   -ms-transition: opacity 0.25s;
   -o-transition: opacity 0.25s;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 
 .img-overlay--blur {
@@ -64,7 +69,6 @@
   align-items: center;
   margin-bottom: .5rem;
   margin-right: 1rem;
-  min-width: 43%;
 }
 
 
@@ -80,8 +84,15 @@
 .project-img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 250px;
+  aspect-ratio: 16/16;
+  object-fit: cover;
   max-height: 16rem;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 
 .project-languages {
@@ -90,7 +101,7 @@
 
 .project-item {
   margin-bottom: 1rem;
-  background-color: var(--grey-light-color);
+  background-color: rgb(42 46 53);
 }
 
 .projects-text b {
@@ -111,6 +122,11 @@
   align-items: center;
   justify-content: center;
   border: solid 1px var(--first-color);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 
 .repositories p {
@@ -121,5 +137,10 @@
 @media only screen and (min-width: 700px) {
   .project-item {
     margin-top: 2rem;
+  }
+
+  .project-item h3 {
+    justify-content: start;
+    padding-bottom: 1rem;
   }
 }

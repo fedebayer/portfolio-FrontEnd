@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Person } from 'src/app/model/person';
 import { PersonService } from 'src/app/services/person.service';
 import { TokenService } from 'src/app/services/token.service';
@@ -35,6 +36,20 @@ export class AboutComponent implements OnInit {
     });
   }
 
+  public onAddPerson(addForm: NgForm): void {
+    this.personService.addPerson(addForm.value).subscribe(
+      (response: Person) => {
+        console.log(response);
+        this.getPersons();
+        addForm.reset();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+        addForm.reset();
+      }
+    );
+  }
+
   public onUpdatePerson(Person: Person): void {
     this.personService.updatePerson(Person).subscribe(
       (response: Person) => {
@@ -47,14 +62,18 @@ export class AboutComponent implements OnInit {
     );
   }
 
-  public onOpenModal(per: Person): void {
+  public onOpenModal(per: Person, mode: String): void {
     const container = document.getElementById('about');
     const button = document.createElement('button');
     button.type = 'button';
     button.style.display = 'none';
     button.setAttribute('data-bs-toggle', 'modal');
-    this.editPerson = per;
-    button.setAttribute('data-bs-target', '#aboutModal');
+    if (mode === 'add') {
+      button.setAttribute('data-bs-target', '#aboutPlus');
+    } else {
+      this.editPerson = per;
+      button.setAttribute('data-bs-target', '#aboutModal');
+    }
     container?.appendChild(button);
     button.click();
   }

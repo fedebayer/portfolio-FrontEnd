@@ -4,6 +4,13 @@
 ====================
 */
 
+.skillIcon {
+  color: var(--first-color);
+  padding-right: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 progress {
   width: 100%;
@@ -13,7 +20,7 @@ progress {
 .progresss {
   width: 100%;
   height: 18px;
-  background-color: #EFEFEF;
+  background-color: var(--grey-color);
   border-radius: 10px;
 }
 

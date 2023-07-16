@@ -16,6 +16,9 @@ import { TokenService } from 'src/app/services/token.service';
 })
 export class SkillComponent implements OnInit {
   skills: Skill[] | undefined;
+  defaultIcon: String = 'fa-solid fa-laptop-code';
+  defaultLangIcon: String = 'fa-solid fa-earth-americas';
+  defaultSoftIcon: String = 'fa-solid fa-user-plus';
   editSkill: Skill | undefined;
   deleteSkill: Skill | undefined;
   softSkills: SoftSkill[] | undefined;

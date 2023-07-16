@@ -1,5 +1,3 @@
 {
-  "marquee.widgets.npm-stats.packageNames": [
-    "portfolio-front-end"
-  ]
+  "marquee.widgets.npm-stats.packageNames": ["portfolio-front-end"]
 }
