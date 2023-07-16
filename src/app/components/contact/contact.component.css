@@ -7,7 +7,7 @@
   padding-top: 5rem;
 }
 
-#contact h3 {
+.contact-form-response>h3 {
   color: var(--black-color);
 }
 
