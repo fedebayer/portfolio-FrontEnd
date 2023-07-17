@@ -5,8 +5,8 @@
     <span class="edit-icon" (click)="onOpenModal(null!,'add')" *ngIf="isAdmin" aria-label="button to add project"><i
         class="bi bi-plus-square fs-5"></i></span>
     <div class="container">
-      <div class="row d-flex align-items-stretch justify-content-center align-text" *ngIf="projects; else noProjects">
-        <article *ngFor="let projectItem of projects" class="project-item col-12 col-md-6 col-lg-3">
+      <div class="project-container" *ngIf="projects; else noProjects">
+        <article *ngFor="let projectItem of projects" class="project-item">
           <div class="project-content">
             <img [src]="projectItem.img_url ? projectItem.img_url : defaultImg" alt="project image" class="project-img">
             <div class="img-overlay img-overlay--blur">
@@ -31,10 +31,10 @@
           <span class="delete-icon" (click)="onOpenModal(projectItem,'delete')" *ngIf="isAdmin"
             aria-label="button to delete project"><i class="bi bi-x-square fs-5"></i></span>
         </article>
-        <div class="repositories d-flex align-items-center">
-          <p><a [href]="person?.github_url + '?tab=repositories'" target="_blank"><strong>VIEW ALL
-                PROJECTS</strong></a></p>
-        </div>
+      </div>
+      <div class="repositories d-flex align-items-center">
+        <p><a [href]="person?.github_url + '?tab=repositories'" target="_blank"><strong>VIEW ALL
+              PROJECTS</strong></a></p>
       </div>
       <ng-template #noProjects>
         <div class="spinner-container">

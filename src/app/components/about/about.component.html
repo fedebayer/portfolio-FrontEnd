@@ -3,8 +3,7 @@
     <div>
       <h2>ABOUT</h2>
       <div class="title-bar"></div>
-      <span class="edit-icon" (click)="onOpenModal(null!,'add')" *ngIf="isAdmin" aria-label="button to add person"><i
-          class="bi bi-plus-square fs-5"></i></span>
+
     </div>
     <article class=" d-flex justify-content-evenly flex-wrap flex-sm-nowrap" *ngIf="person; else noPerson">
       <span class="edit-icon" (click)="onOpenModal(person, 'edit')" *ngIf="isAdmin"
@@ -19,7 +18,8 @@
   </div>
 </section>
 <ng-template #noPerson>
-
+  <span class="edit-icon" (click)="onOpenModal(null!,'add')" *ngIf="isAdmin" aria-label="button to add person"><i
+      class="bi bi-plus-square fs-5"></i></span>
   <div class="spinner-container">
     <mat-spinner alt="loading..." aria-label="loading..."></mat-spinner>
   </div>
